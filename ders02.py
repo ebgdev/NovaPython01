@@ -64,6 +64,14 @@
 # while i < len(ogrenciler):
 #     print(ogrenciler[i])
 #     i+=1
+# -----------------enumerate------------------------------
+
+# names = ["bahadir","samet","erdal","yasemin"]
+# brands = ["toyota","fiat","seat","nissan"]
+
+# for indx,_ in enumerate(names):
+#     print(f"sayin {names[indx]}'in en cok sevdigi araba: {brands[indx]}")
+
 # -------------------------------------
 # fibonacci
 # array = [0,1]
