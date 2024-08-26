@@ -106,3 +106,69 @@
 #         else:
 #             print("basarili bir sekilde sifreniz olusturuldu.")
 #             break
+# ----------------------------# fonksiyonlar-veya-functions------------------------------
+
+# def function_name(parameter):
+#     #statement
+#     return expression
+
+# --------------------
+
+# def say_hi(isim):
+#     return f"Merhaba, {isim}!"
+
+# print(say_hi("erfan"))
+
+# --------------------
+
+# def add(num1: int, num2: int) -> int:
+#     """Add two numbers"""
+#     num3 = num1 + num2
+
+#     return num3
+
+# # Driver code
+# num1, num2 = 5, 15
+# ans = add(num1, num2)
+# print(f"The addition of {num1} and {num2} results {ans}.")
+
+
+# --------------------
+
+# def is_even(x):
+#     if (x % 2 == 0):
+#         print("even")
+#     else:
+#         print("odd")
+
+# print(is_even(5))
+# print(is_even(18))
+
+# --------------------
+# import math 
+
+# def check_prime(number):
+#     if number < 2:
+#         return False
+#     sqrt_number = math.sqrt(number) 
+#     for i in range(2, int(sqrt_number) + 1):
+#         if number % i == 0:
+#             return False 
+#     return True
+
+# print(check_prime(47))
+
+# numbers = [1,23,17,89,1001]
+# for number in numbers:
+#     print(check_prime(number))
+
+
+# -----------list-unpacking-plus-------------
+
+# toyota,*vw,mercedes,bmw = ["lexus","audi","bently","lamborgini","porsche","bugatti","smart","rolls royce"]
+# print(toyota)
+# # print(vw) ---> this is a list which contain ['audi', 'bently', 'lamborgini', 'porsche', 'bugatti']
+# print(mercedes)
+# print(bmw)
+
+# --------------------------------------------
