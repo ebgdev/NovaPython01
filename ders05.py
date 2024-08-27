@@ -1,7 +1,7 @@
 #-----------------------2-sum------------------------
 
 # my_list = [2 ,7 ,11 ,3 ,8 ,15 ,1]
-# target = 100
+# target = 9
 # results = []
 # length = len(my_list)
 
@@ -27,6 +27,26 @@
 #     print("No result found")
 # else:
 #     print(results)
+
+#-----------------------3-sum---with-while---------------------
+
+# my_list = [2, 7, 11, 0, 3, 8, 15, 1]
+# target = 9
+# results = []
+
+# length = len(my_list)
+
+# for i in range(length - 2):
+#     for j in range(i + 1, length - 1):
+#         for z in range(j + 1, length):
+#             if my_list[i] + my_list[j] + my_list[z] == target:
+#                 triplet = sorted([my_list[i], my_list[j], my_list[z]])
+#                 if triplet not in results:
+#                     results.append(triplet)
+
+# print(results)
+
+
 
 # ------------------------sum-matrix------------------------------
 
