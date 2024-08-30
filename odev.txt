@@ -1,67 +1,32 @@
-Bir sifre belirleyiniz: 12345678
-girmis oldugunuz sifreyi tekrarlayiniz: 1234567
-!!! Girdiginiz tekrar sifresi yanlis
+# def is_in(data,item):
+    
+#     condition = False
+#     for value in data:
+#         if value == item:
+#             condition = True
+#     return condition        
+    
+
+# def counter(alist,target):
+#   pass
+
+
+
 ----------------------------------
-sifre tekrarini bir daha denemek icin 2'i tuslayiniz
-bastan sifre belirtmek icin 1'i tuslayiniz
-Tamamen uygulamadan cikmak icin 0'i tuslayiniz
-deger giriniz: 0
-basarili bir sekilde cikis yaptiniz
+sample output: 
 
-############################################-DURUM2-##########################################
-Bir sifre belirleyiniz: 1234
-Belirtmis oldugunuz sifre 4 karakterli
-Sifreniz en az 8 karakter olmali
-Bir sifre belirleyiniz: 12345
-Belirtmis oldugunuz sifre 5 karakterli
-Sifreniz en az 8 karakter olmali
-Bir sifre belirleyiniz: 1234567
-Belirtmis oldugunuz sifre 7 karakterli
-Sifreniz en az 8 karakter olmali
-Bir sifre belirleyiniz: 12345678
-girmis oldugunuz sifreyi tekrarlayiniz: 1234567
-!!! Girdiginiz tekrar sifresi yanlis
+
+print(counter([88,55,33,22,55],66)) 
+            |--> Item NOT FOUND: 0
+
+# print(counter([88,55,33,22,55],55))
+            |--> 2
 ----------------------------------
-sifre tekrarini bir daha denemek icin 2'i tuslayiniz
-bastan sifre belirtmek icin 1'i tuslayiniz
-Tamamen uygulamadan cikmak icin 0'i tuslayiniz
-deger giriniz: 1
-bastan sifre belirtmek icin yonlendiriyorsunuz 
-Bir sifre belirleyiniz: 1234567
-Belirtmis oldugunuz sifre 7 karakterli
-Sifreniz en az 8 karakter olmali
-Bir sifre belirleyiniz: 12345678
-girmis oldugunuz sifreyi tekrarlayiniz: 1234567
-!!! Girdiginiz tekrar sifresi yanlis
-----------------------------------
-sifre tekrarini bir daha denemek icin 2'i tuslayiniz
-bastan sifre belirtmek icin 1'i tuslayiniz
-Tamamen uygulamadan cikmak icin 0'i tuslayiniz
-deger giriniz: 2
-girmis oldugunuz sifreyi tekrarlayiniz: 12345678
-basarili bir sekilde sifreniz olusturuldu.
-
-############################################-DURUM3-##########################################
-
-Bir sifre belirleyiniz: 1234567
-Belirtmis oldugunuz sifre 7 karakterli
-Sifreniz en az 8 karakter olmali
-Bir sifre belirleyiniz: 12345678
-girmis oldugunuz sifreyi tekrarlayiniz: 12345678
-basarili bir sekilde sifreniz olusturuldu.
+conter fonksiyonu listede kac adet target elemaninin oldugunu hesaplar
+ve adet sayisini dondurur
 
 
-###########-HINT-################
+- conter fonsiyonu ilk basta yukarida verilen fonksiyonu cagrir eger target elemani yoksa 
+  herhangi bir kosulu kontrol etmeden 0 degerini bize dondurur
 
-- sifre karakter sayisi 8 ve uzere olacak
-- tamamen cikmak icin --> quit() kullanabilirsin
-- donguyu gerektigi yerde kirmak ve bir ust donguye donebilmek 
-icin --> break anahtar kelimesini kullanabilirsin.
-
-#########################
-#    while kosul:       #
-#        ------         #
-#        while kosul:   #          #gibi bir yapi olucak
-#            ------     #
-#########################
-
+  aksi taktirde diger kosullar incelenir ve target degeri kac kere tekrar edilmis bize dondurur
