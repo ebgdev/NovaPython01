@@ -26,7 +26,7 @@ conter fonksiyonu listede kac adet target elemaninin oldugunu hesaplar
 ve adet sayisini dondurur
 
 
-- conter fonsiyonu ilk basta yukarida verilen fonksiyonu cagrir eger target elemani yoksa 
-  herhangi bir kosulu kontrol etmeden 0 degerini bize dondurur
+- conter fonsiyonu ilk basta yukarida verilen fonksiyonu (is_in) cagrir eger target elemani 
+    yoksa (False) herhangi bir kosulu kontrol etmeden 0 degerini bize dondurur
 
-  aksi taktirde diger kosullar incelenir ve target degeri kac kere tekrar edilmis bize dondurur
+  aksi taktirde (True) diger kosullar incelenir ve target degeri kac kere tekrar edilmis bize dondurur
