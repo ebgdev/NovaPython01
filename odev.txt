@@ -1,32 +1,19 @@
-# def is_in(data,item):
-    
-#     condition = False
-#     for value in data:
-#         if value == item:
-#             condition = True
-#     return condition        
-    
+Görev: Palindromik Alt Dizileri Bulma
+Bir metin içinde bulunan tüm palindromik alt dizileri bulan bir Python fonksiyonu yazın. 
+Fonksiyonun adı find_palindromes(s) olacak ve bu fonksiyon, verilen metindeki her palindromik
+ alt diziyi bir liste olarak döndürecek. Alt diziler en az 3 karakter uzunluğunda olmalıdır.
 
-# def counter(alist,target):
-#   pass
+Palindromik Alt Dizi: İleri ve geri okunduğunda aynı olan bir dizidir. 
+Örneğin, "aba", "racecar" ve "madam" palindromlardır.
 
+Sample input:
+|--> "anabcddcbaek"
 
-
-----------------------------------
-sample output: 
+Output for sample input:
+|--> ['ana', 'abcddcba', 'bcddcb', 'cddc']
 
 
-print(counter([88,55,33,22,55],66)) 
-            |--> Item NOT FOUND: 0
-
-# print(counter([88,55,33,22,55],55))
-            |--> 2
-----------------------------------
-conter fonksiyonu listede kac adet target elemaninin oldugunu hesaplar
-ve adet sayisini dondurur
-
-
-- conter fonsiyonu ilk basta yukarida verilen fonksiyonu (is_in) cagrir eger target elemani 
-    yoksa (False) herhangi bir kosulu kontrol etmeden 0 degerini bize dondurur
-
-  aksi taktirde (True) diger kosullar incelenir ve target degeri kac kere tekrar edilmis bize dondurur
+HINT : 
+1- Fonksiyon, verilen string üzerinde tüm olası alt dizileri bulmalı ve bunların palindrom olup olmadığını kontrol etmelidir.
+2- Sadece 3 veya daha fazla karakter uzunluğundaki palindromlar dikkate alınmalıdır.
+3- Girdi stringinde birden fazla palindromik alt dizi olabilir; bu durumda, hepsini listeye eklemelisiniz.
