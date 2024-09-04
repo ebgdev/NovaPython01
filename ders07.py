@@ -100,26 +100,6 @@
 # for number in numbers:
 #     print(is_prime(number))
 
-# -----------prime-v1--------
-# def is_prime(num):
-#     counter = 0
-#     if num < 2:
-#         return False
-    
-#     else:    
-#         for i in range(2,num+1):
-#             if num%i == 0:
-#                 counter +=1
-        
-#         if counter > 1:
-#             return False
-#         else:
-#             return True
-
-# numbers = [1,2,3,6,7,11,34,65,2345,98475,98273459]
-
-# for number in numbers:
-#     print(is_prime(number))
 # # -----------prime-v2--------
 
 # def is_prime(num):
