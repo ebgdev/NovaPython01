@@ -1,19 +1,37 @@
-Görev: Palindromik Alt Dizileri Bulma
-Bir metin içinde bulunan tüm palindromik alt dizileri bulan bir Python fonksiyonu yazın. 
-Fonksiyonun adı find_palindromes(s) olacak ve bu fonksiyon, verilen metindeki her palindromik
- alt diziyi bir liste olarak döndürecek. Alt diziler en az 3 karakter uzunluğunda olmalıdır.
-
-Palindromik Alt Dizi: İleri ve geri okunduğunda aynı olan bir dizidir. 
-Örneğin, "aba", "racecar" ve "madam" palindromlardır.
-
-Sample input:
-|--> "anabcddcbaek"
-
-Output for sample input:
-|--> ['ana', 'abcddcba', 'bcddcb', 'cddc']
+--------------------------Görev 1: (Normal Zorluk)--------------------------
 
 
-HINT : 
-1- Fonksiyon, verilen string üzerinde tüm olası alt dizileri bulmalı ve bunların palindrom olup olmadığını kontrol etmelidir.
-2- Sadece 3 veya daha fazla karakter uzunluğundaki palindromlar dikkate alınmalıdır.
-3- Girdi stringinde birden fazla palindromik alt dizi olabilir; bu durumda, hepsini listeye eklemelisiniz.
+Problem Tanımı:
+Size bir tamsayı listesi veriliyor. Aşağıdaki adımları öğrendiğiniz kavramları kullanarak gerçekleştirin:
+
+1- Listenin her elemanını karesini almak için lambda ve map fonksiyonlarını kullanarak bir fonksiyon yazın.
+2- reverse() yöntemini kullanmadan, bir while döngüsü kullanarak kareli sayılar listesini ters çevirin.
+3- Ters çevrilmiş listeden 50'den küçük olan sayıları çıkarmak için filter ve lambda fonksiyonlarını kullanın.
+
+# Girdi listesi
+numbers = [3, 5, 7, 10, 15, 20, 25]
+
+# Beklenen Çıktı:
+# Kareli sayılar: [9, 25, 49, 100, 225, 400, 625]
+# Ters çevrilmiş liste: [625, 400, 225, 100, 49, 25, 9]
+# Filtrelenmiş liste (50 >= sayılar): [625, 400, 225, 100]
+
+--------------------------Görev 2: (Zor Zorluk)--------------------------
+
+Problem Tanımı:
+Size karışık veri tiplerinden oluşan bir liste veriliyor (tamsayılar, stringler, ondalıklı sayılar). 
+Aşağıdaki adımları gerçekleştirin:
+
+Listeden yalnızca tamsayıları almak ve her tamsayıyı 10 ile çarpmak için lambda, map ve filter fonksiyonlarını kullanarak bir fonksiyon yazın.
+Bir for döngüsü ile enumerate() kullanarak listedeki her öğenin hem indeksini hem de değerini yazdırın. Ancak, çift tamsayıları yazdırmayı atlayacak bir koşul ekleyin.
+Yeni bir liste oluşturun ve insert() ile her öğeyi string olarak listenin başına ekleyin (ters sırayı taklit edin, ancak reverse() kullanmadan).
+
+
+# Girdi listesi
+mixed_data = [12, 'hello', 3.5, 42, 'world', 99, 0.1, 'Python', 23]
+
+# Beklenen Çıktı:
+# 10 ile çarpılmış tamsayılar: [120, 420, 990, 230]
+# Çift tamsayılar atlandı, ancak diğer öğeler ve indeksleri yazdırıldı.
+# Ters çevrilmiş liste, öğeler string olarak: ['23', 'Python', '0.1', '99', 'world', '42', '3.5', 'hello', '12']
+
