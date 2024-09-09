@@ -20,6 +20,16 @@
 
 # ---------------------reverse-list---------------------
 
+# my_list = ["erfan","soner","yasemin","mehmet","gulten"]
+
+
+# length = len(my_list)
+
+# for i in range(length):
+# 	print(my_list[-1*(i+1)])
+
+# ------------------------------------------
+
 # alist = [1,2,3,4,5]
 
 # for i in range(len(alist)):
