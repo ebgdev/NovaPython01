@@ -1,4 +1,14 @@
---------------------------Görev 1: (Normal Zorluk)--------------------------
+def foo(my_list):
+    pass
+
+lst = ['apple', 'banana', 'apple', 'orange', 'banana', 'banana']
+# print(foo(lst))  # Output: {'apple': 2, 'banana': 3, 'orange': 1}
+
+don't use count method or counter(sayac)
+instead use get method to control statment
+
+
+-------------------------onceki-Görev 1: (Normal Zorluk)--------------------------
 
 
 Problem Tanımı:
@@ -16,7 +26,7 @@ numbers = [3, 5, 7, 10, 15, 20, 25]
 # Ters çevrilmiş liste: [625, 400, 225, 100, 49, 25, 9]
 # Filtrelenmiş liste (50 >= sayılar): [625, 400, 225, 100]
 
---------------------------Görev 2: (Zor Zorluk)--------------------------
+-------------------------ondeki-Görev 2: (Zor Zorluk)--------------------------
 
 Problem Tanımı:
 Size karışık veri tiplerinden oluşan bir liste veriliyor (tamsayılar, stringler, ondalıklı sayılar). 
