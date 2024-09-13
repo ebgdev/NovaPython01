@@ -1,7 +1,6 @@
+# tekrar (Recap) ve odevler cozumu
 # ------------------------------odev----------------------------
-
-# onceki derste yaptigimiz fonksiyon
-# def foo(lst):
+# def count_frequency(lst):
 #     my_dict = {}
 #     for item in lst:
 #         if my_dict.get(item) != None:  
@@ -10,11 +9,8 @@
 #             my_dict[item] = 1  
 #     return my_dict
 
-def tekrar_ile_gurupla(foo(lst = ['a', 'b', 'b', 'c', 'c', 'c'])):
-    # bu fonksiyonu siz tamamlayiniz
-    pass
 
+# lst = ['apple', 'banana', 'apple', 'orange', 'banana', 'banana']
+# # Output: {'apple': 2, 'banana': 3, 'orange': 1}
 
-print(tekrar_ile_gurupla(foo(lst)))  
-
-# cikti: {1: ['a'], 2: ['b'], 3: ['c']}
+# print(count_frequency(lst))  
