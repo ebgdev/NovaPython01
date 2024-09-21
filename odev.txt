@@ -1,20 +1,93 @@
 # ------------------------------odev----------------------------
+# Ürünler ve fiyatlardan oluşan bir sözlük oluşturun ve ürün listesini 
+# yönetmek için bir işlev yazın (ekleme, güncelleme, toplamı hesaplama).
 
-# onceki derste yaptigimiz fonksiyon
-# def foo(lst):
-#     my_dict = {}
-#     for item in lst:
-#         if my_dict.get(item) != None:  
-#             my_dict[item] += 1  
-#         else:
-#             my_dict[item] = 1  
-#     return my_dict
+countries = {
+    'USA': {'Capital': 'Washington, D.C.', 'Population': 331000000, 'Language': 'English'},
+    'France': {'Capital': 'Paris', 'Population': 67000000, 'Language': 'French'}
+}
 
-def tekrar_ile_gurupla(foo(lst = ['a', 'b', 'b', 'c', 'c', 'c'])):
-    # bu fonksiyonu siz tamamlayiniz
+def manage_countries(action, country_name, info=None):
+    pass
+
+# Example usage
+manage_countries('add', 'Japan', {'Capital': 'Tokyo', 'Population': 126300000, 'Language': 'Japanese'})
+manage_countries('update', 'France', {'Population': 68000000})  # Updates population of France
+manage_countries('get', 'USA')  # Outputs details of USA
+
+# ------------------------------odev----------------------------
+
+urunler = {
+    'Laptop': 12000,
+    'Telefon': 8000,
+    'Tablet': 3500,
+    'Akıllı Saat': 2000,
+    'Kulaklık': 750
+}
+
+===========aciklama===========
+sorted() fonksiyonu ile sözlüğü (dictionary) key=lambda item: item[1] kullanarak sıralıyoruz. 
+Burada item[1] her ürünün fiyatını temsil eder.
+reverse=True parametresi, sıralamayı azalan hale getirir.
+Sözlük sıralandıktan sonra, orijinal yapıyı korumak için tekrar dict() fonksiyonuna dönüştürüyoruz.
+
+# sample output : 
+
+# Fiyatlara göre artan sırayla ürünler:
+# {'Kulaklık': 750, 'Akıllı Saat': 2000, 'Tablet': 3500, 'Telefon': 8000, 'Laptop': 12000}
+
+# Fiyatlara göre azalan sırayla ürünler:
+# {'Laptop': 12000, 'Telefon': 8000, 'Tablet': 3500, 'Akıllı Saat': 2000, 'Kulaklık': 750}
+
+
+# ------------------------------odev-optional---------------------------
+
+# Problem Tanımı: Bir kütüphanenin envanterini yöneten bir sistem oluşturun. Her kitap, başlık, yazar, yayın yılı ve mevcut olup olmadığı gibi ayrıntılara sahip olacak. Aşağıdaki işlevleri yazın:
+
+# - Kütüphaneye yeni bir kitap ekleyin.
+# - Bir kitabın durumunu güncelleyin (ödünç alındı / iade edildi).
+# - Belirli bir kitap hakkında bilgi alın.
+# - Tüm mevcut kitapları listeleyin.
+
+library = {
+    '1984': {'Author': 'George Orwell', 'Year': 1949, 'Available': True},
+    'To Kill a Mockingbird': {'Author': 'Harper Lee', 'Year': 1960, 'Available': True},
+    'The Great Gatsby': {'Author': 'F. Scott Fitzgerald', 'Year': 1925, 'Available': False},
+}
+
+# Function to add a new book
+def add_book(title, author, year):
+    pass
+
+# Function to update the availability of a book (borrow/return)
+def update_availability(title, status):
     pass
 
 
-print(tekrar_ile_gurupla(foo(lst)))  
+# Function to get information about a specific book
+def get_book_info(title):
+    pass
 
-# cikti: {1: ['a'], 2: ['b'], 3: ['c']}
+# Function to list all available books
+def list_available_books():
+    pass
+
+
+# Example usage
+add_book('The Catcher in the Rye', 'J.D. Salinger', 1951)  # Adds a new book
+update_availability('1984', False)  # Marks '1984' as borrowed
+get_book_info('To Kill a Mockingbird')  # Retrieves details of a specific book
+list_available_books()  # Lists all available books
+
+===========aciklama===========
+
+
+# kutuphane sözlüğü, kitap başlıklarını anahtar olarak kullanır ve Yazar, 
+# ---- Yıl ve Mevcut (kitabın mevcut olup olmadığı) gibi bilgileri değer olarak saklar.
+
+# kitap_ekle: Yeni bir kitap ekler, eğer kitap daha önce eklenmemişse.
+# durum_guncelle: Kitabın mevcut olup olmadığını günceller.
+# kitap_bilgisi: Belirli bir kitabın detaylarını getirir.
+# mevcut_kitaplar: Şu anda mevcut olan tüm kitapları listeler.
+
+
