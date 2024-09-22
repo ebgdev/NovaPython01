@@ -10,4 +10,4 @@ def devide_2(num1: int,num2: int) -> float:
 
 if __name__ == "main":
     sum_2(0,1)
-    sum_2(2,1)
+    devide_2(2,1)

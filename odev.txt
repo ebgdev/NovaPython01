@@ -10,7 +10,7 @@ countries = {
 def manage_countries(action, country_name, info=None):
     pass
 
-# Example usage
+# sample output : 
 manage_countries('add', 'Japan', {'Capital': 'Tokyo', 'Population': 126300000, 'Language': 'Japanese'})
 manage_countries('update', 'France', {'Population': 68000000})  # Updates population of France
 manage_countries('get', 'USA')  # Outputs details of USA
@@ -73,7 +73,7 @@ def list_available_books():
     pass
 
 
-# Example usage
+# sample output : 
 add_book('The Catcher in the Rye', 'J.D. Salinger', 1951)  # Adds a new book
 update_availability('1984', False)  # Marks '1984' as borrowed
 get_book_info('To Kill a Mockingbird')  # Retrieves details of a specific book
