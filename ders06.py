@@ -34,10 +34,11 @@
 
 # --------------------------------------------
 
-# def say_hi(isim):
-#     return f"Merhaba, {isim}!"
+def say_hi(isim="default value"):
+    return f"Merhaba, {isim}!"
 
-# print(say_hi("erfan"))
+print(say_hi("erfan"))
+print(say_hi())
 # ------------------area-of-circle------------
 
 # import math
