@@ -91,3 +91,128 @@ list_available_books()  # Lists all available books
 # mevcut_kitaplar: Şu anda mevcut olan tüm kitapları listeler.
 
 
+#========================================================
+
+# # # Ürünler ve fiyatları içeren sözlük
+# # urunler = {
+# #     'Laptop': 12000,
+# #     'Telefon': 8000,
+# #     'Tablet': 3500,
+# #     'Akilli Saat': 2000,
+# #     'Kulaklik': 750
+# # }
+
+# # def artan_sira(urunler):
+# #     result = [list(urunler.items())[0]]  # Start with the first item in result list
+# #     for coupe in list(urunler.items())[1:]:  # Iterate over the rest of the items
+# #         coupe = list(coupe)
+# #         inserted = False
+# #         for i in range(len(result)):
+# #             if coupe[1] < result[i][1]:
+# #                 result.insert(i, coupe)  # Insert coupe in the correct position
+# #                 inserted = True
+# #                 break
+# #         if not inserted:
+# #             result.append(coupe)  # If not inserted, append at the end
+# #     return dict(result)
+
+
+# # def fiyat_sirala_azalan(urunler):
+# #     sirali_urunler = dict(sorted(urunler.items(), key=lambda item: item[1],reverse=True))
+# #     return sirali_urunler
+
+
+# # print(artan_sira(urunler))
+# # print(fiyat_sirala_azalan(urunler))
+
+# # -------------------------------------------------------
+
+# # countries = {
+# #     'USA': {'Capital': 'Washington, D.C.', 'Population': 331000000, 'Language': 'English'},
+# #     'France': {'Capital': 'Paris', 'Population': 67000000, 'Language': 'French'}
+# # }
+
+# # def manage_countries(action, country_name, info=None):
+# #     if action == 'add':
+# #         if country_name not in countries:
+# #             countries[country_name] = info
+# #             print(f"Added {country_name}.")
+# #         else:
+# #             print(f"{country_name} already exists.")
+# #     elif action == 'update':
+# #         if country_name in countries:
+# #             countries[country_name].update(info)
+# #             print(f"Updated information for {country_name}.")
+# #         else:
+# #             print(f"{country_name} not found.")
+# #     elif action == 'get':
+# #         if country_name in countries:
+# #             print(f"Details for {country_name}: {countries[country_name]}")
+# #         else:
+# #             print(f"{country_name} not found.")
+# #     else:
+# #         print("Invalid action. Use 'add', 'update', or 'get'.")
+
+# # # Example usage
+# # manage_countries('add', 'Japan', {'Capital': 'Tokyo', 'Population': 126300000, 'Language': 'Japanese'})
+# # manage_countries('update', 'France', {'Population': 68000000})  # Updates population of France
+# # manage_countries('get', 'USA')  # Outputs details of USA
+
+# # -----------------------------------------------------
+
+# # Dictionary structure to store books in the library
+# library = {
+#     '1984': {'Author': 'George Orwell', 'Year': 1949, 'Available': True},
+#     'To Kill a Mockingbird': {'Author': 'Harper Lee', 'Year': 1960, 'Available': True},
+#     'The Great Gatsby': {'Author': 'F. Scott Fitzgerald', 'Year': 1925, 'Available': False},
+# }
+
+# # Function to add a new book
+# def add_book(title, author, year):
+#     if title not in library:
+#         library[title] = {'Author': author, 'Year': year, 'Available': True}
+#         print(f"Added '{title}' to the library.")
+#     else:
+#         print(f"The book '{title}' is already in the library.")
+
+# # Function to update the availability of a book (borrow/return)
+# def update_availability(title, status):
+#     if title in library:
+#         library[title]['Available'] = status
+#         status_text = "available" if status else "borrowed"
+#         print(f"Updated '{title}' status to {status_text}.")
+#     else:
+#         print(f"'{title}' not found in the library.")
+
+# # Function to get information about a specific book
+# def get_book_info(title):
+#     if title in library:
+#         print(f"Details of '{title}': {library[title]}")
+#     else:
+#         print(f"'{title}' not found in the library.")
+
+# # Function to list all available books
+# def list_available_books():
+#     # Initialize an empty list to store available book titles
+#     available_books = []
+    
+#     # Loop through each book in the library
+#     for title, info in library.items():
+#         # Check if the book is available
+#         if info['Available']:
+#             available_books.append(title)  # Add the title to the list of available books
+
+#     # If there are available books, print them
+#     if available_books:
+#         print("Available books in the library:")
+#         for book in available_books:
+#             print(f"- {book}")
+#     else:
+#         print("No books are currently available.")
+
+
+# # Example usage
+# add_book('The Catcher in the Rye', 'J.D. Salinger', 1951)  # Adds a new book
+# update_availability('1984', False)  # Marks '1984' as borrowed
+# get_book_info('To Kill a Mockingbird')  # Retrieves details of a specific book
+# list_available_books()  # Lists all available books
