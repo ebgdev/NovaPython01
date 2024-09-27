@@ -20,7 +20,7 @@
 #     j = i+1
 #     while j < length:
 #         if my_list[i] + my_list[j] == target:
-#             results.append([i,j])
+#             results.append([my_list[i],my_list[j]])
 #         j+=1
 #     i+=1
 # if results == []:
