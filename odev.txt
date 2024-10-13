@@ -1,7 +1,7 @@
 Örnek 1: Kütüphane Yönetim Sistemi
 Kavramlar:
 
-- Özel Yöntem ve Attributeler (Encapsulation): _books ve _ebooks gibi özel özellikler 
+- Özel Yöntem ve Attributeler (Encapsulation): __books ve __ebooks gibi özel özellikler 
   ile _display_books() özel yönteminin kullanımı gösterilmiştir.
 - Kalıtım (Inheritance): DigitalLibrary sınıfı, Library sınıfından türetilmiştir.
 - Çok Biçimlilik (Polymorphism): borrow_book() yöntemi, DigitalLibrary sınıfında 
@@ -40,7 +40,7 @@ Clean Code: 4 copies available
 Örnek 2: Çalışan Yönetim Sistemi
 Kavramlar:
 
-- Özel Yöntem ve Attributeler (Encapsulation): _name, _base_salary, _bonus, ve _commission 
+- Özel Yöntem ve Attributeler (Encapsulation): __name, __base_salary, __bonus, ve __commission 
   gibi özel değişkenler kullanılmıştır.
 - Kalıtım (Inheritance): Developer ve Manager sınıfları, Employee sınıfından türetilmiştir.
 - Çok Biçimlilik (Polymorphism): calculate_salary() yöntemi, her bir alt sınıfta farklı şekilde hesaplama yapar.
