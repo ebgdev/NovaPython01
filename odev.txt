@@ -1,20 +1,69 @@
-class Fibo:
-    def __init__(self, sayi):
-        self.sayi = sayi
-        self.liste = [0, 1]
-        pass
+Örnek 1: Kütüphane Yönetim Sistemi
+Kavramlar:
 
-    def generate_fibonacci(self):
-        pass
-    
-    def p_info(self):
-        pass
+- Özel Yöntem ve Attributeler (Encapsulation): _books ve _ebooks gibi özel özellikler 
+  ile _display_books() özel yönteminin kullanımı gösterilmiştir.
+- Kalıtım (Inheritance): DigitalLibrary sınıfı, Library sınıfından türetilmiştir.
+- Çok Biçimlilik (Polymorphism): borrow_book() yöntemi, DigitalLibrary sınıfında 
+  Library sınıfının yöntemini geçersiz kılarak farklı davranış sergiler.
+- Döngüler (for döngüsü): Kitapları ödünç alma işlemi döngüyle gerçekleştirilir.
+- Sözlükler (Dictionary): Kitaplar ve e-kitaplar, sözlük veri yapısında saklanır.
+
+### Beklenen Çıktı ve Nasıl Yapılacağı
+Öğrencilerinizden bu programı çalıştırarak, 
+kitap ve e-kitap ekleme, ödünç alma ve mevcut kitapların 
+görüntülenmesini sağlamaları beklenir. Beklenen çıktı şu şekilde olacaktır:
+
+---------------------------------------------
+Borrowed '1984'. Enjoy reading!
+Borrowed e-book 'Clean Code'. Enjoy reading digitally!
+Borrowed e-book 'The Art of Computer Programming'. Enjoy reading digitally!
+
+Books in the 'City Library' Library:
+1984: 2 copies available
+To Kill a Mockingbird: 2 copies available
+
+E-books:
+The Art of Computer Programming: 0 copies available
+Clean Code: 4 copies available
+---------------------------------------------
+Öğrencilerinizin bu çıktıyı elde edebilmesi için:
+
+1- DigitalLibrary sınıfını kullanarak bir kütüphane nesnesi oluşturacaklar.
+2- Kitapları ve e-kitapları add_book() ve add_ebook() yöntemleri ile ekleyecekler.
+3- borrow_book() yöntemiyle kitap ödünç alma işlemi yapacaklar.
+4- Tüm kitapları display_all_books() yöntemiyle görüntüleyecekler.
 
 
-up_to_5 = Fibo(5)  
-print(up_to_5.p_info())  # Output: [0, 1, 1, 2, 3, 5, 8]
+###########################################################
 
--------------------------------------
-cikti # Output: [0, 1, 1, 2, 3, 5, 8] olacak sekilde
-odevi tamamlayiniz
+Örnek 2: Çalışan Yönetim Sistemi
+Kavramlar:
 
+- Özel Yöntem ve Attributeler (Encapsulation): _name, _base_salary, _bonus, ve _commission 
+  gibi özel değişkenler kullanılmıştır.
+- Kalıtım (Inheritance): Developer ve Manager sınıfları, Employee sınıfından türetilmiştir.
+- Çok Biçimlilik (Polymorphism): calculate_salary() yöntemi, her bir alt sınıfta farklı şekilde hesaplama yapar.
+- Döngüler (for döngüsü): Çalışanları eklemek ve maaşlarını göstermek için kullanılır.
+- Sözlükler (Dictionary): Çalışanlar, bir sözlük yapısında saklanır.
+
+Beklenen Çıktı ve Nasıl Yapılacağı
+Öğrencilerin aşağıdaki çıktıyı elde etmeleri beklenir:
+
+---------------------------------------------
+Employee Salaries:
+Employee: Alice, Salary: 60000
+Employee: Bob, Salary: 75000
+Bu çıktıyı elde edebilmek için:
+---------------------------------------------
+1- Company sınıfından bir şirket nesnesi oluşturacaklar.
+2- Developer ve Manager sınıflarından türetilmiş çalışan nesneleri oluşturacaklar.
+3- Çalışanları add_employee() yöntemi ile şirkete ekleyecekler.
+4- Tüm çalışanların maaşlarını display_all_salaries() yöntemi ile görüntüleyecekler.
+
+# Genel Notlar
+
+Kodda for döngüsü kullanarak işlemler gerçekleştirilir ve öğrencilere döngülerle nasıl liste işlemleri yapılacağını gösterir.
+Özel yöntem ve değişkenlerin nasıl gizlendiğini, fakat gerektiğinde nasıl erişilebileceğini anlamalarını sağlar.
+Her iki örnek de çok biçimliliğin nasıl kullanıldığını ve neden önemli olduğunu göstermek için iyi bir temel oluşturur.
+Bu ödevin amacı, öğrencilerin OOP kavramlarını sadece teoride değil, aynı zamanda pratikte de nasıl uygulayacaklarını görmelerini sağlamaktır.

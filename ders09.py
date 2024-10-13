@@ -145,7 +145,7 @@
 # aset.add("anil")          	# eleman ekler
 # aset.remove("yasemin")   		# eleman varsa siler ama olmayan eleman icin remove hata uretir
 # aset.discard("yasemin")   	# eleman varsa siler ama olmayan eleman icin remove hata uretmez
-# random_deger = aset.pop()     # pop farazi bir elemani siler ve onu donderir her sefeerinde bu degisebilir
+# random_deger = aset.pop()     # pop random bir elemani siler ve onu donderir her seferinde bu degisebilir
 # print(random_deger) 
 # print(aset)
 # bset = {"erfan","alperen","arda"}
