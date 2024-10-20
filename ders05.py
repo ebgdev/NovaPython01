@@ -97,3 +97,22 @@ result = [[0,0,0],[0,0,0],[0,0,0]]
 #     i+=1
 
 # print(alist)
+
+
+# ------------------------------odev-ogretmen-cozumu----------------------------
+
+# okul
+
+member_count = int(input("kisi sayisini giriniz: "))
+info_pri = ["isim","soyisim","yas","sinif"]
+
+student_info = []
+
+for i in range(member_count):
+    temp_list= []
+    for j in range(len(info_pri)):
+        temp_value = input(f"{i+1}. kisi icin {info_pri[j]} giriniz: ")
+        temp_list.append(temp_value)
+    student_info.append(temp_list)
+
+print(student_info)
