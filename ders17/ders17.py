@@ -20,36 +20,36 @@
 
 # ---------------
 
-class Toy:
-    def __init__(self,color,age,name):
-        self.color = color
-        self.age = age
-        self.name = name
-        self.my_dict = {
-            'name':'barby',
-            'yan_urunler':True
-        }
+# class Toy:
+#     def __init__(self,color,age,name):
+#         self.color = color
+#         self.age = age
+#         self.name = name
+#         self.my_dict = {
+#             'name':'barby',
+#             'yan_urunler':True
+#         }
 
-    def __str__(self):
-        return self.color
+#     def __str__(self):
+#         return self.color
     
 
-    def __len__(self):
-        return len(self.name)
+#     def __len__(self):
+#         return len(self.name)
     
-    def __call__(self):
-        return "cagrildim"
+#     def __call__(self):
+#         return "cagrildim"
     
-    def __getitem__(self,i):
-        return self.my_dict[i]
+#     def __getitem__(self,i):
+#         return self.my_dict[i]
 
-action_figure = Toy('red',0,"python ogreniyoruz")
-print(action_figure.__str__())
-print(str(action_figure))
-print(len(action_figure))
-print(len("helloworld!!!!"))
-print(action_figure())
-print(action_figure['name'])
+# action_figure = Toy('red',0,"python ogreniyoruz")
+# print(action_figure.__str__())
+# print(str(action_figure))
+# print(len(action_figure))
+# print(len("helloworld!!!!"))
+# print(action_figure())
+# print(action_figure['name'])
 
 # ----------------------dunder----------------------
 
