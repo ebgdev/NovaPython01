@@ -1,0 +1,12 @@
+Toyota,CH-R,1.6,4,4,SUV
+Toyota,Corolla,1.6,4,4,Sedan
+Toyota,Yaris,1.4,4,4,Hatch
+Toyota,Thunder,2.8,4,4,Truck
+Toyota,F-150,1.6,4,4,Truck
+Toyota,GT86,2.0,4,4,Coupe
+Fiat,Lenea,1.6,4,4,SUV
+Fiat,Egea,1.4,4,4,Sedan
+kia,Rio,1.4,4,4,Hatch
+kia,Mojave,3.5,4,4,SUV
+kia,Sportage,1.8,4,4,SUV
+kia,Serato,2.0,4,4,SUV
