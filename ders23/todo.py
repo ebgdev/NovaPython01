@@ -73,6 +73,7 @@ while True:
         event_start_time = datetime(year, month, day, hour, minute, second)
         event_end_time = event_start_time + timedelta(hours=int(event_duration))
         event_date = event_start_time.strftime("%Y-%m-%d")
+        # ic(event_start_time, event_end_time, event_date)
 
         conflict = None
         for existing_start, existing_end in all_events.keys():
@@ -108,23 +109,30 @@ while True:
                 "end_time": event_end_time,
             }
         )
+        ic(all_events)
+        ic(events_by_day)
         print("✅ Event added successfully.")
 
     elif in_value == "4":
         event_to_delete = input("Enter the event name to delete: ")
         found = False
-        for key in list(all_events.keys()):
+        for key in list(all_events):
             if all_events[key]["name"] == event_to_delete:
                 del all_events[key]
-                events_by_day[key[0].strftime("%Y-%m-%d")] = [
-                    e
-                    for e in events_by_day[key[0].strftime("%Y-%m-%d")]
-                    if e["name"] != event_to_delete
-                ]
-                print("✅ Event deleted successfully.")
-                found = True
-                break
-        if not found:
+                event_date = key[0].strftime("%Y-%m-%d")
+
+        # Remove event from events_by_day
+        if event_date in events_by_day:
+            updated_events = []
+            for event in events_by_day[event_date]:
+                if event["name"] != event_to_delete:
+                    updated_events.append(event)
+            events_by_day[event_date] = updated_events
+
+            print("✅ Event deleted successfully.")
+            break
+
+        else:
             print("❌ Event not found.")
 
     elif in_value == "5":
@@ -142,6 +150,7 @@ while True:
                 all_events[key]["name"] = new_name
                 all_events[key]["description"] = new_description
                 for event in events_by_day[key[0].strftime("%Y-%m-%d")]:
+                    ic(events_by_day[key[0].strftime("%Y-%m-%d")])
                     if event["name"] == event_to_edit:
                         event["name"] = new_name
                         event["description"] = new_description
@@ -156,3 +165,99 @@ while True:
 
     else:
         print("Invalid option. Please try again.")
+
+
+# -------------------------------------------------------------
+
+# note : why we do use setdefault() method
+
+
+# events_by_day = {}  # Empty dictionary
+
+# event_date = "2025-03-10"
+
+# # Trying to append directly without checking if the key exists
+# events_by_day[event_date].append(
+#     {
+#         "name": "Meeting",
+#         "description": "Project discussion",
+#         "start_time": "2025-03-10 10:00:00",
+#         "end_time": "2025-03-10 11:00:00",
+#     }
+# )
+
+
+# output : KeyError
+
+# ------------------------------
+
+# but the perferd way is :
+
+# events_by_day = {}
+
+# event_date = "2025-03-10"
+
+# # Using setdefault to avoid the KeyError
+# events_by_day.setdefault(event_date, []).append(
+#     {
+#         "name": "Meeting",
+#         "description": "Project discussion",
+#         "start_time": "2025-03-10 10:00:00",
+#         "end_time": "2025-03-10 11:00:00",
+#     }
+# )
+
+# print(events_by_day)
+
+# # output:
+
+# {
+#     "2025-03-10": [
+#         {
+#             "name": "Meeting",
+#             "description": "Project discussion",
+#             "start_time": "2025-03-10 10:00:00",
+#             "end_time": "2025-03-10 11:00:00",
+#         }
+#     ]
+# }
+
+
+# ----------------------------------------------------------
+
+# events_by_day = {
+#     "2025-03-04": [
+#         {
+#             "name": "Meeting",
+#             "description": "Project discussion",
+#             "start_time": datetime(2025, 3, 4, 10, 0, 0),
+#             "end_time": datetime(2025, 3, 4, 11, 0, 0),
+#             # ...
+#         }
+#     ]
+# }
+
+
+# events_by_day[key[0].strftime("%Y-%m-%d")] --> events_by_day["2025-03-04"]
+
+
+# -----------------------------------------------
+
+# the general shape of the data we store as 2 dicts:
+
+# all_events = {
+#     (datetime(2025, 3, 4, 10, 0, 0), datetime(2025, 3, 4, 11, 0, 0)): {
+#         "name": "Meeting",
+#         "description": "Project discussion",
+#     }
+# }
+# events_by_day = {
+#     "2025-03-04": [
+#         {
+#             "name": "Meeting",
+#             "description": "Project discussion",
+#             "start_time": datetime(2025, 3, 4, 10, 0, 0),
+#             "end_time": datetime(2025, 3, 4, 11, 0, 0),
+#         }
+#     ]
+# }
