@@ -261,3 +261,73 @@ while True:
 #         }
 #     ]
 # }
+
+
+# -----------------why we should use append for events by day------------------
+
+
+# def add_event_append(
+#     events_by_day,
+#     event_date,
+#     event_name,
+#     event_description,
+#     event_start_time,
+#     event_end_time,
+# ):
+#     """Uses setdefault to initialize an empty list and appends new events"""
+#     events_by_day.setdefault(event_date, []).append(
+#         {
+#             "name": event_name,
+#             "description": event_description,
+#             "start_time": event_start_time,
+#             "end_time": event_end_time,
+#         }
+#     )
+
+
+# def add_event_no_append(
+#     events_by_day,
+#     event_date,
+#     event_name,
+#     event_description,
+#     event_start_time,
+#     event_end_time,
+# ):
+#     """Uses setdefault with a list containing one event, without appending"""
+#     events_by_day.setdefault(
+#         event_date,
+#         [
+#             {
+#                 "name": event_name,
+#                 "description": event_description,
+#                 "start_time": event_start_time,
+#                 "end_time": event_end_time,
+#             }
+#         ],
+#     )
+
+
+# # Testing both approaches
+# events_by_day_append = {}
+# events_by_day_no_append = {}
+
+# # Adding multiple events to the same date
+# add_event_append(
+#     events_by_day_append, "2025-03-05", "Event A", "Description A", "10:00", "12:00"
+# )
+# add_event_append(
+#     events_by_day_append, "2025-03-05", "Event B", "Description B", "13:00", "15:00"
+# )
+
+# add_event_no_append(
+#     events_by_day_no_append, "2025-03-05", "Event A", "Description A", "10:00", "12:00"
+# )
+# add_event_no_append(
+#     events_by_day_no_append, "2025-03-05", "Event B", "Description B", "13:00", "15:00"
+# )
+
+# # Printing Results
+# print("Using append:")
+# print(events_by_day_append)
+# print("\nWithout append:")
+# print(events_by_day_no_append)
