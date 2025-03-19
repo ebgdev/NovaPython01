@@ -8,6 +8,8 @@ distance_matrix = [
     [20, 25, 30, 0],  # Distances from City 3 to others
 ]
 
+# our start point is city 0
+
 # # Run TSP
 # best_path, best_distance = tsp_brute_force(distance_matrix)
 
