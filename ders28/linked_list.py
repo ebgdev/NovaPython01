@@ -100,6 +100,9 @@ class LinkedList:
         else:
             print("index not present")
 
+    def search():  # ODEV:
+        pass
+
     def __str__(self):
         temp = ""
         cur = self.head
