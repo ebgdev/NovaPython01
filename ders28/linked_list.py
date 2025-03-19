@@ -100,16 +100,6 @@ class LinkedList:
         else:
             print("index not present")
 
-    def search(self, target):
-        cur = self.head
-        index = 0
-        while cur:
-            if cur.data == target:
-                return index
-            cur = cur.next
-            index += 1
-        return None
-
     def __str__(self):
         temp = ""
         cur = self.head
