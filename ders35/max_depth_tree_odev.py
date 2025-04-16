@@ -7,15 +7,6 @@ class TreeNode:
         self.left = left
         self.right = right
 
-# class Solution:
-#     def maxDepth(self, root: Optional[TreeNode]) -> int:
-#         # Base case: if tree is empty
-#         if not root:
-#             return 0
-        
-#         # Recursive case: max depth = 1 + max(left_depth, right_depth)
-#         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
-
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
@@ -24,19 +15,7 @@ class Solution:
         
         max_depth = 0
         
-        def dfs(node, current_depth):
-            nonlocal max_depth
-            if not node:
-                return
-            
-            current_depth += 1
-            if current_depth > max_depth:
-                max_depth = current_depth
-                
-            dfs(node.left, current_depth)
-            dfs(node.right, current_depth)
-        
-        dfs(root, 0)
+        pass # fill this area
         return max_depth
 
 
