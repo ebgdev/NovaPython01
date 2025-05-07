@@ -1,0 +1,296 @@
+DISTINCT is a SQL keyword (or operator), not a function.
+
+
+------------------------------------
+
+select * from film;
+
+SELECT DISTINCT(release_year) FROM film;
+
+SELECT release_year FROM film;
+
+select count(*) from customer;
+
+select first_name from customer ;
+
+select count(*) from customer;
+
+select count(distinct(first_name)) from customer ;
+
+select distinct(first_name) from customer ;
+
+select first_name , last_name , email from customer ;
+
+select * from city;
+
+select last_name, first_name from actor;
+
+select first_name , last_name from actor;
+
+select * from actor;
+
+select * form actor;
+
+select * form actor
+
+select * from staff ;
+
+select * from store ;
+
+select * from film ;
+
+select * from film;
+
+select * from film;
+
+select * from store ; 
+
+
+------------------------------------
+
+select distinct(rental_rate) from film ;  --> to see the distinct rental_rates 
+
+
+challenge : 
+get the distinct result of rating:
+
+
+1 - select rating from film ;
+2 - select distinct(rating) from film ;
+2.1 - select distinct rating from film ; (also works without parentheses)
+
+
+------------------------------------
+
+select * from payment;
+
+select count(*) from payment;
+
+------------------------------------
+
+select amount from payment;
+
+select distinct amount from payment;
+
+select count(distinct amount) from payment;
+
+select distinct amount from payment order by 1; 
+
+select distinct amount from payment order by amount asc;
+
+select distinct amount from payment order by amount DESC ;
+
+SELECT DISTINCT amount FROM payment ORDER BY 1 ASC;
+
+Note: ASC is default mode so no need to type.
+
+------------------------------------
+LOGICAL OPERATORS
+AND - OR - Not
+
+------------------------------------
+
+WHERE structure:
+
+select col1,col2 from table where conditons;
+
+select name,choice from table where name = 'David' and choice = 'Red'
+
+ex:
+
+lets first explore what is in the customer table
+
+select * from customer;
+
+lets find our customer which named jared:
+
+select * from customer where first_name = 'Jared';
+
+select title,rental_rate from film where rental_rate < 3 order by 2;
+
+select title,rental_rate,replacement_cost from film where rental_rate > 3 and replacement_cost > 19 order by 2,3;
+
+select title,rental_rate,replacement_cost from film where rental_rate > 3 and replacement_cost > 19 and rating ='R' order by rental_rate,replacement_cost;
+
+select count(*) from film where rental_rate > 3 and replacement_cost > 19 and rating ='R';
+
+select title,rating from film where rating ='R' or rating='PG-13';
+
+select count(*) from film where rating ='R' or rating='PG-13';
+
+select title,rating from film where rating !='R' and rating !='PG-13';
+
+
+
+------------------------------------------------------
+challenge 1
+
+find the email for the customer named Nancy Thomas
+
+select email from customer where first_name = 'Nancy' and last_name = 'Thomas' ;
+
+
+challenge 2
+
+what is the description of the movie : Outlaw Hanky
+
+select description from film where title = 'Outlaw Hanky';
+
+SELECT description FROM film WHERE LOWER(title) = LOWER('Outlaw Hanky'); --> case-insensitive
+
+
+challenge 3
+
+get the phone number for the customer who lives at '259 Ipoh Drive'
+
+select phone from address where lower(address) = lower('259 Ipoh Drive');
+
+
+------------------------------------
+
+ORDER BY structure:
+
+select col1,col2 from table order by col1 asc,desc
+the default mode for order by is asc (if leaved blank)
+
+select * from customer order by first_name;
+
+select * from customer order by first_name, last_name;
+|
+| * basically same 
+|
+select * from customer order by first_name, last_name asc ;
+
+
+select * from customer order by first_name, last_name desc ;
+
+
+select store_id , first_name,last_name from customer order by store_id desc , first_name asc ;
+
+
+
+------------------------------------
+
+SELECT * FROM payment ORDER BY payment_date DESC LIMIT 5;
+
+SELECT * FROM payment where amount != 0.00 ORDER BY payment_date DESC LIMIT 5;
+
+SELECT * FROM payment LIMIT 1; --> to get the idea of what columns are in the table
+
+
+------------------------------------
+challenge 1
+
+What are the customer ids of the first 10 customers who created a payment?
+
+SELECT customer_id FROM payment order by payment_date LIMIT 10;
+
+challenge 2 
+
+What are the titles of the 5 shortest (in length of runtime) movies?
+
+select title , length from film order by length limit 5;
+
+challenge 3 
+
+select count(title) from film where length <= 50;
+
+
+------------------------------------
+
+The BETWEEN operator can be used to match a value against a range of values:
+• value BETWEEN low AND high --> inclusive
+• value >= low AND value <= high
+
+
+You can also combine BETWEEN with the NOT logical operator:
+• value NOT BETWEEN low AND high 
+
+• value < low OR value > high --> exclusive
+• value NOT BETWEEN low AND high
+
+
+The BETWEEN operator can also be used with dates. 
+Note that you need to format dates in the ISO 8601 standard format, 
+which is YYYY-MM-DD
+
+• date BETWEEN '2007-01-01' AND '2007-02-01'
+
+
+SELECT * FROM payment WHERE amount BETWEEN 8 AND 9;
+
+SELECT count(*) FROM payment WHERE amount BETWEEN 8 AND 9;
+
+SELECT * FROM payment WHERE amount NOT BETWEEN 8 AND 9;
+
+SELECT count(*) FROM payment WHERE amount NOT BETWEEN 8 AND 9;
+
+SELECT * FROM payment WHERE payment_date BETWEEN '2007-02-01' AND '2007-02-15'
+
+SELECT * FROM payment WHERE payment_date BETWEEN '2007-02-01' AND '2007-02-14' --> hicbir sey alamayiz cunku 00.00 kadar calisiyor
+
+
+------------------------------------
+
+IN structure:
+
+SELECT color FROM table WHERE color IN ('red', 'blue', green')
+SELECT color FROM table WHERE color NOT IN ('red', 'blue', green')
+
+
+SELECT * FROM payment WHERE amount IN (0.99,1.98,1.99);
+
+SELECT COUNT (*) FROM payment WHERE amount NOT IN (0.99,1.98,1.99)
+
+SELECT * FROM customer WHERE first_name IN ('John', 'Jake', 'Julie')
+
+------------------------------------
+LIKE ILKIKE structure:
+
+The LIKE operator allows us to perform pattern matching against string data with the use of wildcard characters:
+• Percent %
+• Matches any sequence of characters
+• Underscore _
+• Matches any single character
+
+
+• All names that begin with an 'A'
+• WHERE name LIKE 'A%'
+• All names that end with an 'a'
+• WHERE name LIKE '%a'
+Notice that LIKE is case-sensitive, we can use
+ILIKE which is case-insensitive
+
+Using the underscore allows us to replace just a single character
+• Get all Mission Impossible films
+• WHERE title LIKE 'Mission Impossible _' 
+
+
+• You can use multiple underscores
+• Imagine we had version string codes in the format 'Version#A4', 'Version#B7', etc...
+• WHERE value LIKE 'Version#__ '
+
+
+
+SELECT * FROM customer WHERE first_name LIKE 'J%'
+
+SELECT count(*) FROM customer WHERE first_name LIKE 'J%'
+
+SELECT * FROM customer WHERE first_name LIKE 'J%'' AND last_name LIKE 'S%'
+
+SELECT COUNT (*) FROM customer WHERE first_name LIKE 'J%'' AND last_name LIKE 'S%'
+
+notice that these are case sensitive
+
+SELECT COUNT (*) FROM customer WHERE first_name LIKE 'J%' AND last_name LIKE 's%' --> will not work
+
+SELECT COUNT (*) FROM customer WHERE first_name ILIKE 'J%' AND last_name ILIKE 's%'
+
+SELECT * FROM customer WHERE first_name LIKE '%er%'
+
+SELECT * FROM customer WHERE first_name LIKE '_her%'
+
+SELECT * FROM customer WHERE first_name LIKE 'A%' AND last_name NOT LIKE 'B%' ORDER BY last_name
+
+
+
