@@ -1,0 +1,282 @@
+# General Challenge
+
+-- How many payment transactions were greater
+-- than $5.00?
+select count(*) from payment where amount > 5;
+
+
+
+
+
+-- How many actors have a first name that starts
+-- with the letter P?
+select count(*) from actor where first_name like 'P%';
+
+
+
+
+
+-- How many unique districts(addresses) are our customers from?
+select count(distinct district) from address
+
+
+
+
+-- How many films have a rating of R and a replacement cost 
+-- between $5 and $15?
+select rating , replacement_cost from film where rating = 'R' and replacement_cost between 5 and 15;
+select count(*) from film where rating = 'R' and replacement_cost between 5 and 15;
+
+
+
+
+-- How many films have the word Truman somewhere in the title?
+select title from film where title like '%Truman%';
+select count(title) from film where title like '%Truman%';
+
+
+--------------------------------------Aggregate functions--------------------------------------
+
+Aggregate functions (Toplama Fonksiyonlari)
+
+• Most Common Aggregate Functions:
+• AVG() - returns average value
+• COUNT() - returns number of values
+• MAX() - returns maximum value
+• MIN() - returns minimum value
+• SUM() - returns the sum of all values
+
+
+• Aggregate function calls happen only in the SELECT clause(madde) or the HAVING clause.
+
+• AVG() returns a floating point value many decimal places (e.g. 2.342418...)
+• You can use ROUND() to specify precision after the decimal.
+
+
+-----------Examples-------------
+
+select * from film; -- we do have replacement_cost
+-- to see the MIN replacement_cost
+
+select min(film.replacement_cost) from film
+
+
+-- to see the MAX replacement_cost
+select max(replacement_cost) from film
+
+-- to see the MAX replacement_cost
+select max(replacement_cost),film_id from film -- Error will pop up.
+
+
+-- to see the AVG/ROUND replacement_cost
+select avg(film.replacement_cost) from film ; -- 19.984000000000000000
+select round(avg(replacement_cost),3) from film ; -- 19.984
+
+-- to see the SUM replacement_cost
+select sum(replacement_cost) from film ; -- 19984.00
+select round(sum(replacement_cost)) from film ; -- 19984
+
+ 
+--------------------------------------Group By--------------------------------------
+
+-- General syntax (structure) :
+
+
+-- Bazi parametrelere gore kategorize etmek icin kullanilir
+-- aggregate functions are not allowed in GROUP BY Position --> Group By ile aggregate fonksiyonlarini kullanamayiz.
+
+SELECT category_col, AGG(data_col)
+FROM table
+GROUP BY category_col
+
+
+
+SELECT company, division, SUM(sales)
+FROM finance_table
+GROUP BY company, division
+
+Notice : In the SELECT statement, columns must either have an aggregate function or be in the GROUP BY call.
+
+
+SELECT company, SUM(sales)
+FROM finance_table
+GROUP BY company
+ORDER BY SUM(sales)
+LIMIT 5
+
+
+--------Examples-------
+
+
+select * from payment -- as you see we have customer_ids with a bunch of payment.
+
+select customer_id from payment group by customer_id; -- bu ornekte aslinda distinct yapmaktan bir farki yok
+
+select customer_id from payment group by customer_id order by customer_id; -- we can also order it 
+
+
+-- what customer spends the most money in total
+select customer_id , sum(amount) from payment group by customer_id
+
+-- what if want to order it by the highest amount
+select customer_id , sum(amount) from payment group by customer_id order by sum(amount)
+
+-- what if want to order it by the highest amount in desc order
+select customer_id , sum(amount) from payment group by customer_id order by sum(amount) desc
+
+
+-----------------------
+
+-- Challenge : Now find how many transactions that they had
+select customer_id , count(amount) from payment group by customer_id order by count(amount) 
+
+-- Challenge: Her musteri her calisan vasitasiyla toplam ne kadar odeme yapmis ?
+select customer_id, staff_id , sum(amount) from payment group by customer_id, staff_id order by customer_id,staff_id
+
+
+-----------------------
+Note: DATE Function
+
+select date(payment_date) from payment --This will only show dates not the timestamps
+
+-----------------------
+
+Challenge 1 : Gun boyunca yapilan toplam odemeler (payment table'dan)
+select date(payment_date), sum(amount) from payment group by date(payment_date) order by sum(amount)
+
+Challenge 2 : 
+• İki personelimiz var, Personel ID'leri 1 ve 2. En fazla ödemeyi işleyen personele bonus vermek istiyoruz. 
+    (Buradaki "en fazla" ifadesi, işlem sayısına göre; toplam tutara göre değil.)
+• Her bir personel kaç ödeme işlemi gerçekleştirdi ve bonusu kim alacak?
+
+select staff_id, count(payment_id) from payment group by staff_id order by count(payment_id) desc
+
+
+
+Challenge 3 : 
+• Şirket merkezi, film değiştirme(replacement_cost) maliyeti ile derecelendirmesi(rating) (ör: G, PG, R, vb.) 
+    arasındaki ilişki üzerine bir çalışma yürütüyor.
+• Her derecelendirmesi için ortalama değiştirme maliyeti nedir?
+
+select rating , avg(replacement_cost) from film group by rating 
+
+
+Challenge 4 :
+• En iyi 5 müşterimize kupon vererek bir promosyon düzenliyoruz.
+• Toplam harcama miktarına göre en çok harcayan ilk 5 müşterinin customer_id'leri nelerdir?
+
+select customer_id,sum(amount) from payment group by customer_id order by sum(amount) desc limit 5
+
+
+
+
+-------------------------------------- HAVING --------------------------------------
+
+
+• HAVING ifadesi/maddesi(clause), toplama (aggregate) işlemi gerçekleştikten sonra filtreleme yapmamıza olanak tanır.
+• Şimdi önceki örneklerimizden birine tekrar bakalım.
+
+Notice : We can not use WHERE to filter based off of aggregate results, because those happen after a WHERE is executed.
+
+structure : SELECT company, SUM(sales) FROM finance_table WHERE company!= 'Google' GROUP BY company HAVING SUM(sales) > 1000
+
+We already know this : SELECT customer_id, SUM(amount) FROM payment GROUP BY customer_id
+
+Notice: where works on customer_id but not on sum(amount)
+SELECT customer_id, SUM(amount) FROM payment WHERE customer_id NOT IN (184,87,477) GROUP BY customer_id
+
+-- Lets say we want the sum(amounts) that are greater than 100
+SELECT customer_id, SUM(amount) FROM payment GROUP BY customer_id HAVING SUM(amount) > 100
+
+
+-- store_id ye gore her seyi sayisiyla guruplandirirsak
+SELECT store_id, COUNT (*) FROM customer GROUP BY store_id
+
+-- store_id ye gore her seyi sayisiyla guruplandirirsak ve onlarin arasindan 300 den buyuk olani secmek istersek
+SELECT store_id, COUNT(*) FROM customer GROUP BY store_id HAVING COUNT (*) > 300
+
+burada * yerine her seyi kullanabiliriz , or: "customer_id"
+
+---------------------
+
+Challenge 1 : 
+En sadık müşterilerimiz için platin hizmet başlatıyoruz. 
+40 veya daha fazla ödeme işlemi yapmış olan müşterilere platin statüsü vereceğiz.
+• Hangi customer_id'ler platin statüsü için uygundur?
+
+SELECT customer_id, COUNT(payment_id) FROM payment GROUP BY customer_id HAVING COUNT (payment_id) >= 40
+
+
+Challenge 2 : 
+Personel ID'si 2 olan çalışanımızla yapılan ödeme işlemlerinde 100 dolardan 
+fazla harcama yapan müşterilerin customer_id'leri hangileridir?
+
+select staff_id,customer_id, sum(amount) from payment group by customer_id,staff_id having sum(amount) > 100 and staff_id = 2
+
+select staff_id,customer_id, sum(amount) from payment where staff_id = 2
+group by customer_id,staff_id having sum(amount) > 100
+ 
+(her iki yontemde gecerlidir)
+
+
+-------------------------------------- AS --------------------------------------
+
+AS clause which allows us to create an "alias" for a column or result.
+Çoğunlukla çıktıda daha fazla okunabilirlik sağlamak için kullanılır.
+
+Structure: (use on column , use on function) 
+
+SELECT column AS new_name FROM table
+
+SELECT SUM(column) AS new_name FROM table
+
+
+
+select amount as rental_price from payment     vs     select amount from payment
+
+rental_price                                   |            amount
+7.99                                           |            7.99
+1.99                                           |            1.99 
+7.99                                           |            7.99
+2.99                                           |            2.99
+7.99                                           |            7.99
+
+
+Bazı durumlarda çıktımızı gerçekten daha okunabilir hale getirebilir.
+instead of having --> SUM
+
+SELECT SUM(amount) AS net_revenue FROM payment;
+
+
+SELECT COUNT (amount) AS num_transactions FROM payment
+
+
+-------------
+SELECT customer_id,SUM(amount) FROM payment GROUP BY customer_id
+-- buradaki cikti cogu kisi icin anlamsiz gelebilir o yuzden bunu daha iyi ifade etmeliyiz.
+
+
+sonuc:
+SELECT customer_id,SUM(amount) AS total_spent FROM payment GROUP BY customer_id
+
+-------------
+Dikkat: AS operatörü, sorgunun en sonunda çalıştırılır; bu da demek oluyor ki, ALIAS'ı (takma adı) WHERE ifadesi içinde kullanamayız.
+
+
+Dogru:
+SELECT customer_id, SUM(amount) FROM payment GROUP BY customer_id HAVING SUM(amount) > 100
+SELECT customer_id, SUM(amount) AS Total_Spent FROM payment GROUP BY customer_id HAVING SUM(amount) > 100
+
+Yanlis:
+SELECT customer_id, SUM(amount) AS Total_Spent FROM payment GROUP BY customer_id HAVING Total_Spent > 100
+Hata: column Total_Spent dose not exist
+-------------
+Baska bir ornek daha : normal satir uzerinde de uygulayabiliriz.
+SELECT customer_id,amount AS new_name FROM payment WHERE amount > 2
+
+
+-------------------------------------- INNER JOIN --------------------------------------
+
+Structure : SELECT * FROM TableA INNER JOIN TableB ON TableA.col_match = TableB.col_match
+
+
