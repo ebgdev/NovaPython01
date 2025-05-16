@@ -1,0 +1,369 @@
+select count(*) as num_transactions from payment
+
+---
+
+SELECT customer_id, SUM(amount)
+FROM payment
+GROUP BY customer_id
+HAVING SUM (amount) > 100
+
+------------------------
+
+inner join structure :
+
+SELECT * FROM TableA
+INNER JOIN TableB
+ON TableA.col_match = TableB.col_match
+
+---
+
+let's perform INNER JOIN on paymet and customer table
+because we have customer_id column in both
+
+SELECT * FROM
+payment
+INNER JOIN customer
+ON payment.customer_id
+= customer.customer_id
+
+
+Notice : this way we'll have duplicate elements
+
+---
+To fix it: 
+
+SELECT customer.customer_id FROM
+payment INNER JOIN customer ON payment.customer_id = customer.customer_id
+
+or if we want some more information
+
+SELECT payment_id, store_id,payment.customer_id FROM
+payment INNER JOIN customer ON payment.customer_id = customer.customer_id
+
+or even:
+
+SELECT payment_id, first_name,payment.customer_id FROM
+payment INNER JOIN customer ON payment.customer_id = customer.customer_id
+
+also the result dose not change if i swap places of the from ... with inner join ...
+
+------------------------------------------------
+In this part: 
+
+• FULL OUTER JOIN
+    • Clarifying WHERE null
+• LEFT OUTER JOIN
+    • Clarifying WHERE null
+• RIGHT OUTER JOIN
+    • Clarifying WHERE null
+
+------------------------------------------------
+
+lets start with FULL OUTER JOIN:
+
+SELECT * FROM TableA
+FULL OUTER JOIN TableB
+ON TableA.col_match = TableB.col_match
+
+ex : 
+
+
+SELECT * FROM customer
+FULL OUTER JOIN payment
+ON customer icustomer_id = payment.customer_id
+
+
+(simply this will show everything because it's full outer join)
+Notice : we can switch the TableA with TableB and this will not effect our output.
+
+
+SELECT * FROM TableA
+FULL OUTER JOIN TableB
+ON TableA.col
+_match = TableB.col_match
+WHERE TableA.id IS null OR
+TableB.id IS null
+
+
+
+SELECT * FROM customer
+FULL OUTER JOIN payment
+ON customer.customer_id = payment.customer_id
+WHERE customer.customer_id IS null
+OR payment.payment_id IS null
+
+Bu sorgu, customer ve payment tablolarındaki eşleşmeyen kayıtları arıyor. 
+Yani:
+customer tablosunda olup payment tablosunda karşılığı olmayan müşteri kayıtları,
+veya payment tablosunda olup customer tablosunda karşılığı olmayan ödeme kayıtları
+listelenmek isteniyor.
+
+Ancak sonuç boşsa, Her customer.customer_id için mutlaka bir payment.customer_id var ve
+her payment.customer_id de mutlaka customer.customer_id ile eşleşiyor.
+
+(Hiçbir "yetim" (eşleşmeyen) kayıt yoktur.)
+
+bunu ispati icin :
+
+SELECT COUNT (DISTINCT customer_id) FROM payment ;
+SELECT COUNT (DISTINCT customer_id) FROM customer ;
+
+(her ikisi icinde ayni sonucu aliriz)
+
+
+
+Notice : we also can swith the TableA with TableB and this will not effect our output.
+
+
+
+------------------------------------------------
+
+LEFT OUTER JOIN:
+
+SELECT * FROM TableA
+LEFT OUTER JOIN TableB
+ON TableA.col_match = TableB.col_match
+
+we can use shorter syntax : 
+
+SELECT * FROM TableA
+LEFT JOIN TableB
+ON TableA.col_match = TableB.col_match
+
+Notice : in the left join or right join the order dose matter.
+
+ya peki sadece A'daki unique values'lari istesek ? (a da olup b de olmayanlar)
+
+ex : 
+
+SELECT film. film_id, title, inventory_id, store_id
+FROM film
+LEFT JOIN
+inventory ON
+inventory.film_id = film.film_id
+
+
+we will see items that are in just film or just film and inventory
+
+
+SELECT film.film_id,title,inventory_id,store_id
+FROM
+film
+LEFT JOIN inventory ON
+inventory.film_id = film.film_id
+WHERE inventory. film_id IS NULL
+
+we will get list of films that we dont have inventory (stok)
+
+------------------------------------------------
+
+RIGHT OUTER JOIN:
+
+SELECT * FROM TableA
+RIGHT OUTER JOIN TableB
+ON TableA.col_match = TableB.col_match
+
+we can use shorter syntax : 
+
+SELECT * FROM TableA
+RIGHT JOIN TableB
+ON TableA.col_match = TableB.col_match
+
+Notice : in the left join or right join the order dose matter.
+
+
+------------------------------------------------
+
+UNION
+
+SELECT * FROM Sales2021_Q1
+UNION
+SELECT * FROM Sales2021_Q2
+ORDER BY name;
+
+------------------------------------------------
+
+
+challenge 1 :
+What are the emails of the customers who
+live in California?
+
+SELECT * FROM address
+INNER JOIN customer
+ON address.address_id = customer.address_id
+
+(address_id will be repeted.)
+
+so we should use where:
+
+SELECT * FROM address
+INNER JOIN customer
+ON address.address_id = customer.address_id
+WHERE district = 'California'
+
+but we are interested on email and district columns:
+result:
+
+SELECT district,email FROM address
+INNER JOIN customer
+ON address.address_id = customer.address_id
+WHERE district = 'California'
+
+Notice : that we also can swtich from address and inner join customer
+
+
+------------------------------------------------
+
+
+challenge 2 :
+
+Bir müşteri içeri girer ve oyuncu "Nick Wahlberg"'ün büyük bir hayranıdır.
+Bu oyuncunun rol aldığı tüm filmlerin bir listesini görmek ister.
+
+
+SELECT title,first_name,last_name
+FROM film_actor INNER JOIN actor
+ON film_actor.actor_id = actor.actor_id
+INNER JOIN film
+ON film_actor.film_id = film.film_id
+WHERE first_name = 'Nick'
+AND last_name = 'Wahlberg'
+
+
+------------------------------------------------
+
+• TIME - Contains only time
+• DATE - Contains only date
+• TIMESTAMP - Contains date and time
+• TIMESTAMPTZ - Contains date,time, and timezone
+
+
+functions: 
+• TIMEZONE
+• NOW
+• TIMEOFDAY
+• CURRENT_TIME
+• CURRENT_DATE
+
+--------
+
+SHOW -- > shows the value of run-time of parameter
+show all      --> Will show all the configs 
+
+show timezone --> UTC (Coordinated Universal Time)
+
+
+--------
+
+select now()
+
+bu degeri okumak bazen zor olabilir bu durumlarda
+
+select timeofday() , kullanabiliriz ki bu durumda bize bir str doner.
+
+select current_time ; to see the local time
+
+select current_date ; to see the local date
+
+--------
+
+• EXTRACT()
+    • Allows us to "extract" or obtain a sub-component of a date value
+        • YEAR
+        • MONTH
+        • DAY
+        • WEEK
+        • QUARTER (ÇEYREK)
+
+
+select extract(year from payment.payment_date) as year from payment
+
+select extract(month from payment.payment_date) as month from payment
+
+select extract(day from payment.payment_date) as day from payment
+
+select extract(week from payment.payment_date) as week from payment
+
+select extract(QUARTER from payment.payment_date) as quarter from payment
+
+
+--------
+AGE()
+
+select age(payment.payment_date) from payment
+
+
+--------
+https://www.postgresql.org/docs/current/functions-formatting.html#:~:text=The%20PostgreSQL%20formatting%20functions%20provide,strings%20to%20specific%20data%20types.
+
+to_char ( timestamp, text ) → text
+
+select to_char(payment.payment_date,'MONTH,YYYY') from payment
+
+select to_char(payment.payment_date,'mon,YYYY') from payment
+
+select to_char(payment.payment_date,'mon  YYYY') from payment 
+
+select to_char(payment.payment_date,'mon/dd/YYYY') from payment
+
+select to_char(payment.payment_date,'dd/mm/YYYY') from payment
+
+select to_char(payment.payment_date,'dd.mm.YYYY') from payment 
+
+
+----------------------------------------------
+challenge 1 :
+
+-- During which months did payments occur?
+-- Format your answer to return back the full month name.
+
+select distinct to_char(payment.payment_date,'MONTH') from payment
+
+
+challenge 2 :
+-- How many payments occurred on a Monday?
+-- NOTE: We didn't show you exactly how to do this, but use the documentation or Google to figure this out!
+-- NOTE: PostgreSQL considers Sunday the start of a week (indexed at O)
+
+select count(*) from payment where extract(dow from payment_date) = 1
+
+
+------------------------------------------------
+Mathematical Functions:
+
+https://www.postgresql.org/docs/9.5/functions-math.html
+
+
+-- Bir kiralama ücretinin, yerine koyma maliyetine oranla yüzde kaç olduğunu bilmek isteseydim...
+
+SELECT rental_rate/replacement_cost FROM film
+
+SELECT round(rental_rate/replacement_cost,4) FROM film
+
+SELECT round(rental_rate/replacement_cost,4)*100 FROM film
+
+SELECT round(rental_rate/replacement_cost,4)*100 as percent_cost FROM film
+
+-- Yerine koyma maliyetinin %10
+
+select 0.1* film.replacement_cost as deposit_ten_percente from film
+
+
+-----String Functions and Operations
+
+https://www.postgresql.org/docs/9.1/functions-string.html
+
+
+select length(first_name) from customer;
+select lower(first_name) from customer;
+SELECT first_name || ' ' || last_name FROM customer ;
+SELECT first_name || ' ' || last_name as FULL_NAME FROM customer ;
+SELECT INITCAP(first_name) || ' ' || upper(last_name) as FULL_NAME FROM customer ;
+
+-- Lets imagine that we want to create an email for each student
+-- with structure like first_name.last_name@python01.com (we can use concatinate)
+select lower(first_name) || '.' ||lower(last_name) || '@python01.com' from customer;
+
+
+
+
