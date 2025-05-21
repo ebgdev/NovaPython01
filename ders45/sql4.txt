@@ -1,0 +1,499 @@
+-- let's assume we want to calculate standard query to return avarage grade:
+select avg(grade) from table;
+
+
+-- how we can get the list of stundents who scored better than the avarage grade ?
+
+select student, grade from test_scores
+where grade > (select avg(grade) from table)
+
+so what actually dose happen is postgresql will first run 
+inside of the parentheses the subquery and that's gonna return back 
+avarage grade (e.g. 80)
+
+-------
+
+select student, grade from test_scores
+where grade > 80
+
+
+-------
+
+-- we also can use IN 
+
+select student, grade from test_scores 
+where student in (('Onur','Ahmet','Zehra'))
+
+-------
+-- The EXISTS operator is used to test for existence of rows in a subquery.
+-- Typically a subquery is passed in the
+-- EXISTS function to check if any rows are returned with the subquery.
+
+structure:
+
+SELECT column_name
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+
+-------
+
+select * from film
+
+-- lets first find films that rental rates are higher than avarage
+
+select title , rental_rate from film 
+where rental_rate >  (select avg(rental_rate) from film )
+
+-- now let's see if we were right ?
+
+select avg(rental_rate) from film 
+
+-- yes the avg was 2.98 and all of the values that we get was above that.
+
+
+-------
+
+select * from rental --return date
+select * from inventory
+
+let's grab the film titles,and ids  that have been return a certain set of dates (2005-05-29 and 2005-05-30).
+
+select * from rental
+where return_date
+between '2005-05-29' and '2005-05-30'
+
+----
+
+select inventory.film_id from rental 
+inner join inventory on inventory.inventory_id = rental.inventory_id
+where return_date
+between '2005-05-29' and '2005-05-30'
+
+-- this query will give us only the film_ids but what if we want titles ?
+
+-- to achive this we should use inner join 
+
+select title,film.film_id from film where film_id in
+(select inventory.film_id from rental
+inner join inventory on inventory.inventory_id = rental.inventory_id
+where return_date
+between '2005-05-29' and '2005-05-30'
+) order by film_id
+
+
+
+-------------------------------------------------------------------------------------------
+Exist Operator :
+
+let's imagine we wanted to find customers who have at least one payment 
+whose amount is greater than 11 - grab the first_name , last_name of customers
+
+SELECT first_name, last_name
+FROM customer AS c
+WHERE EXISTS
+(SELECT * FROM payment as p
+WHERE p.customer_id = c.customer_id AND amount > 11)
+
+
+
+-- we can also use Not 
+SELECT first_name, last_name
+FROM customer AS c
+WHERE NOT EXISTS
+(SELECT * FROM payment as p
+WHERE p.customer_id = c.customer_id AND amount > 11)
+
+
+
+-- onceki bilgiler ile 1
+select customer.first_name, customer.last_name, amount from customer
+inner join payment on customer.customer_id = payment.customer_id
+group by customer.first_name, customer.last_name, amount
+having amount > 11
+
+
+-- onceki bilgiler ile 2
+select customer.first_name, customer.last_name, amount from customer
+inner join payment on customer.customer_id = payment.customer_id
+where amount > 11
+
+
+-------------------------------------------------------------------------------------------
+self-join Operator :
+
+structure : 
+SELECT tableA.col, tableB.col
+FROM table AS tableA
+JOIN table AS tableB ON
+tableA.some_col = tableB.other_col
+
+-- AS kullanmak zorunludur
+
+Technically all this information is in this one singular table , 
+so we can use the self join to essentially make a copy join it together 
+in order to match the employer 
+
+
+• The self join can be viewed as a join of two copies of the same table.
+• The table is not actually copied, but SQL performs the command as though it were.
+• There is no special keyword for a self join, its simply standard JOIN syntax with 
+   the same table in both parts.
+• However, when using a self join it is necessary to use an alias for the table, 
+  otherwise the table names would be ambiguous.
+
+----------------------------------
+|          employees             |
+----------------------------------                     ----------------
+| emp_id  |  name  |  report_id  |                     |  name |  rep  |
+----------------------------------                     -----------------
+|    1    | Andrew |      3      |                     | Andrew|Charlie|
+----------------------------------         -------->   -----------------
+|    2    |   Bob  |      3      |                     |  Bob  |Charlie|
+----------------------------------                     -----------------
+|    3    | Charlie|      4      |                     |Charlie| David |
+----------------------------------                     -----------------
+|    4    |  David |      1      |                     | David | Andrew|
+----------------------------------                     -----------------
+
+step1:
+SELECT emp.col, report.col FROM employees AS emp
+JOIN employees AS report ON
+emp.some_col = report.other_col
+
+step2:
+SELECT emp.name, report.name AS rep
+FROM employees AS emp
+JOIN employees AS report ON
+emp.emp_id = report.report_id
+
+
+-------------------------------------------
+ex: pgadmin
+find all the pairs of films that have the same length
+
+step1: 
+
+select * from film
+
+step2: gostermek icin
+
+SELECT title, length FROM film 
+WHERE length = 117
+
+
+step3: tekrarli bir sekilde almak
+
+SELECT f1.title , f2. title, f1. length
+FROM film AS f1
+INNER JOIN film AS f2 ON
+f1.film_id = f2.film_id
+AND f1. length = f2.length
+
+
+step4: last step match with length but not with film_id
+
+SELECT f1.title , f2. title, f1. length
+FROM film AS f1
+INNER JOIN film AS f2 ON
+f1. film_id != f2.film_id
+AND f1. length = f2.length
+
+
+-------------------------------------------------------------------------------------------
+
+Data Types:
+
+
+• Boolean
+    • True or False
+• Character
+    • char, varchar, and text
+• Numeric
+    • integer and floating-point number
+• Temporal(zamansal)
+    • date, time, timestamp, and interval
+• UUID
+    • Universally Unique Identifiers
+• Array
+    • Stores an array of strings, numbers, etc.
+• JSON
+• Hstore key-value pair
+• Special types such as network address and geometric data.
+
+for more:
+
+https://www.postgresql.org/docs/current/datatype.html
+
+
+| Data Type        | Use Case                                     | Size (bytes) | Notes                       |
+| ---------------- | -------------------------------------------- | ------------ | --------------------------- |
+| SMALLINT         | Small counts, ratings, flags                 | 2            | Up to ±32k                  |
+| INTEGER          | General-purpose whole numbers                | 4            | Up to ±2 billion            |
+| BIGINT           | Large counts, IDs, timestamps                | 8            | Very large values           |
+| DECIMAL/NUMERIC  | Exact decimals (money, measurements)         | Variable     | Precise, exact calculations |
+| REAL             | Approximate floats (less precise scientific) | 4            | Single precision            |
+| DOUBLE PRECISION | Approximate floats (more precise)            | 8            | Double precision            |
+| SMALLSERIAL      | Auto-increment small ID                      | 2            | Up to \~32k rows            |
+| SERIAL           | Auto-increment integer ID                    | 4            | Up to \~2 billion rows      |
+| BIGSERIAL        | Auto-increment big ID                        | 8            | Huge tables                 |
+
+
+
+for example:
+imagine we want to store a phone number , should it be stored as numeric ?
+if so , which type of numeric ? 
+
+burada once sunu dusunmemiz gerek biz acaba alacagimiz bu sayi ile 
+matematiksel islem gerceklestircek miyiz ?
+
+oyleyse o zaman text olarak tutmak belki daha iyi fikri olabilir
+bu durumda belki tam olarak ne sececegimizi bilmiyorsak google veya chatgpt 
+gibi servislerden faydalanabiliriz
+
+
+
+-------------------------------------------------------------------------------------------
+
+Primary and Foreign Keys:
+
+EN:
+--Primary Keys:
+• A primary key is a column or a group of columns used to identify a row uniquely in a table.
+• For example, in our dvdrental database we saw customers had a 
+    unique, non-null customer_id column as their primary key.
+• Primary keys are also important since they allow us to easily discern 
+    what columns should be used for joining tables together.
+
+--Foreign Keys:
+• A foreign key is a field or group of fields in a table that 
+    uniquely identifies a row in another table.
+• A foreign key is defined in a table that references to 
+    the primary key of the other table.
+• The table that contains the foreign key is called referencing table or child table.
+• The table to which the foreign key references is called referenced table or
+    parent table.
+• A table can have multiple foreign keys depending on its relationships with other tables.
+
+TR: 
+--Birincil anahtar:
+• Bir birincil anahtar (primary key), bir tabloda bir satırı benzersiz şekilde tanımlamak için kullanılan bir sütun veya sütun grubudur.
+• Örneğin, dvdrental veritabanımızda, müşterilerin benzersiz ve boş olmayan bir customer_id sütununa sahip olduğunu 
+    ve bunun birincil anahtar olarak kullanıldığını gördük.
+• Birincil anahtarlar, tabloları birbirine bağlarken hangi sütunların kullanılacağını 
+    kolayca belirlememizi sağladıkları için de önemlidir.
+
+ornek: PK(integer)
+
+select * frrom customer
+
+
+--Yabancı Anahtarlar (Foreign Keys):
+• Yabancı anahtar, bir tabloda başka bir tablodaki bir satırı
+     benzersiz şekilde tanımlayan bir alan (sütun) veya alan grubudur.
+• Yabancı anahtar, başka bir tablonun birincil anahtarına 
+    referans veren (bağlantı kuran) tabloda tanımlanır.
+• Yabancı anahtarı içeren tabloya, referans veren tablo veya alt tablo (child table) denir.
+• Yabancı anahtarın referans verdiği tabloya ise referans alınan tablo veya üst tablo (parent table) denir.
+• Bir tablo, diğer tablolarla olan ilişkilerine bağlı olarak birden fazla yabancı anahtara sahip olabilir.
+
+
+
+ornek: customer_id , staff_id, rental_id
+
+select * frrom payment
+
+
+to prove that these are fkeys
+1-look from constraints
+    1-1- on constraints right click --> properties --> Columns
+2-dependencies
+
+----------------------------------------------------------------
+Constraints - Kısıtlamalar
+
+• Constraints are the rules enforced on data columns on table.
+• These are used to prevent invalid data from being entered into the database.
+• This ensures the accuracy and reliability of the data in the database.
+
+1- Constraints can be divided into two main categories:
+    • Column Constraints
+        • Constrains the data in a column to adhere(uymak/bagli olmak) to certain conditions.
+2- Table Constraints
+• applied to the entire table rather than to an individual column.
+
+Most common used(For Column Constraint):
+
+• (NOT NULL) Constraint
+    • Ensures that a column cannot have NULL value.
+• (UNIQUE) Constraint
+    • Ensures that all values in a column are different.
+• (PRIMARY Key)
+    • Uniquely identifies each row/record in a database table.
+• (FOREIGN Key)
+    • Constrains data based on columns in other tables.
+• (CHECK) Constraint
+    • Ensures that all values in a column satisfy certain
+• (EXCLUSION) Constraint
+• Ensures that if any two rows are compared on the specified column or 
+    expression using the specified operator, not all of these comparisons will return
+
+
+
+Most common used(For Column Constraint):
+
+• CHECK (condition)
+    • to check a condition when inserting or updating data.
+• REFERENCES
+    • to constrain the value stored in the column that must exist in a column in another
+• UNIQUE (column_list)
+    • forces the values stored in the columns listed inside the parentheses to be unique.
+• PRIMARY KEY(column_list)
+    • Allows you to define the primary key that consists of multiple columns.
+
+
+----------------------------------------------------------------
+CREATE 
+
+Full syntax:
+
+CREATE TABLE table_name (
+column_name TYPE column_constraint, 
+column_name TYPE column_constraint, 
+table_constraint table_constraint 
+) INHERITS existing_table_name;
+
+
+example syntax:
+CREATE TABLE players(
+player_id SERIAL column_constraint, 
+column_name TYPE column_constraint,
+):
+
+Let's take look at SERIAL a bit in detail:
+
+• SERIAL:
+EN:
+    • In PostgreSQL, a sequence is a special kind of database object 
+        that generates a sequence of integers.
+    • A sequence is often used as the primary key column in a table.
+
+    • It will create a sequence object and set the next value generated by 
+        the sequence as the default value for the column.
+    • This is perfect for a primary key, because it logs unique integer 
+        entries for you automatically upon insertion.
+    • If a row is later removed, the column with the SERIAL data type will not adjust, 
+        marking the fact that a row was removed from the sequence, 
+        for example :
+        • 1,2,3,5,6,7
+            • You know row 4 was removed at some point
+TR:
+    • PostgreSQL'de, sequence (sıra), bir tam sayı dizisi üreten özel bir veritabanı nesnesidir.
+    • Sequence genellikle bir tablodaki birincil anahtar sütunu olarak kullanılır.
+
+    • Sequence, bir sıra nesnesi oluşturur ve bu dizinin ürettiği bir sonraki değeri, 
+        ilgili sütun için varsayılan değer olarak ayarlar.
+    • Bu yapı, birincil anahtar için mükemmeldir, çünkü her ekleme işleminde 
+        benzersiz tam sayıları otomatik olarak kaydeder.
+    • Daha sonra bir satır silinirse, SERIAL veri tipine sahip sütun bu durumu düzeltmez; yani, dizide bir satırın silinmiş olduğunu gösterir.
+        Örneğin:
+        • 1, 2, 3, 5, 6, 7
+            • Bu durumda, 4 numaralı satırın bir noktada silindiğini anlayabilirsiniz.
+
+
+Siz elinizdeki veriye gore hangisini secmeniz gerektigine kara vereceksiniz:
+SMALLSERIAL
+SERIAL
+BIGSERIAL
+
+
+bu ornek icin SERIAL tercih ettik.
+
+CREATE TABLE players(
+player_id SERIAL PRIMARY KEY, 
+age TYPE column_constraint,);
+
+simdi ise age icin bir type secmemiz gerekiyor:
+yas icin cok buyuk bir sayiya ihtiyacimiz olmadigindan dolayi --> smallint
+
+CREATE TABLE players( 
+player_id SERIAL PRIMARY KEY, 
+age SMALLINT NOT NULL
+);
+
+
+
+create Table account(
+user_id serial primary key,
+user_name varchar(50) unique not null,
+password varchar(50) not null,
+email varchar(250) unique not null,
+created_on timestamp not null,
+last_login timestamp
+)
+
+-- no need to last_login because user can create account but not login so we dont want errors in this situation.
+
+
+• account_email_key → UNIQUE constraint on email
+• account_user_name_key → UNIQUE constraint on user_name
+• account_pkey → PRIMARY KEY constraint on user_id
+
+
+
+| Constraint Type | UI Visible? | Notes                                        |
+| --------------- | ----------- | -------------------------------------------- |
+| PRIMARY KEY     | ✅ Yes       | Shows as a key (`account_pkey`)              |
+| UNIQUE          | ✅ Yes       | Shows as `account_email_key`, etc.           |
+| NOT NULL        | ❌ No        | Enforced in database, but not shown as "key" |
+
+
+
+Notice: if a table exists and i create that table again i get an error.
+because we dont want to overwrite that table
+
+
+create table job(
+job_id serial primary key,
+job_name varchar(200) unique not null
+)
+
+
+Notice : we use serial only for primary keys
+
+
+
+create table account_job(
+user_id integer references account(user_id),
+job_id integer references job(job_id),
+hire_date timestamp 
+)
+
+
+----------------------------------------------------------------
+INSERT
+
+
+• INSERT allows you to add in rows to a table.
+• General Syntax
+
+INSERT INTO table (columnl, column2, ...)
+VALUES
+(valuel, value2, ...), (valuel, value2, ...) ,...;
+
+
+
+• Syntax for Inserting Values from another table:
+
+INSERT INTO table(columnl, column2,...)
+SELECT column1,column2,...
+FROM another_table
+WHERE condition;
+
+
+
+• Keep in mind, the inserted row values must match up for the table, including constraints.
+• SERIAL columns do not need to be provided a value (will be generated automatically).
+
+INSERT INTO account (user_name, password, email, created_on)
+VALUES('erfan', 'password', 'erfan@mail.com',CURRENT_TIMESTAMP)
