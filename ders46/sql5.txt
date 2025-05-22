@@ -1,0 +1,740 @@
+-----
+INSERT:
+
+select * from account
+
+insert into job(job_name)
+values ('Astronaut')
+
+select * from job
+
+insert into job(job_name) values ('President')
+
+select * from job
+
+insert into account_job(user_id,job_id,hire_date) values (1,1,current_timestamp)
+
+select * from account_job
+
+????-----what if we want to insert information of somebody that dont exist -----????
+
+e.g: insert into account_job (user_id,job_id,hire_date) values (10,10,current_timestamp)
+
+
+ERROR:  insert or update on table "account_job" violates foreign key constraint "account_job_user_id_fkey"
+Key (user_id)=(10) is not present in table "account". 
+
+SQL state: 23503
+Detail: Key (user_id)=(10) is not present in table "account".
+
+
+------------------------------------------------------------------------
+UPDATE:
+
+The UPDATE keyword allows for the changing of values of the columns in a table.
+
+General Syntax:
+
+UPDATE table
+SET columnl = valuel,
+column2 = value2 ,...
+WHERE condition;
+
+UPDATE account
+SET last_login = CURRENT_TIMESTAMP
+WHERE last_login IS NULL;
+
+
+
+--Reset everything without where condition(reset all the last_login entires):
+update account set last_login = current_timestamp
+
+
+--we can also set based on another column in the same table
+update account set last_login = created_on
+
+--we can also set based on another table's values(update join)
+
+UPDATE TableA
+SET original_col = TableB.new_col
+FROM tableB
+WHERE tableA.id = TableB.id
+
+we can also return the effected rows:
+UPDATE account
+SET last_login = created_on
+RETURNING user_id,last_login
+
+
+--lets see them in action in pgadmin
+-------
+select * from account 
+
+notice that last_login is null 
+let's update that in different ways.
+
+update account set last_login = current_timestamp
+
+-------
+-- we put the created_on value's in the last_login (same values)
+update account set last_login = created_on
+
+-------
+--let's update based of two tables 
+--change the hire_date on account_job table to account.created_on
+--notice here we do need the join process
+
+update account_job set hire_date = account.created_on 
+from account 
+where account_job.user_id = account.user_id
+
+notice: arkadaslar bu islem icinde join olmasada join denilir
+    cunku iki farki table'dan query olusturuyoruz.
+
+-- to check if we were right
+select * from account
+select * from account_job
+
+
+--lets return the effected rows
+
+update account
+set last_login = current_timestamp
+returning email,created_on,last_login
+
+------------------------------------------------------------------------
+DELETE:
+
+
+• We can use the DELETE clause to remove rows from a table.
+
+• For example:
+DELETE FROM table
+WHERE row_id = 1
+
+
+• We can delete rows based on their presence in other tables
+(delete join gibi dusunebiliriz.)
+
+• For example:
+DELETE FROM tableA
+USING tableB
+WHERE tableA.id=TableB.id
+
+
+• We can delete all rows from a table
+
+• For example:
+DELETE FROM table
+
+• Similar to UPDATE command, you can also add in a 
+    RETURNING call to return rows that were removed.
+
+--lets see them in action in pgadmin
+------
+
+select * from job
+
+let's first add a new job and then delete it.
+
+insert into job(
+    job_name 
+)
+values(
+    'Teacher'
+)
+
+let's delete that:
+
+delete from job
+where job_name = 'Teacher'
+returning job_id,job_name
+
+so this will return the job_id , job_name deleted.
+and also i run it for the second time i will get nothing 
+because it is already deleted.
+
+
+------------------------------------------------------------------------
+ALTER:
+
+https://www.postgresql.org/docs/current/sql-altertable.html
+
+• The ALTER clause allows for changes to an existing table structure, such as:
+• Adding,dropping, or renaming columns
+• Changing a column's data type
+• Set DEFAULT values for a column
+• Add CHECK constraints
+• Rename table
+
+
+General Syntax:
+ALTER TABLE table_name action
+
+• Adding Columns
+ALTER TABLE table_name
+ADD COLUMN new_col TYPE
+
+• Removing Columns
+ALTER TABLE table_name
+DROP COLUMN col_name
+
+• Alter constraints
+ALTER TABLE table_name      |    ALTER TABLE table_name   |   ALTER TABLE table_name
+ALTER COLUMN col_name       |    ALTER COLUMN col_name    |   ALTER COLUMN col_name
+SET DEFAULT value           |    SET NOT NULL             |   DROP NOT NULL
+
+
+--lets see them in action in pgadmin
+
+CREATE TABLE information( 
+    info_id SERIAL PRIMARY KEY, 
+    title VARCHAR (500) NOT NULL, 
+    person VARCHAR(50) NOT NULL UNIQUE
+)
+
+select * from information
+
+rename:
+
+alter table information
+rename to new_info
+
+so if we do (select * from information) --> Error
+select * from new_info
+
+ALTER TABLE new_info
+RENAME COLUMN person TO people
+
+select * from new_info
+
+---------
+--to change the data type
+
+ALTER TABLE table_name
+ALTER COLUMN column_name TYPE new_data_type;
+
+
+---------
+
+INSERT INTO new_info(title)
+VALUES
+('some new title')
+
+ERROR:  null value in column "people" of relation "new_info" violates not-null constraint
+Failing row contains (1, some new title, null). 
+
+SQL state: 23502
+Detail: Failing row contains (1, some new title, null).
+
+---------
+
+DROP constraint: ✅                  |    SET constraint:
+ALTER TABLE new_info                 |    ALTER TABLE new_info
+ALTER COLUMN people DROP NOT NULL    |    ALTER COLUMN people SET NOT NULL
+
+so we are able to run the previous query:
+
+INSERT INTO new_info(title)
+VALUES
+('some new title')
+
+
+-------------------------------------------------------------
+DROP TABLE:
+
+
+• DROP allows for the complete removal of a column in a table.
+• In PostgreSQL this will also automatically remove all of 
+    its indexes and constraints involving the column.
+• However, it will not remove columns used in views, triggers, 
+    or stored procedures without the additional CASCADE clause.
+
+
+General syntax:
+
+alter table table_name
+drop column column_name
+
+
+• Remove all dependencies:
+ALTER TABLE table_name
+DROP Column col_name CASCADE
+
+• Check for existane to avoid error 
+ALTER TABLE table_name
+DROP Column IF EXISTS col_name CASCADE
+
+
+• Drop multiple columns
+ALTER TABLE table_name
+DROP COLUMN col_one,
+DROP COLUMN col_two
+
+--let's see them in action in pgadmin
+
+--let's try to delete column people from new_info
+
+alter table new_info 
+drop column people
+
+
+if i do this again i will get error.
+
+-----
+
+but if we add if exists
+
+alter table new_info 
+drop column if exists people
+
+NOTICE:  column "people" of relation "new_info" does not exist, skipping
+ALTER TABLE
+
+Query returned successfully in 40 msec.
+
+----------------------
+CHECK constraint:
+
+• The CHECK constraint allows us to create more customized constraints 
+    that adhere to a certain condition.
+• Such as making sure all inserted integer values fall below a certain 
+    threshold.
+
+
+• General Syntax:
+
+CREATE TABLE example( 
+    ex_id SERIAL PRIMARY KEY, 
+    age SMALLINT CHECK (age > 21), 
+    parent_age SMALLINT CHECK ( parent_age › age)
+)
+
+--lets see them in action in pgadmin
+
+
+CREATE TABLE employees (
+emp_id SERIAL PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+birthdate DATE CHECK (birthdate > '1900-01-01'),
+hire_date DATE CHECK (hire_date > birthdate),
+salary INTEGER CHECK (salary > 0)
+)
+
+------
+
+now if i do (which gives error):
+
+INSERT INTO employees ( 
+first_name,last_name, birthdate, hire_date, salary
+)
+values (
+'erfan',
+'bahcivan',
+'1899-11-03',
+'2010-01-01',
+100
+)
+
+ERROR:  new row for relation "employees" violates check constraint "employees_birthdate_check"
+Failing row contains (1, erfan, bahcivan, 1899-11-03, 2010-01-01, 100). 
+
+SQL state: 23514
+Detail: Failing row contains (1, erfan, bahcivan, 1899-11-03, 2010-01-01, 100).
+
+
+------
+
+INSERT INTO employees ( 
+first_name,last_name, birthdate, hire_date, salary
+)
+values (
+'erfan',
+'bahcivan',
+'1990-11-03',
+'2010-01-01',
+100
+)
+-----------
+INSERT INTO employees ( 
+first_name,last_name, birthdate, hire_date, salary
+)
+values (
+'onur',
+'ekici',
+'1990-11-03',
+'2010-01-01',
+-100
+)
+
+ERROR:  new row for relation "employees" violates check constraint "employees_salary_check"
+Failing row contains (3, onur, ekici, 1990-11-03, 2010-01-01, -100). 
+
+SQL state: 23514
+Detail: Failing row contains (3, onur, ekici, 1990-11-03, 2010-01-01, -100).
+
+
+-----------
+
+INSERT INTO employees ( 
+first_name,last_name, birthdate, hire_date, salary
+)
+values (
+'onur',
+'ekici',
+'1990-11-03',
+'2010-01-01',
+90
+)
+
+
+-----------
+
+select * from employees
+
+Notice : our failed attempts also count
+
+emp_id    |  "first_name" |  "last_name"  |  "birthdate"  |  "hire_date"  | "salary"
+2         |   "erfan"     |  "bahcivan"   |  "1990-11-03" |  "2010-01-01" |  100
+4         |   "onur"      |  "ekici"      |  "1990-11-03" |  "2010-01-01" |  90
+
+
+
+---------------------------------------------------------------
+challenge (Odev/Soru): 
+
+
+
+Complete the following task:
+
+Create a new database called "School" this database should have two tables: teachers and students.
+
+The students table should have columns for student_id, first_name,last_name, homeroom_number, phone,email, and graduation year.
+
+The teachers table should have columns for teacher_id, first_name, last_name,
+
+homeroom_number, department, email, and phone.
+
+The constraints are mostly up to you, but your table constraints do have to consider the following:
+
+ We must have a phone number to contact students in case of an emergency.
+ We must have ids as the primary key of the tables
+Phone numbers and emails must be unique to the individual.
+Once you've made the tables, insert a student named Mark Watney (student_id=1) who has a phone number of 777-555-1234 and doesn't have an email. He graduates in 2035 and has 5 as a homeroom number.
+
+Then insert a teacher names Jonas Salk (teacher_id = 1) who as a homeroom number of 5 and is from the Biology department. His contact info is: jsalk@school.org and a phone number of 777-555-4321.
+
+
+------------------------------------------------------------------
+| Item            | Is it a Function? | Type / Description                |
+| --------------- | ----------------- | --------------------------------- |
+| `CASE`          | ❌                 | Control-flow expression           |
+| `COALESCE`      | ✅                 | Function                          |
+| `NULLIF`        | ✅                 | Function                          |
+| `CAST`          | ✅                 | Function / type conversion syntax |
+| `Views`         | ❌                 | Virtual table / database object   |
+| `Import/Export` | ❌                 | Feature or tool (not a function)  |
+
+
+-----------
+• CASE
+
+• We can use the CASE statement to only execute SQL code when certain conditions
+    are met.
+• This is very similar to IF/ELSE statements in other programming languages.
+
+• There are two main ways to use a CASE statement, either a general CASE or a CASE expression.
+• Both methods can lead to the same results.
+• Let's first show the syntax for a "general" CASE.
+
+
+• General Syntax : 
+CASE
+    WHEN conditionl THEN result1
+    WHEN condition2 THEN result2
+    ELSE some_other_result
+END
+
+----
+
+example: 
+
+-----------------
+|  a  |   Case  |
+-----------------
+|  1  |   one   |
+|  2  |   two   |
+-----------------
+
+
+SELECT a,
+CASE WHEN a = 1 THEN 'one'
+    WHEN a = 2 THEN 'two'
+ELSE 'other'
+END
+FROM test;
+
+----
+we also can use alias :
+
+
+-----------------
+|  a  |   label |
+-----------------
+|  1  |   one   |
+|  2  |   two   |
+-----------------
+
+SELECT a,
+CASE WHEN a = 1 THEN 'one'
+    WHEN a = 2 THEN 'two'
+ELSE 'other' 
+END AS label
+FROM test;
+
+
+-----------
+• CASE expression:
+EN:
+The CASE expression syntax first evaluates 
+an expression then compares the result with 
+each value in the WHEN clauses sequentially.
+
+TR:
+CASE ifadesinin söz dizimi önce bir ifadeyi 
+değerlendirir,ardından sonucu sırasıyla WHEN
+koşullarındaki her bir değerle karşılaştırır.
+
+• CASE Expression Syntax
+
+CASE expression:
+WHEN valuel THEN result1
+WHEN value2 THEN result2
+ELSE some_other_result
+END
+
+on the same example:
+
+genellikle eger sadece bir kosulu/argumani 
+kontro edeceksek ise yaarar.
+
+SELECT a,
+    CASE a WHEN 1 THEN 'one'
+        WHEN 2 THEN 'two'
+        ELSE 'other'
+    END
+FROM test;
+
+
+--------------
+
+--lets see them in action in pgadmin
+first 100 customers --> permium
+100-200 customers --> plus
+200 - ... --> normal customers
+
+select customer_id,
+case
+    when customer_id <= 100 then 'Premium'
+    when customer_id between 100 and 200 then 'Plus'
+    else 'Normal'
+end
+from customer
+
+------------------
+we can also use AS: 
+
+select customer_id,
+case
+    when customer_id <= 100 then 'Premium'
+    when customer_id between 100 and 200 then 'Plus'
+    else 'Normal'
+end as customer_class
+from customer
+
+
+-------------------
+case expression:
+ornek: 
+cekilis yaptik ve id=2 ilk kazanan oldu
+ve id=5 olan 2.kazanan oldu.
+
+select customer_id,
+case customer_id
+    when 2 then 'Winner'
+    when 5 then 'Second Place'
+    else 'Normal'
+end as raffle_results
+from customer
+
+
+-------------------
+
+select
+sum(case rental_rate
+    when 0.99 then 1
+    else 0
+end) as under_dollar
+from film
+
+
+• onceden bilgidigimiz yontemler ile:
+
+select count(rental_rate) from film where rental_rate = 0.99
+
+
+------------------------------------
+• COALESCE : 
+
+Note: ko -eles gibi okunur.
+
+The COALESCE function accepts an unlimited number of arguments. 
+It returns the first argument that is not null. If all arguments are null, 
+the COALESCE function will return null.
+• COALESCE (arg_l,arg_2,..,arg_n)
+
+
+• SELECT COALESCE (1, 2)
+    • 1
+• SELECT COALESCE(NULL, 2, 3)
+    • 2
+
+
+The COALESCE function becomes useful when querying 
+a table that contains null values and 
+substituting(Yerine koyma) it with another value.
+
+|  item  |  price  |  discount  |
+---------------------------------
+|   A    |   100   |     20     |
+|   B    |   300   |     null   |
+|   C    |   200   |     10     |
+
+
+select item, (price-discount) as final from table
+
+|  item  |  final  |
+--------------------
+|   A    |   80     |
+|   B    | ❌ null  |
+|   C    |   190    |
+
+
+bu durumda COALESCE kullanabiliriz
+select item,(price-coalesce(discount),0) 
+as final from table
+
+
+|  item  |  final  |
+--------------------
+|   A    |   800    |
+|   B    |   300    |
+|   C    |   190    |
+
+
+------------------------------------
+• CAST : 
+
+• The CAST operator let's you convert from one data type into another.
+• Keep in mind not every instance of a data type can be CAST to 
+another data type, it must be reasonable to convert the data, 
+for example '5' to an integer will work, 'five' to an integer will not.
+
+
+• Syntax for CAST function
+    • SELECT CAST('5' AS INTEGER)
+
+• PostgreSQL CAST operator
+    • SELECT '5':: INTEGER
+
+SELECT CAST('5' AS INTEGER) AS new_int       ✅
+SELECT CAST('five' AS INTEGER) AS new_int    ❌
+
+
+select '10'::integer AS new_int --only on postgresql
+
+
+ex:
+How many digits are within each inventory_id in rental
+
+step1 : select cast (inventory_id as varchar) from rental
+step2 : select char_length(cast (inventory_id as varchar)) from rental
+or 
+step2 (postgresql) : select length(cast (inventory_id as varchar)) from rental
+
+
+
+------------------------------------
+• NULLIF : 
+
+• The NULLIF function takes in 2 inputs and 
+    returns NULL if both are equal, otherwise it returns 
+    the first argument passed.
+    
+    • NULLIF(argl,arg2)
+
+• Example
+    • NULLIF(10,10)
+        • Returns NULL
+
+
+• This becomes very useful in cases where a
+NULL value would cause an error or
+unwanted result.
+
+
+CREATE TABLE depts ( 
+    first_name VARCHAR (50), 
+    department VARCHAR (50)
+)
+
+-------
+
+
+INSERT INTO depts ( 
+    first_name, department
+)
+VALUES
+('Vinton','A'),
+('Lauren','A'),
+('Claire','B')
+
+select * from depts
+
+-------
+
+
+Now what we want to do 
+is to calculate the ratio
+between male and female members
+
+SELECT (
+SUM (CASE WHEN department = 'A' THEN 1 ELSE 0 END) /
+SUM (CASE WHEN department = 'B' THEN 1 ELSE 0 END)
+) AS department_ratio
+FROM depts
+
+--------
+
+DELETE FROM depts
+WHERE department = 'B'
+
+
+
+SELECT (
+SUM (CASE WHEN department = 'A' THEN 1 ELSE 0 END) /
+SUM (CASE WHEN department = 'B' THEN 1 ELSE 0 END)
+) AS department_ratio
+FROM depts
+
+Error: division by zero
+
+
+
+-- if the entire sum happend to be zero the nullif function will return null
+SELECT (
+SUM(CASE WHEN department = 'A' THEN 1 ELSE 0 END) /
+NULLIF(SUM(CASE WHEN department = 'B' THEN 1 ELSE 0 END),0) <-- eger burasi 0,0 olursa o zaman null donecektir
+) AS department_ratio
+FROM depts
