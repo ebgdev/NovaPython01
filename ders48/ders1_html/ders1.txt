@@ -1,0 +1,346 @@
+------------------------
+html is not a case sensitive language
+so it dose not (!DOCTYPE or !doctype)
+
+
+<!doctype html>
+<html>
+    <head>
+        <title>Our First Website</title>
+    </head>
+    <body>
+        <img src="" alt="">
+        <!-- src: path of the file -->
+        <!-- alt: for the situations that image dose not load. -->
+    </body>
+</html>
+
+-------------------------
+
+
+<!doctype html>
+<html>
+    <head>
+        <title>Our First Website</title>
+        <style>
+            img {
+                width: 100px;
+                border-radius: 50px;
+                float: left;
+                margin-right: 10px;
+            }
+            p.username {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="images/erfan_bahcivan.jpeg" alt="">
+        <!-- src: path of the file -->
+        <!-- alt: for the situations that image dose not load. -->
+        <p class="username">Erfan Bahcivan</p>
+        <p>let's learn some html</p>
+    </body>
+</html>
+
+
+------------adding-the-lang------------
+
+html validator
+css validator
+
+<!doctype html>
+<html lang="tr">
+    <head>
+        <title>Our First Website</title>
+        <style>
+            img {
+                width: 100px;
+                border-radius: 50px;
+                float: left;
+                margin-right: 10px;
+            }
+            /* i also can use p.username */
+            /* which only apply the changes on paragraphs with username class */
+            .username {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="images/erfan_bahcivan.jpeg" alt="">
+        <!-- src: path of the file -->
+        <!-- alt: for the situations that image dose not load. -->
+        <p class="username">Erfan Bahcivan</p>
+        <p>let's learn some html</p>
+    </body>
+</html>
+
+
+
+------------section-1-completed-----------
+
+
+<!doctype html>
+<html lang="tr">
+    <!-- biz head elementini arama motorlarina websitemiz hakkinda  -->
+    <!-- bilgiler vermek icin kullaniriz -->
+    <head>
+        <title>Our First Website</title>
+        <style>
+            img {
+                width: 100px;
+                border-radius: 50px;
+                float: left;
+                margin-right: 10px;
+            }
+            /* i also can use p.username */
+            /* which only apply the changes on paragraphs with username class */
+            .username {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="images/erfan_bahcivan.jpeg" alt="">
+        <!-- src: path of the file -->
+        <!-- alt: for the situations that image dose not load. -->
+        <p class="username">Erfan Bahcivan</p>
+        <p>let's learn some html</p>
+    </body>
+</html>
+
+-------------------------
+by pressing ! in a html file we can get 
+boiler plate (basic html elements)
+
+
+-----------Head-section-2.1------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ilk meta element character set -->
+    <meta charset="UTF-8">
+    <!-- viewport is the visible area of the page and we define width and zoom factor-->
+    <!-- we do need this zoom factor so our webpage look nice in 
+    all devies like tablets,desktop and phones  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- we use to do these a lot because of search engines -->
+    <meta name="keywords" content="html,css">
+    <!-- and here we can write description for our webpage -->
+    <!-- here is where we see the description of the website when searching in google -->
+    <meta name="description" content="...">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+-----------Text-section-2.2------------
+cmd/ctrl + shift + p --> wrap with abbriviation
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <title>Document</title>
+    <style>
+        em {
+            color: red;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <!-- <em>if for emphsis: vurgu icin kullanilir</em> -->
+    <!-- em kullanmak bizim arama motorlarin bizim websitemizden veri cekmelerini saglar -->
+    <!-- <i></i> elementini kullanarak italic yapabilirz ama html bunu yapmak icin degildir. -->
+    <p>lets know about <em>html</em></p>
+
+    <!-- we can use <b></b> elementini to bold thing but we shouldn't -->
+    <p> we say here very <strong>important</strong> things</p>
+</body>
+</html>
+
+
+-------------
+
+in html we've got 6 head elements
+h1 , h2 ... h6
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <title>Document</title>
+    <style>
+        em {
+            color: red;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <!-- burada dikkat etmemiz gereken sey
+    biz bu basliklari onemlerine gore kullaniriz
+    boyutlarina gore degil , boyutlari her zaman css
+    yardimi ile degistirebilirz-->
+
+
+    <!-- her sayfada sadece bir tane h1 elemani olabilir 
+    aksi taktirde arama motorunun kafasini karistirabiliriz-->
+
+    <!-- dikkat: h1 kullandiktan sora h4 kullanamayiz , h2 kullanmaliyiz -->
+
+    <h1>Heading1</h1>
+    <h2>Heading1</h2>
+    <h3>Heading1</h3>
+    <h4>Heading1</h4>
+    <h5>Heading1</h5>
+    <h6>Heading1</h6>
+</body>
+</html>
+
+
+-------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <title>Document</title>
+    <style>
+        em {
+            color: red;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heading1</h1>
+    <h2>HTML</h2>
+    <p>html dersleri</p>
+    <h2>CSS</h2>
+    <p>css dersleri</p>
+</body>
+</html>
+
+-----------Entities-section-2.3------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <!-- bazi zamanlar vardir ki biz html tagini gostermek isteriz -->
+    <!-- <p>Dikkat (gorunmeyecek): ben <html> ogrenmeyi cok seviyorum</p> -->
+    <!-- bunu icin html entities kullaniriz -->
+    <p>I love to learn &lt;html&gt;!</p>
+    <!-- copyright entities -->
+    <p>this is copyright sign : &copy;</p>
+    <!-- non breaking space &nbsp; -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quaerat sapiente magni quis tempore totam necessitatibus corrupti recusandae ipsam, praesentium aperiam non mollitia ipsum laborum enim minus nulla alias, nihil laudantium! Error consequatur, exercitationem veniam tempora ipsum sequi suscipit eligendi molestias&nbsp;deserunt amet voluptatum minima maiores fugit. Et, quasi ex!</p>
+</body>
+</html>  
+
+-----------Hyperlinks-section-2.3------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <!-- to create a link we use anchor <a href=""></a> element -->
+    <!-- href attribute: hypertext reference -->
+    <a href="about.html">reletive about</a>
+    <!-- <a href="extras/about_in_extras.html">extars about</a> -->
+    <a href="extras/about_in_extras.html">extars about</a>
+
+    <!-- <a href="about.html"><img src="images/erfan_bahcivan.jpeg" alt=""></a> -->
+    <a href="images/erfan_bahcivan.jpeg" download>My photo</a>
+</body>
+</html>  
+
+
+-------------
+lets add a link to css section
+go to the top of the page
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <a href="about.html">reletive about</a>
+    <a href="images/erfan_bahcivan.jpeg" download>My photo</a>
+    <a href="#section-css">CSS</a>
+    <h2>HTML</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum fuga, quibusdam, quaerat aliquid, optio sunt iusto quisquam ut ad numquam dolor repudiandae veritatis labore. Nulla, doloremque. Veniam culpa quas assumenda repellendus molestiae ratione dolorem ipsam voluptatibus, ullam sint voluptatem nostrum magni quo architecto expedita quia quam? A hic enim nulla quod saepe excepturi nesciunt expedita accusantium, aliquid commodi minima quidem blanditiis nemo impedit? Corporis quia et vitae possimus a nihil sint aperiam iure. Quidem non dolor tempore maxime? Officia eum doloremque mollitia! Laboriosam odit minima ab quaerat consequuntur quia quae perspiciatis labore iure quas dolores, mollitia doloribus deserunt asperiores? Mollitia vel sunt blanditiis quidem corrupti ad, repellat similique quis totam hic, eius quibusdam! Quaerat voluptatum fuga, veritatis minus in consequatur tempora dicta recusandae repellat rerum ex minima quam fugit doloribus totam aut illum sint enim aspernatur libero laudantium qui nesciunt iure? Beatae itaque tempora commodi consectetur exercitationem, veritatis iusto velit ut ad aspernatur soluta quaerat molestias dolorem distinctio placeat culpa delectus, maiores rerum facilis consequuntur libero laudantium ipsum facere? A vitae necessitatibus et esse ea. Possimus adipisci ab quia ullam tenetur, itaque eius ratione velit temporibus, doloremque fugit ex dolores voluptate cum pariatur ducimus nobis, magni quisquam accusantium reprehenderit earum!</p>
+    <h2 id="section-css">CSS</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum fuga, quibusdam, quaerat aliquid, optio sunt iusto quisquam ut ad numquam dolor repudiandae veritatis labore. Nulla, doloremque. Veniam culpa quas assumenda repellendus molestiae ratione dolorem ipsam voluptatibus, ullam sint voluptatem nostrum magni quo architecto expedita quia quam? A hic enim nulla quod saepe excepturi nesciunt expedita accusantium, aliquid commodi minima quidem blanditiis nemo impedit? Corporis quia et vitae possimus a nihil sint aperiam iure. Quidem non dolor tempore maxime? Officia eum doloremque mollitia! Laboriosam odit minima ab quaerat consequuntur quia quae perspiciatis labore iure quas dolores, mollitia doloribus deserunt asperiores? Mollitia vel sunt blanditiis quidem corrupti ad, repellat similique quis totam hic, eius quibusdam! Quaerat voluptatum fuga, veritatis minus in consequatur tempora dicta recusandae repellat rerum ex minima quam fugit doloribus totam aut illum sint enim aspernatur libero laudantium qui nesciunt iure? Beatae itaque tempora commodi consectetur exercitationem, veritatis iusto velit ut ad aspernatur soluta quaerat molestias dolorem distinctio placeat culpa delectus, maiores rerum facilis consequuntur libero laudantium ipsum facere? A vitae necessitatibus et esse ea. Possimus adipisci ab quia ullam tenetur, itaque eius ratione velit temporibus, doloremque fugit ex dolores voluptate cum pariatur ducimus nobis, magni quisquam accusantium reprehenderit earum!</p>
+    <a href="#">Jump to Top</a>
+</body>
+</html>  
+
+
+--------------
+
+link to an external website
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <a href="about.html">reletive about</a>
+    <a href="images/erfan_bahcivan.jpeg" download>My photo</a>
+    <a href="#section-css">CSS</a>
+    <a href="https://google.com" target="_blank">Google</a>
+    <a href="mailto:ebgdev@proton.me">Mail</a>
+    <h2>HTML</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum fuga, quibusdam, quaerat aliquid, optio sunt iusto quisquam ut ad numquam dolor repudiandae veritatis labore. Nulla, doloremque. Veniam culpa quas assumenda repellendus molestiae ratione dolorem ipsam voluptatibus, ullam sint voluptatem nostrum magni quo architecto expedita quia quam? A hic enim nulla quod saepe excepturi nesciunt expedita accusantium, aliquid commodi minima quidem blanditiis nemo impedit? Corporis quia et vitae possimus a nihil sint aperiam iure. Quidem non dolor tempore maxime? Officia eum doloremque mollitia! Laboriosam odit minima ab quaerat consequuntur quia quae perspiciatis labore iure quas dolores, mollitia doloribus deserunt asperiores? Mollitia vel sunt blanditiis quidem corrupti ad, repellat similique quis totam hic, eius quibusdam! Quaerat voluptatum fuga, veritatis minus in consequatur tempora dicta recusandae repellat rerum ex minima quam fugit doloribus totam aut illum sint enim aspernatur libero laudantium qui nesciunt iure? Beatae itaque tempora commodi consectetur exercitationem, veritatis iusto velit ut ad aspernatur soluta quaerat molestias dolorem distinctio placeat culpa delectus, maiores rerum facilis consequuntur libero laudantium ipsum facere? A vitae necessitatibus et esse ea. Possimus adipisci ab quia ullam tenetur, itaque eius ratione velit temporibus, doloremque fugit ex dolores voluptate cum pariatur ducimus nobis, magni quisquam accusantium reprehenderit earum!</p>
+    <h2 id="section-css">CSS</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum fuga, quibusdam, quaerat aliquid, optio sunt iusto quisquam ut ad numquam dolor repudiandae veritatis labore. Nulla, doloremque. Veniam culpa quas assumenda repellendus molestiae ratione dolorem ipsam voluptatibus, ullam sint voluptatem nostrum magni quo architecto expedita quia quam? A hic enim nulla quod saepe excepturi nesciunt expedita accusantium, aliquid commodi minima quidem blanditiis nemo impedit? Corporis quia et vitae possimus a nihil sint aperiam iure. Quidem non dolor tempore maxime? Officia eum doloremque mollitia! Laboriosam odit minima ab quaerat consequuntur quia quae perspiciatis labore iure quas dolores, mollitia doloribus deserunt asperiores? Mollitia vel sunt blanditiis quidem corrupti ad, repellat similique quis totam hic, eius quibusdam! Quaerat voluptatum fuga, veritatis minus in consequatur tempora dicta recusandae repellat rerum ex minima quam fugit doloribus totam aut illum sint enim aspernatur libero laudantium qui nesciunt iure? Beatae itaque tempora commodi consectetur exercitationem, veritatis iusto velit ut ad aspernatur soluta quaerat molestias dolorem distinctio placeat culpa delectus, maiores rerum facilis consequuntur libero laudantium ipsum facere? A vitae necessitatibus et esse ea. Possimus adipisci ab quia ullam tenetur, itaque eius ratione velit temporibus, doloremque fugit ex dolores voluptate cum pariatur ducimus nobis, magni quisquam accusantium reprehenderit earum!</p>
+    <a href="#">Jump to Top</a>
+</body>
+</html>  
+
+
+-----------Images-section-2.3------------
