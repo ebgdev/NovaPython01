@@ -1,0 +1,15 @@
+body {
+  margin: 10px;
+}
+
+p {
+  color: orange;
+}
+
+a[target] {
+  color: orange;
+}
+
+a[href*='google'] {
+  color: red;
+}
