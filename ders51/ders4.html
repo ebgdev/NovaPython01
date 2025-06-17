@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
+
+-------css-------
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to bottom right, blue, red, yellow 30%);
+}
+
+#------------
+
+.box {
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(circle at top left, white, yellow);
+}
+
+https://cssgradient.io/
+
+.box {
+  width: 600px;
+  height: 200px;
+  background: #020024;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+why we do have 2 backgrounds ?
+because some old browsers may still dont support gradient
+so in that situation only the first property will work.
+
+#----------------Borders-------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
+
+
+-------css-------
+we can set the order individually for top, right , bottom , left
+
+order dose matter here
+we do write border 
+then border-top
+
+.box {
+  width: 400px;
+  height: 200px;
+  background-color: dodgerblue;
+  border: 5px dashed royalblue;
+  border-top: 20px solid royalblue;
+}
+
+
+the order in here : top right bottom left /*trbl*/
+.box {
+  width: 400px;
+  height: 200px;
+  background-color: dodgerblue;
+  border: 5px dashed royalblue;
+  border-width: 10px 20px 10px 20px;
+}
+
+what if we delete some of the border like bottom and left ? 
+
+.box {
+  width: 400px;
+  height: 200px;
+  background-color: dodgerblue;
+  border: 5px dashed royalblue;
+  border-width: 10px 20px;
+}
+
+then:
+
+top -> bottom 
+right --> left
+
+
+How about this one ?
+.box {
+  width: 400px;
+  height: 200px;
+  background-color: dodgerblue;
+  border: 5px dashed royalblue;
+  border-width: 10px;
+}
+
+10px will apply to the all.
+
+
+# ----------
+How we can get cirle shape ?
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: dodgerblue;
+  border: 5px dashed royalblue;
+  border-width: 15px;
+  border-radius: 50%;
+}
+
+
+#----------------Shadows-------------------
+
+first value  : horizontal-difference-> right-left(-)
+second value :  vertical differece --> bottom-up(-)
+third value  : soften or blur the shadow
+forth value  : color
+
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: dodgerblue;
+  box-shadow: 10px 10px 30px gray;
+}
+
+this way we apply shadow only to the right and bottom.
+
+body {
+  margin: 10px;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: dodgerblue;
+  box-shadow: 0 0 30px gray;
+}
+
+
+-------------
+How to add shadow to text ? 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="box">
+      <h1>Heading</h1>
+    </div>
+  </body>
+</html>
+
+
+-------css-------
+
+body {
+  margin: 10px;
+}
+
+h1 {
+  margin: 10px;
+  color: white;
+  text-shadow: 3px 3px 5px gray;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: dodgerblue;
+  box-shadow: 0 0 30px gray;
+}
+             |
+             |
+             |
+             |
+             v
+
+the mix isn't that good because of gray color 
+so instead we can use black transparent rgba(0, 0, 0, 0.3).
+
+
+body {
+  margin: 10px;
+}
+
+h1 {
+  margin: 10px;
+  color: white;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: dodgerblue;
+  box-shadow: 0 0 30px gray;
+}
+
+
+----------------------------LAYOUT----------------------------
+
++-----------------------------+
+|          MARGIN            |
+|  +---------------------+   |
+|  |       BORDER        |   |
+|  |  +--------------+   |   |
+|  |  |   PADDING    |   |   |
+|  |  |  +--------+  |   |   |
+|  |  |  | CONTENT | |   |   |
+|  |  |  +--------+  |   |   |
+|  |  +--------------+   |   |
+|  +---------------------+   |
++-----------------------------+
+
+
+-----------------Box-Model-------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+  </body>
+</html>
+
+
+-------css-------
+
+body {
+  margin: 20px;
+}
+
+p {
+  padding: 10px 20px; /*trbl*/
+  border: 5px solid gold;
+}
+
+------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+  </body>
+</html>
+
+
+-------css-------
+so in here the actual space between elements 
+is 40px.
+
+body {
+  margin: 20px;
+}
+
+p {
+  padding: 20px;
+  margin: 0;
+}
+
+
+
+-------css-------
+margin collapsing
+
+body {
+  margin: 20px;
+}
+
+p {
+  padding: 0;
+  margin: 20px;
+}
+
+
+we should use the margin to seperate the elements.
+and the padding property to add space between border and the content area 
+of an element.
+
+
+-----------------Sizing-Elements-------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
+
+-------css-------
+
+body {
+  margin: 20px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+}
+
+----------------------------
+
+Now if i add padding and border 
+the size with increase to (100px --> 140px)
+
+body {
+  margin: 20px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  padding: 20px;
+}
+
+this is because by default the width and height property
+are applied to the content box so any padding or border that 
+we apply will increase the size of visible box.
+
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  padding: 20px;
+  border: 10px solid orange;
+}
+
+now we add the border so the size will be : 160px
+
+------------------------
+Notice: any padding or order will increase the size of 
+out visible box except margin ❌
+
+
+body {
+  margin: 20px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  padding: 20px;
+  border: 10px solid orange;
+  margin: 50px;
+}
+
+------------------------
+But if we dont want to continuously calculate the box size ?
+the default property: box-sizing: content-box ❌;
+
+
+body {
+  margin: 20px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  padding: 20px;
+  border: 10px solid orange;
+  margin: 50px;
+  box-sizing: border-box; ✅
+}
+
+------------------------
+so now our content size will reduce to 40px, and total box size will be 100px.
+and even if i do delete the padding or border property the box size still is 100 x 100 pixels.
+
+
+
+body {
+  margin: 20px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  box-sizing: border-box;
+}
+
+------------------------
+in this situation we also can use universal selector.
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+}
+
+------------------------
+There is only a problem with this:
+this behavior dose is not supported in pseudo element like before and after.
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+}
+
+.box::before {
+  content: 'hello';
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+}
+
+------------------------
+to solve this problem we use:
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+}
+
+.box::before {
+  content: 'hello';
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+}
+
+------------------------
+One Last Thing is the div element is a block level element
+And the span element is an inline level element which dose not support width and height
+so if we want inline elements that respondes we should use display property.
+
+span -default-> display: inline;
+div  -default-> display: block;
+
+but we will use display: inline-block;
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+}
+
+.box::before {
+  content: 'hello';
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  display: inline-block;
+}
+
+
+so we will have 2 boxes that are laied out horizontally next to each other.
+however there is a tiny space between the spans and if we dont want them also 
+we should write them side by side without space in html side.
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <span class="box"></span><span class="box"></span> ✅
+  </body>
+</html>
+
+-------css-------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+}
+
+.box::before {
+  content: 'hello';
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  display: inline-block;
+}
+
+
+-----------------Overflowing-------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="box">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia,
+        nostrum laudantium eius enim error adipisci nulla maxime maiores cum
+        repudiandae labore quis. Quas quisquam debitis ullam earum animi illo
+        unde.
+      </p>
+    </div>
+  </body>
+</html>
+
+-------css-------
+
+body {
+  margin: 20px;
+}
+
+.box {
+  border: 3px solid gold;
+  width: 150px;
+  height: 150px;
+}
+
+
+
+-------------------
+Now the Overflowing happend so we need to use overflow property
+to control how overflow should happen. (default --> overflow: visible;)
+
+
+overflow: hidden;
+
+overflow: scroll; 
+
+overflow: auto;
+
+actually the overflow property is short for 2 properties:
+1- overflow-x
+2- overflow-y
+
+
+.box {
+  border: 3px solid gold;
+  width: 150px;
+  height: 150px;
+  overflow: hidden auto;
+}
+
+
+/* horizontal: hidden */
+/* vertical: auto */
+
+
+
+-----------------Measurement-Units-------------------
+
+
++----------------+-----------------------------------------+
+|   ABSOLUTE     |               RELATIVE                  |
++----------------+-----------------------------------------+
+|     px         |   %   - relative to container size      |
+|                |   vw  - relative to viewport width      |
+|                |   vh  - relative to viewport height     |
+|                |   em  - relative to parent font size    |
+|                |  rem  - relative to root font size      |
++----------------+-----------------------------------------+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
+
+
+-------css-------
+
+body {
+  margin: 20px;
+  width: 300px;
+}
+
+.box {
+  /* 50% of the width of the parent  */
+  width: 50%;
+  height: 100px;
+  background-color: gold;
+  border-top: 3px solid orange;
+}
+
+
+Now if we inspect>elements>Computed
+here will see the width which is 150px
+
+
+-------------------
+‼️ What if we dont set the width in body element ?
+by default the body element's width is 100% 
+so 50% of the parent(100%) will be half of the page.
+
+
+body {
+  margin: 20px;
+}
+
+.box {
+  /* 50% of the width of the parent  */
+  width: 50%;
+  height: 100px;
+  background-color: gold;
+  border-top: 3px solid orange;
+}
+
+if we dont want the space between left side of the page and the div
+we can also delete the margin property
+
+-------------------
+
+body {
+  /* margin: 20px; */
+}
+
+.box {
+  /* 50% of the width of the parent  */
+  width: 50%;
+  height: 100px;
+  background-color: gold;
+  border-top: 3px solid orange;
+}
+
+‼️ So now if we resize the windows our box also get resized.
+
+
+
+---------vh----------
+What if we want to get the entire vertical space ? 
+you may say we can set height:100%;
+
+this is because by default the height is 0.
+height dose increase with the content size within div element.
+
+so we replace the % or px with vh(viewport height)
+
+
+
+body {
+  margin: 10px;
+}
+
+.box {
+  /* 50% of the width of the parent  */
+  width: 50%;
+  height: 100vh;
+  background-color: gold;
+  border-top: 3px solid orange;
+}
+
+--------vw-----------
+!! similar to vh we also do have vw(viewport width)
+
+body {
+  /* margin: 10px; */
+}
+
+.box {
+  /* 50% of the width of the parent  */
+  width: 50vw;
+  height: 100vh;
+  background-color: gold;
+  border-top: 3px solid orange;
+}
+
+
+---------em----------
+body {
+  /* margin: 10px; */
+}
+
+.box {
+  /* 10x font size of the current element(html element).  */
+  /* 10x 16px = 160px */
+  width: 10em;
+  height: 100vh;
+  background-color: gold;
+  border-top: 3px solid orange;
+}
+
+
+----------em---------
+if i set the font-size to 20px
+the width should be 200px
+
+
+body {
+  /* margin: 10px; */
+}
+
+.box {
+  /* 10x font size of the current element.  */
+  /* 10x 20px = 200px */
+  font-size: 20px;
+  width: 10em;
+  height: 100vh;
+  background-color: gold;
+  border-top: 3px solid orange;
+}
+
+
+----------rem---------
+body {
+  /* margin: 10px; */
+}
+
+.box {
+  /* 10x font size of the root element.  */
+  /* 10x 16px = 160px */
+  font-size: 20px;
+  width: 10rem;
+  height: 100vh;
+  background-color: gold;
+  border-top: 3px solid orange;
+}
+
+
+
+-----------------Positioning------------------- 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- div.box>div.box*3 -->
+    <div class="boxes">
+      <div class="box box-one"></div>
+      <div class="box box-two"></div>
+      <div class="box box-three"></div>
+    </div>
+  </body>
+</html>
+
+
+---css---
+
+body {
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  background: tomato;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+-------------------
+Let's say that we want to change the positions.
+default --> position: static;
+
+.box-two 
+position: relative;
+left: 5rem;
+
+or event negetive values
+these are used to hide and pop up animations
+
+left: -5rem; = right: 4rem;
+
+
+
+body {
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  background: tomato;
+  position: relative;
+  left: 5rem;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+--------
+
+.box-two {
+  background: tomato;
+  position: relative;
+  left: 3rem;
+  top: -3rem;
+}
+
+
+by this we'll see overlabing
+to control this we use z-index property
+
+in webpages we have three axes(TR:eksen)
+horizontal axis --> x axis
+vertical axis   --> y axis
+z axis          --> depth
+
+by default z-index = 0
+
+body {
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  background: tomato;
+  position: relative;
+  left: 3rem;
+  top: -3rem;
+  z-index: -1; ---> 👉🏻 send to behind
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+
+-------------------
+we have 2 kind of Positioning
+1 - relative --> boxes
+2 - absolute --> box-two
+
+body {
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid black;
+  position: relative;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: tomato;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+
+burada aslinda sanki absolute elementi siliniyor
+ve bam baska yerde ekleniyor.
+
+
+-------------------
+Also removed from the document flow, like absolute.
+But positioned relative to the viewport, not any container.
+Stays fixed when you scroll.
+
+
+body {
+  margin: 10px;
+  height: 200vh;
+}
+
+.boxes {
+  border: 3px solid black;
+  position: relative;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  position: fixed;
+  top: 0;
+  background: tomato;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+
+
+-------------------
+
+
+body {
+  margin: 10px;
+  height: 200vh;
+}
+
+.boxes {
+  border: 3px solid black;
+  position: relative;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  background: tomato;
+  position: fixed;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  width: auto;
+}
+
+.box-three {
+  background: dodgerblue;
+}
