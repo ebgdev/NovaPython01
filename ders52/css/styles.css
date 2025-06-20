@@ -1,0 +1,15 @@
+.container {
+  gap: 10px;
+  display: grid;
+  grid-template: 100px auto 100px / 30fr 70fr;
+  border: 3px solid lightgray;
+}
+
+.box {
+  background: gold;
+}
+
+.box-one {
+  grid-column: 1/2; /* 1/-1*/
+  grid-row: span 2/4; /* will contain 2 elements*/
+}

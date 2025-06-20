@@ -1,0 +1,1081 @@
+-----------------Positioning------------------- 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- div.box>div.box*3 -->
+    <div class="boxes">
+      <div class="box box-one"></div>
+      <div class="box box-two"></div>
+      <div class="box box-three"></div>
+    </div>
+  </body>
+</html>
+
+
+---css---
+
+body {
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  background: tomato;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+-------------------
+Let's say that we want to change the positions.
+default --> position: static;
+
+.box-two 
+position: relative;
+left: 5rem;
+
+or event negetive values
+these are used to hide and pop up animations
+
+left: -5rem; = right: 4rem;
+
+
+
+body {
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  background: tomato;
+  position: relative;
+  left: 5rem;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+--------
+
+.box-two {
+  background: tomato;
+  position: relative;
+  left: 3rem;
+  top: -3rem;
+}
+
+
+by this we'll see overlabing
+to control this we use z-index property
+
+in webpages we have three axes(TR:eksen)
+horizontal axis --> x axis
+vertical axis   --> y axis
+z axis          --> depth
+
+by default z-index = 0
+
+body {
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  background: tomato;
+  position: relative;
+  left: 3rem;
+  top: -3rem;
+  z-index: -1; ---> 👉🏻 send to behind
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+
+-------------------
+we have 2 kind of Positioning
+1 - relative --> boxes
+2 - absolute --> box-two
+
+body {
+  margin: 10px;
+}
+
+.boxes {
+  border: 3px solid black;
+  position: relative;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: tomato;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+
+burada aslinda sanki absolute elementi siliniyor
+ve bam baska yerde ekleniyor.
+
+
+-------------------
+Also removed from the document flow, like absolute.
+But positioned relative to the viewport, not any container.
+Stays fixed when you scroll.
+
+
+body {
+  margin: 10px;
+  height: 200vh;
+}
+
+.boxes {
+  border: 3px solid black;
+  position: relative;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  position: fixed;
+  top: 0;
+  background: tomato;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+
+
+-------------------
+
+
+body {
+  margin: 10px;
+  height: 200vh;
+}
+
+.boxes {
+  border: 3px solid black;
+  position: relative;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+}
+
+.box-one {
+  background: gold;
+}
+
+.box-two {
+  background: tomato;
+  position: fixed;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  width: auto;
+}
+
+.box-three {
+  background: dodgerblue;
+}
+
+
+Note: 
+Relative: relative to the element's normal position
+Absolute: relative to the parent
+Fixed: relative to the viewport
+
+----------------------------FLOATING----------------------------
+
+we want to design a tweet 
+but if our font size changes 
+then our image size will change
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <article class="tweet">
+      <div class="avatar"></div>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p class="clear">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse dolores
+        nesciunt corporis. Impedit excepturi nisi sed, esse expedita amet labore
+        alias. Sequi harum ducimus hic maiores, facere, repellat fuga distinctio
+        labore assumenda cum atque quis quidem sunt possimus itaque
+        necessitatibus beatae nam architecto eaque inventore vitae
+        exercitationem natus nihil ipsum.
+      </p>
+    </article>
+  </body>
+</html>
+
+
+----css-----
+
+
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  background-color: gold;
+  float: left;
+  margin-right: 0.5rem;
+}
+
+/* both, right */
+.clear {
+  clear: left;
+}
+
+
+--------------------
+sometimes we got parent collapsing with floats 
+(parent elements dont see floated elements and they collapse)
+
+
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  background-color: gold;
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.tweet {
+  border: 3px solid lightblue;
+}
+
+/* both, right */
+.clear {
+  clear: left;
+}
+
+
+Now looks fine but what if i delete the second paragraph ? 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <article class="tweet">
+      <div class="avatar"></div>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </article>
+  </body>
+</html>
+
+
+-------------------------------------------
+let's see how we should fix that.
+this is because avatar is a floated element and by default
+parent elements(tweet) don't see the floated elements
+
+
+so what is the solution ?
+whenever we use the float we have to clear after.
+otherwise we run into weird layout issues.
+so we add an empty div elelemt  
+✅ <div class="clear"></div>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <article class="tweet">
+      <div class="avatar"></div>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <div class="clear"></div>
+    </article>
+  </body>
+</html>
+
+------css-----
+
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  background-color: gold;
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.tweet {
+  border: 3px solid lightblue;
+}
+
+/* both, right */
+.clear {
+  clear: left;
+}
+
+
+-----------------------
+But the approach we took above is not readable for search engines
+and it's not semantic(anlamsiz)
+
+✅ But we can use pseudo elements (before and after)
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <article class="tweet">
+      <div class="avatar"></div>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </article>
+  </body>
+</html>
+
+
+---css---
+
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  background-color: gold;
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.tweet {
+  border: 3px solid lightblue;
+}
+
+.tweet::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* both, right */
+.clear {
+  clear: left;
+}
+
+
+
+
+----------------------------FlexBox----------------------------
+
+flexible box : used for laying out elelemts in one direction
+Esnek kutu: Öğeleri tek bir yönde yerleştirmek için kullanılır.
+
+
+
+* * * * |   *
+        |   *
+        |   *
+        |   *
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- div.container>div.box*3 -->
+    <div class="container">
+      <div class="box">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+    </div>
+  </body>
+</html>
+
+
+---css---
+
+.container {
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+------------------------
+Now let's sort them horizontally 
+
+.container {
+  border: 3px solid lightgray;
+  display: flex; ✅
+}
+
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+------------------------
+we also can control the direction
+flex-direction: row; --> default value
+
+row - column - column-reverse - row-reverse
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+
+
+-------------------------
+alignment in flex
+Main (Primary axes)
+Cross (secondary axes)
+
+DIRECTION: ROW                            DIRECTION: COLUMN
++--------------------+                   +------------------------+
+|                    |                   |                        |
+|        Main  --->  |                   |      Cross  --->       |
+|        |           |                   |        |               |
+|        v           |                   |        v               |
+|      Cross         |                   |       Main             |
++--------------------+                   +------------------------+
+
+
+- justify-content (along the main axis) 
+- align-items (along the cross axis)
+- align content
+
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; --> default value
+}
+
+justify-content : flex-end , center , space-evenly , space-between
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+
+------------------------
+- align-items
+Note: 
+display: flex; makes the element behave as a block-level element on the outside, 
+but it applies flex layout to its children on the inside.
+
+TR:
+display: flex;, dışarıdan blok seviye (block-level) bir öğe gibi davranır, 
+ancak içindeki çocuk öğelere esnek (flex) düzen uygular.
+
+
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 90vh;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+
+------------------------
+- align-content
+(this only works if we have multiple lines of content)
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- div.container>div.box*3 -->
+    <div class="container">
+      <div class="box">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+      <div class="box">D</div>
+      <div class="box">E</div>
+      <div class="box">F</div>
+      <div class="box">G</div>
+      <div class="box">H</div>
+    </div>
+  </body>
+</html>
+
+
+----css----
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 90vh;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+
+in this situation the boxes are not in the center
+and also we have 2 lines so we can use align-content
+
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 90vh;
+  align-content: center; ✅
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+
+
+------------------------
+what if we want to apply something individual for a box ?
+align-self : is a property that we apply on a flex item 
+not a flex container
+
+- so no we dont need 
+❌ flex-wrap: wrap;
+❌ align-content: center;
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- div.container>div.box*3 -->
+    <div class="container">
+      <div class="box box-one">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+    </div>
+  </body>
+</html>
+
+---css---
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+.box-one {
+  align-self: flex-start; ✅
+}
+
+Not flex containers ❌
+Flex Items ✅ 
+
+--------------------------------------------------------------------------------
+| Property                                      | Default Value                 |
+--------------------------------------------------------------------------------
+| flex-basis (initial size of a flex item)     | auto                          |
+| flex-grow (growth factor)                    | 0                             |
+| flex-shrink (shrink factor)                  | 1                             |
+| flex (shorthand for grow, shrink, basis)     | 0 1 auto                      |
+--------------------------------------------------------------------------------
+
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.box {
+  flex-basis: auto;
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+
+If I change flex-basis: auto; to ✅ flex-basis: 10rem;, 
+this will override the width property.The reason this happens is because 
+the direction is set to row, so flex-basis corresponds to the width property.
+
+TR:
+flex-basis: auto; değerini ✅ flex-basis: 10rem; olarak değiştirirsem, 
+bu width (genişlik) özelliğini geçersiz kılar. Bunun nedeni, yönün row (satır) 
+olarak ayarlanmış olmasıdır; bu yüzden flex-basis, width özelliğine karşılık gelir.
+
+
+‼️ flex-direction: column --> height
+
+
+
+
+------------------------
+also we can apply them individually
+
+
+.box-one {
+  flex-basis: 5rem;
+}
+
+
+------------------------
+flex-grow:0
+
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.box {
+  flex-basis: 5rem;
+  flex-grow: 1;
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+.box-one {
+}
+------------------------
+also we can apply them individually
+
+
+.box-one {
+  flex-grow: 2;
+}
+
+❓ why box-one is not twice big compare to the others?
+flex-grow actually works like this: box-one has a value of 2, while box-two and box-three each have a value of 1. That makes a total of 4.
+Flexbox looks for the available free space, divides it into 4 parts, and then distributes:
+box-one gets 2 portions
+box-two and box-three each get 1 portion
+
+TR:
+flex-grow şöyle çalışır: box-one değeri 2, box-two ve box-three ise 1 değerine sahiptir. Toplamda 4 olur.
+Flexbox, boş kullanılabilir alanı bulur, bunu 4 parçaya böler ve şöyle dağıtır:
+box-one 2 pay alır
+box-two ve box-three her biri 1 pay alır
+Eğer box-one iki kat büyük görünmüyorsa, bunun nedeni padding, border veya başlangıç genişliği gibi başka etkenler olabilir.
+
+
+
+------------------------
+flex-shrink
+
+---------------------------------------------------------------------------
+Value             | Can Shrink? | Behavior                                |
+------------------|-------------|------------------------------------------
+flex-shrink: 1    | Yes (✅)    | Shrinks when needed (default behavior)  |
+flex-shrink: 0    | No  (❌)    | Won’t shrink, might overflow            |
+---------------------------------------------------------------------------
+
+.container {
+  border: 3px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.box {
+  flex-basis: 15rem;
+  flex-shrink: 1;
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+
+.box-one {
+  flex-shrink: 0;
+}
+
+‼️ flex: flex-grow , flex-shrink , flex-basis
+
+----------------------------Grid----------------------------
+chrom>inspect>elements>layout
+Examples :Photo Gallary
+
+display: grid
+grid-template-rows
+grid-template-columns
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container"></div>
+  </body>
+</html>
+
+---css---
+
+.container {
+  display: grid;
+  /* 3 x 2 grid */
+  grid-template-rows: 100px 100px 100px;
+  grid-template-columns: 100px 100px;
+  border: 3px solid lightgray;
+}
+
+
+----------------------
+repeat
+
+.container {
+  display: grid;
+  /* 3 x 2 grid */
+  grid-template-rows: repeat(3, 100px);
+  grid-template-columns: repeat(2, 100px);
+  border: 3px solid lightgray;
+}
+
+
+----------------------
+grid-template
+
+.container {
+  display: grid;
+  /* 3 x 2 grid */
+  grid-template: repeat(3, 100px) / repeat(2, 100px);
+  border: 3px solid lightgray;
+}
+
+
+----------Grid-------------
+justify-items (along the horizontal axis - yatay eksen)
+align-items (along the vertical axis - dikey eksen)
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- .box*4 -->
+      <div class="box">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+      <div class="box">D</div>
+    </div>
+  </body>
+</html>
+
+
+---css---
+
+.container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  align-content: center;
+  /* 3 x 2 grid */
+  grid-template: repeat(3, 100px) / repeat(2, 100px);
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+}
+
+
+-----------------------------
+For simplicity we delete:
+
+❌ justify-content: center;
+❌ height: 100vh;
+❌ align-content: center;
+
+
+-----------------------------
+Setting the value to its default (stretch) still has no visible effect.
+that is because of .box width and height elelemts.
+
+.container {
+  display: grid;
+  justify-items: stretch; ❌ so if we delete this.
+  align-items: stretch; ❌ so if we delete this.
+  grid-template: repeat(3, 100px) / repeat(2, 100px);
+  border: 3px solid lightgray;
+}
+
+.box {
+  width: 5rem; ❌ so if we delete this.
+  height: 5rem; ❌ so if we delete this.
+  background: gold;
+}
+
+
+---------------------Last Update---
+
+.container {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(2, 100px);
+  border: 3px solid lightgray;
+}
+
+.box {
+  background: gold;
+}
+
+----------------row-gap--column-gap---gap-----------
+Gap
+
+.container {
+  gap: 10px 10px;
+  display: grid;
+  grid-template: 100px auto 100px / 30fr 70fr;
+  border: 3px solid lightgray;
+}
+
+.box {
+  background: gold;
+}
+
+
+----------------grid-row---grid-column----grid-area----------
+Placing Items
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- .box*4 -->
+      <div class="box box-one">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+      <div class="box">D</div>
+    </div>
+  </body>
+</html>
+
+
+---css---
+
+.container {
+  gap: 10px 10px;
+  display: grid;
+  grid-template: 100px auto 100px / 30fr 70fr;
+  border: 3px solid lightgray;
+}
+
+.box {
+  background: gold;
+}
+
+.box-one {
+  grid-column: 2; ✅ first column moves to the second column
+}
+
+
+---------------------------
+box-one captures the entire row
+
+.container {
+  gap: 10px;
+  display: grid;
+  grid-template: 100px auto 100px / 30fr 70fr;
+  border: 3px solid lightgray;
+}
+
+.box {
+  background: gold;
+}
+
+.box-one {
+  grid-column: 1/3; /* 1/-1*/
+}
