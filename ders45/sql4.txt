@@ -72,7 +72,7 @@ between '2005-05-29' and '2005-05-30'
 
 -- this query will give us only the film_ids but what if we want titles ?
 
--- to achive this we should use inner join 
+-- to achieve this we should use inner join 
 
 select title,film.film_id from film where film_id in
 (select inventory.film_id from rental
