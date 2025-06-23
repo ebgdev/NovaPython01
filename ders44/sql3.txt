@@ -324,7 +324,7 @@ challenge 2 :
 -- How many payments occurred on a Monday?
 -- NOTE: We didn't show you exactly how to do this, but use the documentation or Google to figure this out!
 -- NOTE: PostgreSQL considers Sunday the start of a week (indexed at O)
-
+-- DOW : Day of a Week
 select count(*) from payment where extract(dow from payment_date) = 1
 
 
