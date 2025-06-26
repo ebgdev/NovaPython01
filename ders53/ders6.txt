@@ -1,0 +1,927 @@
+----------------🎯-Hiding-🎯------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <p class="first">First</p>
+    <p>Second</p>
+  </body>
+</html>
+
+
+---css---
+
+1- using display: none; 
+----------------------------
+this way the area by first p gonna collapse 
+body {
+  margin: 5px;
+}
+
+.first {
+  display: none;
+}
+
+2- using visibility: visible; (default value)
+----------------------------
+only the item gonna be invisible but the area gonna stay there
+
+body {
+  margin: 5px;
+}
+
+.first {
+  visibility: hidden;
+}
+
+
+
+----------------🎯-Media-Queries-🎯------------------
+To provide different styles for different devices
+depending on their features
+
+Most of the time it's to just start with mobile version
+and then adjust the desktop version.
+
+by resizing the tab we can find the perfect balance of size 
+then we'll use that size as of our breakpoint.
+
+@media <type> and (condition) {
+  changes
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- .container>.box*2 -->
+    <div class="container">
+      <div class="box">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+          corporis quae aspernatur ab deserunt, qui quo sequi ullam minima,
+          necessitatibus magnam vero, beatae eos nemo a accusantium! A,
+          accusantium dolores!
+        </p>
+      </div>
+      <div class="box">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo,
+          nemo totam atque non at veritatis tempore doloremque veniam voluptatum
+          officia, eum voluptates amet ipsa maiores, temporibus consequuntur
+          necessitatibus laborum odit?
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+---css---
+
+
+body {
+  margin: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  background: greenyellow;
+  padding: 1rem;
+}
+
+.box:nth-of-type(2) {
+  background: dodgerblue;
+}
+‼️ When the page width becomes 600px or wider, the following change will be applied:
+
+@media screen and (min-width: 600px) {
+  .container {
+    flex-direction: row;
+  }
+}
+
+‼️ When the page width becomes 900px or wider, the following change will be applied:
+@media screen and (min-width: 900px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .box {
+    background: white;
+  }
+}
+
+‼️ We can also define specific styles for when someone wants to print the page.
+---------------------------
+
+@media print {
+  body {
+    color: black;
+    background: white;
+  }
+}
+
+
+----------------🎯-Styling-Fonts-🎯------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>Heading1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem
+      molestiae quibusdam expedita quos corrupti placeat quia autem dolorem quis
+      dolores nemo minus, sed, reprehenderit cumque vel? Et, quia impedit?
+    </p>
+  </body>
+</html>
+
+
+---css---
+
+
+body {
+  margin: 5px;
+}
+
+‼️ We define a font stack in order of priority, so the browser uses the first font installed on the user's system. 
+‼️ If none are available, it falls back to a generic font family.
+
+‼️ TR : Tarayıcının, kullanıcının sisteminde yüklü olan ilk yazı tipini kullanabilmesi için yazı tipi yığını (font stack) öncelik sırasına göre tanımlanır.
+‼️ Hiçbiri mevcut değilse, genel (generic) bir yazı tipi ailesine geri döner.
+
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+
+----------------------------
+Adding Link with other fonts could look ugly.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>Heading1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem
+      molestiae quibusdam expedita quos corrupti placeat quia autem dolorem quis
+      dolores nemo minus, sed, reprehenderit cumque vel? Et, quia impedit?
+    </p>
+    <a href="#">Link</a> ❌🛠️
+  </body>
+</html>
+
+
+---css---
+
+body {
+  margin: 5px;
+  max-width: 600px;
+}
+
+
+/* ‼️ websafe fonts */
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+❌ We also repeated ourselves
+
+@media screen and (min-width: 768px) {
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+✅
+---------------------------
+
+body {
+  margin: 5px;
+  max-width: 600px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p {
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+
+---------------------------
+Font-Weight - Font Style - Color
+
+‼️ Notice :
+Most fonts don't include all 9 weight variations (100–900). For example:
+A font might only have normal (400) and bold (700).
+If you request a weight like 500 or 600, the browser maps it to the closest available one.
+
+
+body {
+  margin: 5px;
+  max-width: 600px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* this is for boldness 100..900 */
+p {
+  /* font-weight: 600; */
+  font-weight: normal; /*400*/
+  font-weight: bold; /*700*/
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+
+-----------------------------------
+
+p {
+  /* font-weight: 600; */
+  font-weight: normal; /*400*/
+  font-style: italic;
+  font-size: 1rem;
+  /* we can present colors in hex  */
+  /* but why is this 3 digits should'nt be 6 ? */
+  /* ans: if the remaining digits going to repeat themselves
+  then we can only type 3  */
+  color: #000;
+}
+
+
+
+
+
+----------------🎯-Embedding-Web-Fonts-🎯------------------
+
+First, we should download the font we want.
+I'm going to use Open Sans
+https://www.fontsquirrel.com/fonts/open-sans
+
+after the download we obsereve that the font file sizes are enormous
+so we will go to the Webfont Generator section
+
+https://www.fontsquirrel.com/tools/webfont-generator
+
+And then we'll select the fonts we need to convert from 
+then, we will download the toolkit and extract it.
+and extract 
+
+Here, we’ll need the WOFF and WOFF2 versions of the fonts we want to use.
+
+1 - opensans-bold-webfont.woff
+2 - opensans-bold-webfont.woff2
+
+3 - opensans-regular-webfont.woff
+4 - opensans-regular-webfont.woff2
+
+‼️ woff2 is faster and lighter.
+
+then we copy them to a new folder in our css/fonts/opensans
+
+5 - stylesheet.css
+
+The fonts also come with a stylesheet.css file, which we’ll use in our own styles.css.
+because we need to register them before using them.
+That said, we should paste these styles at the very top of our CSS file.
+
+Optional:
+I really don't like the way FontSquirrel changes the font-family from
+opensans to open-sansbold or open-sansregular
+
+so I change this to font-family: 'opensans'; in both.
+
+and also I change the address for the source to where i put these files.
+
+so:
+
+
+@font-face {
+  font-family: 'opensans';
+  src: url('fonts/open-sans/opensans-bold-webfont.woff2') format('woff2'),
+    url('fonts/open-sans/opensans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensans';
+  src: url('fonts/open-sans/opensans-regular-webfont.woff2') format('woff2'),
+    url('fonts/open-sans/opensans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+--------------------------------
+then we can use our new font as an example on body
+
+body {
+  margin: 5px;
+  max-width: 600px;
+  font-family: ✅ 'opensans', Arial, Helvetica, sans-serif;
+}
+
+
+---------------final-verion----------------
+
+
+/*! Generated by Font Squirrel (https://www.fontsquirrel.com) on June 24, 2025 */
+
+@font-face {
+  font-family: 'opensans';
+  src: url('fonts/open-sans/opensans-bold-webfont.woff2') format('woff2'),
+    url('fonts/open-sans/opensans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensans';
+  src: url('fonts/open-sans/opensans-regular-webfont.woff2') format('woff2'),
+    url('fonts/open-sans/opensans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 5px;
+  max-width: 600px;
+  font-family: 'opensans', Arial, Helvetica, sans-serif;
+}
+
+/* websafe fonts */
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* this is for boldness 100..900 */
+p {
+  /* font-weight: 600; */
+  font-weight: normal; /*400*/
+  font-style: italic;
+  font-size: 1rem;
+  /* we can present colors in hex  */
+  /* but why is this 3 digits should'nt be 6 ? */
+  /* ans: if the remaining digits going to repeat themselves
+  then we can only type 3  */
+  color: #000;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+----------------🎯-Flash-Of-Unstyled-Text-🎯------------------
+
+Flash of Unstyled Text (FOUT), web sayfası yüklendiğinde önce yedek (varsayılan) 
+bir yazı tipinin kısa süreli görünmesi durumudur. Bu, özel font henüz yüklenmeden 
+metnin hızlıca gösterilmesini sağlar. Genellikle font-display: swap; gibi ayarlarla 
+ortaya çıkar ve kullanıcıya hızlı içerik erişimi sunar, ancak tasarımda geçici tutarsızlık olabilir.
+
+
+
+| Value        | Description                                                                                                            |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **auto**     | Default. The browser chooses what it thinks is best (often behaves like `block`).                                      |
+| **block**    | Text is invisible for up to \~3s. Then, if the font isn't loaded, fallback is shown. Once the font loads, it swaps in. |
+| **swap**     | Fallback font is shown immediately. When the custom font finishes loading, it swaps in.                                |
+| **fallback** | Fallback is shown immediately. Font only swaps in if it loads quickly (usually <100ms).                                |
+| **optional** | Like `fallback`, but font may not load at all on slow connections or if the browser decides it's not worth it.         |
+
+
+p {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1rem;
+  font-display: block;
+  color: #000;
+}
+
+
+----------------🎯-Font-Services-🎯------------------
+
+using google fonts
+
+
+/*! Generated by Font Squirrel (https://www.fontsquirrel.com) on June 24, 2025 */
+
+@font-face {
+  font-family: 'opensans';
+  src: url('fonts/open-sans/opensans-bold-webfont.woff2') format('woff2'),
+    url('fonts/open-sans/opensans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensans';
+  src: url('fonts/open-sans/opensans-regular-webfont.woff2') format('woff2'),
+    url('fonts/open-sans/opensans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 5px;
+  max-width: 600px;
+  font-family: 'Playfair Display', Arial, Helvetica, sans-serif;
+}
+
+/* websafe fonts */
+
+h1 {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1rem;
+  font-display: swap;
+  color: #000;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+
+----------------🎯-System-Font-Stack-🎯------------------
+
+What this does:
+-apple-system → San Francisco (macOS/iOS)
+BlinkMacSystemFont → Chrome on macOS
+"Segoe UI" → Windows
+Roboto → Android
+"Helvetica Neue", Arial, sans-serif → fallbacks
+
+
+this way we dont have to download any fonts we do have all of them in our system 
+
+----css----
+
+body {
+  margin: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+----------
+
+macOS/iOS: -apple-system, BlinkMacSystemFont
+Windows: "Segoe UI"
+Android: Roboto
+Ubuntu: "Ubuntu"
+GNOME/Fedora: "Cantarell"
+KDE: "Noto Sans"
+Fallbacks: "Liberation Sans", "DejaVu Sans", and finally sans-serif
+
+
+
+----------------🎯-Sizing-Fonts-🎯------------------
+
+https://typescale.com/
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>Heading1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem
+      molestiae quibusdam expedita quos corrupti placeat quia autem dolorem quis
+      dolores nemo minus, sed, reprehenderit cumque vel? Et, quia impedit?
+    </p>
+    <a href="#">Link</a>
+  </body>
+</html>
+
+
+----css----
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2rem; /*mobile first approach*/
+}
+
+@media screen and (min-width: 500px) {
+  html {
+    font-size: 130%;
+  }
+}
+
+
+--------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>Heading1</h1>
+    <h2>Heading2</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem
+      molestiae quibusdam expedita quos corrupti placeat quia autem dolorem quis
+      dolores nemo minus, sed, reprehenderit cumque vel? Et, quia impedit?
+    </p>
+    <a href="#">Link</a>
+  </body>
+</html>
+
+
+----css----
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2rem; /*mobile first approach*/
+}
+
+h1 {
+  font-size: 2.986rem;
+}
+
+h2 {
+  font-size: 2.488rem;
+}
+
+@media screen and (min-width: 500px) {
+  html {
+    font-size: 130%;
+  }
+}
+
+
+
+--------------------🎯-Vertical-Spacing-🎯--------------------
+Vertical Spacing:
+
+1- margin 
+2- line height
+
+Low of Proximity:
+Objects that are closer are perceived to be related.
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>1-Heading1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem
+      molestiae quibusdam expedita quos corrupti placeat quia autem dolorem quis
+      dolores nemo minus, sed, reprehenderit cumque vel? Et, quia impedit?
+    </p>
+    <h1>2-Heading1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem
+      molestiae quibusdam expedita quos corrupti placeat quia autem dolorem quis
+      dolores nemo minus, sed, reprehenderit cumque vel? Et, quia impedit?
+    </p>
+    <a href="#">Link</a>
+  </body>
+</html>
+
+
+---css---
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem; /* ✅ we usually select this 1.5 rem*/
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2rem; /*mobile first approach*/
+}
+
+h1 {
+  ✅ margin: 3rem 0 1rem;
+}
+
+@media screen and (min-width: 500px) {
+  html {
+    font-size: 130%;
+  }
+}
+
+
+
+In this CSS setup, if we change the font-size in the future, 
+the spacing between lines (line-height) may become too tight or too wide — 
+since it's set to a fixed value (e.g., 1.5rem).
+To avoid this issue, it's better to use a unitless multiplier
+ for line-height, like 1.5. This way, the line height automatically scales with the font size.
+
+For example, if the font-size is 1rem, 
+the line-height will be 1.5 × 1rem = 1.5rem. If the font size 
+increases to 1.3rem, the line height becomes 1.95rem — keeping the spacing proportional and consistent.
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  ✅ line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2rem; /*mobile first approach*/
+}
+
+h1 {
+  margin: 3rem 0 1rem;
+}
+
+
+
+--------------------🎯-Horizontal-Spacing-🎯--------------------
+
+Horizontal Spacing:
+
+1- letter-spacing
+2 - word-spacing
+3- width
+
+
+body {
+  margin: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 1px; /* we do perfer px in letter-spacing */
+  word-spacing: 5px;
+}
+‼️ to decrease the default we can use negetive numbers
+
+
+
+How many characters should we have in our line so the user can read easily our text ❓ 
+
+Ideal Line Length between 50-70 lines. ✅
+
+
+What does 50ch mean ❓
+- ch stands for character unit.
+- 50ch means "the width of 50 zero characters (0)" in the current font.
+
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 50ch; ✅
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2rem; /*mobile first approach*/
+}
+
+h1 {
+  margin: 3rem 0 1rem;
+}
+
+
+--------------------🎯-FORMATTING-TEXT-🎯--------------------
+
+
+FORMATTING TEXT
+
+- text-align
+- text-indent text-decoration
+- text-transform
+- white-space column-*
+- direction
+
+
+| **Property**      | **Description**                                                                     | **Common Values**                                                           |
+| ----------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `text-align`      | Aligns the text horizontally within its container.                                  | `left`, `right`, `center`, `justify`, `start`, `end`                        |
+| `text-indent`     | Indents the first line of a text block.                                             | e.g., `20px`, `2em`, `5%`                                                   |
+| `text-decoration` | Adds or removes decorations to/from text.                                           | `none`, `underline`, `overline`, `line-through`, `underline wavy red`, etc. |
+| `text-transform`  | Controls capitalization of text.                                                    | `uppercase`, `lowercase`, `capitalize`, `none`                              |
+| `white-space`     | Defines how white space inside an element is handled.                               | `normal`, `nowrap`, `pre`, `pre-wrap`, `pre-line`, `break-spaces`           |
+| `column-*`        | A group of properties to style multi-column text layout.                            | `column-count`, `column-width`, `column-gap`, `column-rule`, etc.           |
+| `direction`       | Sets the text direction. Usually used for supporting right-to-left (RTL) languages. | `ltr` (left to right), `rtl` (right to left)                                |
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>1-Heading1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem
+      molestiae quibusdam expedita quos corrupti placeat quia autem dolorem quis
+      dolores nemo minus, sed, reprehenderit cumque vel? Et, quia impedit?
+    </p>
+    <a href="#">Link</a>
+  </body>
+</html>
+
+
+-------css-------
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+}
+
+p {
+  width: 50ch;
+  text-align: left;
+  text-indent: 1rem;
+  text-decoration: underline; /* line-through */
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 3px solid gold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+------------------------
+column-count:
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+  direction: ltr; ✅
+}
+
+p {
+  width: 50ch;
+  column-count: 2; ✅
+  column-gap: 1rem; ✅
+  column-rule: 3px dotted #999; ✅
+}
