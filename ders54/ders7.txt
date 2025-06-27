@@ -1,0 +1,668 @@
+--------------------🎯-FORMATTING-TEXT-🎯--------------------
+
+
+FORMATTING TEXT
+
+- text-align
+- text-indent text-decoration
+- text-transform
+- white-space column-*
+- direction
+
+
+| **Property**      | **Description**                                                                     | **Common Values**                                                           |
+| ----------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `text-align`      | Aligns the text horizontally within its container.                                  | `left`, `right`, `center`, `justify`, `start`, `end`                        |
+| `text-indent`     | Indents the first line of a text block.                                             | e.g., `20px`, `2em`, `5%`                                                   |
+| `text-decoration` | Adds or removes decorations to/from text.                                           | `none`, `underline`, `overline`, `line-through`, `underline wavy red`, etc. |
+| `text-transform`  | Controls capitalization of text.                                                    | `uppercase`, `lowercase`, `capitalize`, `none`                              |
+| `white-space`     | Defines how white space inside an element is handled.                               | `normal`, `nowrap`, `pre`, `pre-wrap`, `pre-line`, `break-spaces`           |
+| `column-*`        | A group of properties to style multi-column text layout.                            | `column-count`, `column-width`, `column-gap`, `column-rule`, etc.           |
+| `direction`       | Sets the text direction. Usually used for supporting right-to-left (RTL) languages. | `ltr` (left to right), `rtl` (right to left)                                |
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>1-Heading1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem
+      molestiae quibusdam expedita quos corrupti placeat quia autem dolorem quis
+      dolores nemo minus, sed, reprehenderit cumque vel? Et, quia impedit?
+    </p>
+    <a href="#">Link</a>
+  </body>
+</html>
+
+
+-------css-------
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+}
+
+p {
+  width: 50ch;
+  text-align: left;
+  text-indent: 1rem;
+  text-decoration: underline; /* line-through */
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 3px solid gold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+------------------------
+column-count:
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 5px;
+  direction: ltr; ✅
+}
+
+p {
+  width: 50ch;
+  column-count: 2; ✅
+  column-gap: 1rem; ✅
+  column-rule: 3px dotted #999; ✅
+}
+
+
+
+
+--------------------🎯-🎯-🎯-🎯-🎯-🎯-🎯-🎯-🎯--------------------
+                              IMAGES
+--------------------🎯-🎯-🎯-🎯-🎯-🎯-🎯-🎯-🎯--------------------
+
+
+
+
+
+--------------------🎯-Image-Types-and-Formats-🎯--------------------
+
+There are 2 types of images 
+1 - Raster (Images)
+2- Vector (icons, logs, graphics)
+
+
+1- JPG, PNG, GIF, ...
+More pixels = More larger files
+
+
+2-Created in software : Adobe illustrator
+format: SVG (Scalable Vector Graphics)
+
+| **Format** | **Colors** | **Transparency**  |  **Animation** |
+| ---------- | ---------- | ----------------  | -------------- |
+| **JPEG**   | 16M        | ❌                | ❌             |
+| **GIF**    | 256        | ✅                | ✅             |
+| **PNG**    | 16M        | ✅                | ❌             |
+| **WebP**   | 16M        | ✅                | ✅             |
+
+
+
+--------------------🎯-Content-Images-🎯--------------------
+
+‼️ When our image is only for decorative purposes
+we should leave the alt blank, otherwise blind people will read the name of the file.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img src="images/line.jpg" alt="" />
+  </body>
+</html>
+
+----css---
+
+body {
+  margin: 5px;
+  direction: ltr;
+}
+
+--------------------------------------------------
+❗️If we scale up a raster image (like a photo), it will appear blurry.
+This happens because raster images are made of pixels, and enlarging 
+them stretches those pixels, reducing image quality.
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img class="meal" src="images/meal.jpg" alt="" />
+  </body>
+</html>
+
+---css---
+
+body {
+  margin: 5px;
+  direction: ltr;
+}
+
+.meal {
+  width: 100vh;
+}
+
+‼️ if the photo dose not scale up then close the developer mode
+
+--------------------🎯-Background-Images-🎯--------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body></body>
+</html>
+
+---css---
+background-repeat:
+-  repeat-y
+-  repeat-x
+
+
+body {
+  background: url(../images/bg-paper.jpg);
+  background-repeat: no-repeat;
+}
+
+--------
+‼️ background-position: 100% 200px;
+This will push background to the right side of the container
+
+body {
+  background: url(../images/bg-paper.jpg);
+  background-repeat: no-repeat;
+  ✅ background-position: 100px 200px; /* 100px to right 200 px down*/
+}
+
+----
+
+‼️ background-size: 100% 200px
+this will stretches the image through the width
+
+body {
+  background: url(../images/bg-paper.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 200px;
+}
+
+----
+
+‼️ background-size: 100% 100%
+because the body is a block level element
+and the height of the block element by default is 0
+so they get tall enough to fit content
+that said if our body was empty then the our height is 0
+
+
+body {
+  background: url(../images/bg-paper.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  ✅ height: 100vh;
+}
+
+
+body {
+  background: url(../images/bg-paper.jpg);
+  background-repeat: no-repeat;
+  ✅ background-size: cover;
+  height: 100vh;
+}
+
+---
+
+❌ because our background is now very blury 
+we change our background to bg-paper@2x.jpg which is
+2x bigger.
+
+body {
+  ✅ background: url(../images/bg-paper@2x.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+----
+‼️ if i do change the height to 300vh 
+then the background image will overflow
+and i can scroll the background
+
+body {
+  background: url(../images/bg-sanfrancisco.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300vh;
+}
+
+in this case i can use background-attachment: fixed;
+now our background is fixed reletive to the viewport
+
+body {
+  background: url(../images/bg-sanfrancisco.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  ✅ background-attachment: fixed;
+  height: 300vh;
+}
+ 
+--------------------🎯-CSS-Sprites-🎯--------------------
+CSS Sprites: küme görselleri
+
+CSS Sprites is a technique used in web development to optimize the 
+loading of images on a website. It involves combining multiple small 
+images into a single larger image file (sprite sheet) and then using 
+CSS to display only the specific portion of that image where needed.
+
+🔗  https://www.flaticon.com/
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img src="images/dishes.png" alt="" />
+    <img src="images/landing.png" alt="" />
+    <img src="images/rocketship.png" alt="" />
+    <img src="images/saturn.png" alt="" />
+    <img src="images/ufo.png" alt="" />
+  </body>
+</html>
+
+
+When a web page uses many separate images, the browser must make an HTTP request for 
+each image. This can be expensive in terms of performance, especially when loading many
+small icons or graphics. You can see this in action by opening 
+Chrome Developer Tools > Network tab 
+ou’ll notice multiple image requests being made.
+To solve this issue, we use CSS Sprites. 
+
+
+
+🔗 https://cssspritestool.com/
+
+Now I pick the photso that I want to use 
+then upload to the link given and only change the 
+✅ CSS Class Prefix: bg- 
+then download the generated photos 
+now we are going to use the combined.png image and the css that comes with it.
+
+----------------------------
+
+‼️ Let's first arrange our css and then set up our html
+
+.bg-dishes {
+  background: url('../images/css-sprite-combined.png') 0px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.bg-landing {
+  background: url('../images/css-sprite-combined.png') -100px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.bg-rocketship {
+  background: url('../images/css-sprite-combined.png') -200px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.bg-saturn {
+  background: url('../images/css-sprite-combined.png') -300px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.bg-ufo {
+  background: url('../images/css-sprite-combined.png') -400px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+-----html-----
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <span class="bg-dishes"></span>
+    <span class="bg-landing"></span>
+    <span class="bg-rocketship"></span>
+    <span class="bg-saturn"></span>
+    <span class="bg-ufo"></span>
+  </body>
+</html>
+
+
+‼️ Where we should use these images ?
+for small images like icons,logs ...
+
+
+--------------------🎯-Data-URLs-🎯--------------------
+
+Data URLs are another optimization technique used to reduce the number of HTTP requests.
+Instead of loading an image as a separate file, this method allows you to embed the image 
+directly into an HTML document or a CSS stylesheet using a base64-encoded string. 
+This can help improve performance, especially for small images like icons or background textures.
+
+
+
+🔗 https://www.cssportal.com/image-to-data/
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img
+      alt=""
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFGmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0MzUyLCAyMDIwLzAxLzMwLTE1OjUwOjM4ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMTAtMDdUMDY6NDA6MjYtMDc6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIwLTEyLTA2VDEwOjE2OjA0LTA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIwLTEyLTA2VDEwOjE2OjA0LTA4OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOmM3M2JmNGYwLTMxNzAt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"
+    />
+  </body>
+</html>
+
+
+‼️ In DevTools, if we reload the page, we’ll see that the browser does not send a separate HTTP
+request for the image — because it's already embedded directly in the HTML or CSS as a data URL.
+This confirms that data URLs help eliminate extra network requests for those embedded assets.
+
+(Time: 0 sec)
+
+❌ Size gets bigger as showen in the cssportal.com
+❌ Hard to change the images
+❌ Slow on mobiles
+
+
+--------------------🎯-Clipping-🎯--------------------
+
+🔗 https://bennettfeely.com/clippy/
+
+Clipping: 
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img src="images/meal.jpg" alt="" class="meal" />
+  </body>
+</html>
+
+
+-----css-----
+
+body {
+}
+
+.meal {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+
+--------------------🎯-Filters-🎯--------------------
+Filters:
+
+- grayscale ✅
+- blur ✅
+- contrast
+- brightness saturate
+
+‼️ we only cover 2 but you can search for them in google.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img src="images/meal.jpg" alt="" class="meal" />
+  </body>
+</html>
+
+---css---
+
+.meal:hover {
+  filter: grayscale(30%) blur(3px);
+}
+
+
+--------------------🎯-Supporting-High•density-Screens-🎯--------------------
+
+Mac - iphone
+Scale-Factor: 2x
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img src="images/meal.jpg" alt="a bowl of salmon" class="meal" />
+    <img
+      src="images/meal.jpg"
+      alt="a bowl of salmon"
+      class="meal"
+      srcset="images/meal.jpg 1x, images/meal@2x.jpg 2x, images/meal@3x.jpg 3x"
+    />
+  </body>
+</html>
+
+
+---css---
+
+.meal {
+  width: 400px;
+  height: auto;
+}
+
+
+| **Label**                | **Value** |
+| ------------------------ | --------- |
+| Physical resolution      | 960 × 640 |
+| Logical resolution       | 480 × 320 |
+| Device Pixel Ratio (DPR) | 2         |
+| High Density             | DPR > 1   |
+
+
+-------------------------------------------------------
+
+| **Device / Category**      | **Screen Resolution** | **Logical Resolution** | **DPR** |
+| -------------------------- | --------------------- | ---------------------- | ------- |
+| **MacBook Pro Retina**     | 2560×1600             | 1280×800               | 2       |
+| **iPhone 13**              | 2532×1170             | 844×390 (approx.)      | 3       |
+| **Standard HD Monitor**    | 1920×1080             | 1920×1080              | 1       |
+| **High-end Android Phone** | 3200×1440             | 1080×480 (approx.)     | 3       |
+| **4K Display (macOS)**     | 3840×2160             | 1920×1080              | 2       |
+| **2K Display**             | 2560×1440             | 2560×1440              | 1       |
+
+
+--------------------🎯-Using-Modern-Image-Formats-🎯--------------------
+
+🔗 https://cloudconvert.com/
+
+Using Modern Image Formats:
+
+WebP is a modern image format that helps reduce file size significantly
+while keeping quality nearly the same.
+By simply converting your images to WebP, you may see a slight drop in quality
+, but in return, you'll get much smaller file sizes, which leads to faster 
+load times and better performance.
+
+
+--------------------🎯-Art-Direction-🎯--------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <picture>
+      <source media="(max-width:600px)" srcset="images/meal-cropped.jpg" />
+      <source media="(min-width:601px)" srcset="images/meal.jpg" />
+      <img src="images/meal.jpg" alt="" />
+    </picture>
+  </body>
+</html>
+
+
+--------------------🎯-Scalable-Vector-Graphics-🎯--------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img src="images/ufo.svg" alt="" class="ufo" />
+  </body>
+</html>
+
+----css---
+
+body {
+  background: url(../images/constellation.svg);
+}
+
+.ufo {
+  width: 100px;
+}
+
+
+--------------------🎯-Font-Icons-🎯--------------------
+
+🔗 https://fontawesome.com/
+
+‼️ Create a kit then search for any icon from home page.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/3046e487f2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <i class="fa-solid fa-user fa-2x"></i>
+  </body>
+</html>
+
+------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/3046e487f2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <span class="icon">
+      <span class="fa-solid fa-user fa-2x"></span>
+    </span>
+  </body>
+</html>
+
+
+---css---
+
+
+.icon {
+  font-size: 2rem;
+  color: dodgerblue;
+}
