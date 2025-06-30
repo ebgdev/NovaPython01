@@ -1,0 +1,1072 @@
+ --------------------🎯-Creating-a-Basic-Form-🎯--------------------
+
+Creating a Basic Form :
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <form>
+      <p>Name</p> ❌ cok tercih etmeyiz cunku arada bosluk olusur.
+      <input type="text" />
+    </form>  
+  </body>
+</html>
+
+
+----dogru yontem----
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <form>
+      <label for="">Name</label> ✅
+      <input type="text" />
+    </form>
+  </body>
+</html>
+
+
+------------------
+Name yazisina tiklandiginda 
+form'un aktiflesmesi
+
+
+so we give an id for input and then 
+use that id to reference our input to our lable
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <form>
+      <label for="name">Name</label> 2️⃣
+      <input id="name" type="text" /> 1️⃣
+    </form>
+  </body>
+</html>
+ 
+
+-----------------------
+if we change the type to email 
+we get a basic validation for email in this section.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <form>
+      <label for="name">Name</label>
+      <input id="name" type="text" />
+      <label for="email">Email</label>
+      <input id="email" ✅ type="email" />
+    </form>
+  </body>
+</html>
+
+
+------------------------
+we rarely want to lay this fields vertically 
+so we can wrap them in a 
+div, paragraph , list item 
+
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" />
+      </div>
+    </form>
+  </body>
+</html>
+
+
+
+------------------------
+Now let's add submit and reset buttons
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" />
+      </div>
+      <button type="reset">Clear</button>
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>
+
+
+
+--------------------🎯-STYLING-FORMS-🎯--------------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <form>
+      <div class="form-gorup">
+        <label for="name">Name</label>
+        <input id="name" type="text" />
+      </div>
+      <div class="form-gorup">
+        <label for="email">Email</label>
+        <input id="email" type="email" />
+      </div>
+      <button type="reset">Clear</button>
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>
+
+
+---css---
+
+
+body {
+  margin-left: 3px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  line-height: 1.5;
+}
+
+label {
+  display: block;
+}
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem 0.7rem;
+}
+
+.form-gorup {
+  margin-bottom: 1rem;
+}
+
+
+---------------------
+We only want to apply these to text inputs so
+
+body {
+  margin-left: 3px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  line-height: 1.5;
+}
+
+label {
+  display: block;
+}
+
+
+
+✅ /* so we use attribute selectors  */
+input [type='text'],
+input[type='email'] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem 0.7rem;
+}
+
+.form-gorup {
+  margin-bottom: 1rem;
+}
+
+------------------------
+‼️ outline : 0 or none
+It removes the outline that browsers automatically apply 
+to elements (like buttons, inputs, links, etc.) when they 
+are focused (i.e., when clicked or accessed via keyboard/tabbing).
+
+‼️ box-shadow: 0 0 0 3px rgba(125, 176, 251, 0.3);
+
+
+input[type='text']:focus,
+input[type='email']:focus {
+  border-color: #7db0fb;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(125, 176, 251, 0.3);
+}
+
+-------------------------
+here when we switch between fields 
+the transition is so fast to make this 
+more smoother 
+
+✅  transition: border-color 0.5s, box-shadow 0.5s;
+
+body {
+  margin-left: 3px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  line-height: 1.5;
+}
+
+label {
+  display: block;
+}
+
+input[type='text'],
+input[type='email'] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem 0.7rem;
+  ✅ transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+input[type='text']:focus,
+input[type='email']:focus {
+  border-color: #7db0fb;
+  outline: 0;
+  /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+  box-shadow: 0 0 0 4px rgba(125, 176, 251, 0.4);
+}
+
+.form-gorup {
+  margin-bottom: 1rem;
+}
+
+-------------------------
+
+body {
+  margin-left: 3px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  line-height: 1.5;
+  padding: 1rem; ✅
+}
+
+label {
+  display: block;
+}
+
+✅ 
+button {
+  background: rgb(54, 54, 230);
+  color: white;
+  border: 0;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+  outline: none;
+  margin: 1rem auto;
+}
+
+input[type='text'],
+input[type='email'] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem 0.7rem;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+input[type='text']:focus,
+input[type='email']:focus {
+  border-color: #7db0fb;
+  outline: 0;
+  /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+  box-shadow: 0 0 0 4px rgba(125, 176, 251, 0.4);
+}
+
+.form-gorup {
+  margin-bottom: 1rem;
+}
+
+
+--------------------🎯-CSS-FRAMEWORKS-🎯--------------------
+
+css-frameworks are essentially a library of css code that we can 
+reuse to build beautiful morder looking websites.
+
+
+• Bootstrap
+• Foundation
+• Semantic UI
+• UI Kit
+• Materialize
+• Milligram
+
+
+Let's first look at Bootstrap
+first we copy jsDelivr links to our head
+
+🔗 https://getbootstrap.com/docs/4.0/getting-started/download/
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+---HTML---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <form>
+      <div class="form-gorup">
+        <label ✅ class="form-label" for="name">Name</label>
+        <input ✅ class="form-control" id="name" type="text" />
+      </div>
+      <div class="form-gorup">
+        <label ✅ class="form-label for="email">Email</label>
+        <input ✅ class="form-control" id="email" type="email" />
+      </div>
+      <button ✅ class="btn btn-primary" type="reset">Clear</button>
+      <button ✅ class="btn btn-secondary" type="submit">Register</button>
+    </form>
+  </body>
+</html>
+
+
+
+
+-------------------------
+But our form element gets the entire width
+How to fix this ?
+
+1️⃣✅ <form class="w-50"> --> %50 of width
+
+
+And also the lables are so tight to eachother
+How to fix this ?
+
+change both of the 
+2️⃣✅ <div class="form-gorup"> to <div class="mb-3"> (margin-bottom-3)
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <form class="w-50"> 1️⃣✅
+      <div class="mb-3"> 2️⃣✅
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" id="name" type="text" />
+      </div>
+      <div class="mb-3"> 2️⃣✅
+        <label class="form-label for="email">Email</label>
+        <input class="form-control" id="email" type="email" />
+      </div>
+      <button class="btn btn-primary" type="reset">Clear</button>
+      <button class="btn btn-secondary" type="submit">Register</button>
+    </form>
+  </body>
+</html>
+
+
+-------------------------
+So, is Bootstrap good or bad?
+It depends:
+
+✅ Good:
+Speeds up the building and design process
+Easy to use, especially for beginners
+
+❌ Bad:
+Can slow down your site (because of extra HTTP requests)
+Adds unnecessary files if you're only using a small part of it
+
+👨‍🔬 Tip:
+You can check this in Chrome DevTools:
+Right-click your page > Inspect
+Go to the Network tab
+Filter by CSS to see all the styles being loaded
+
+
+-------------------------
+So, is there a faster and more minimalist alternative to Bootstrap?
+
+✅ Yes: Milligram
+Lightweight and super minimal
+Works right out of the box
+No need to add a bunch of classes to every element
+Great for clean, fast-loading websites
+
+Content delivery networks (CDN) :
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+---HTML---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link ✅
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" />
+      </div>
+      <button type="reset">Clear</button>
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>
+
+
+
+--------------------🎯-Text-Fields-🎯--------------------
+
+Let's look at input elemnt by milligram
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input type="text" />
+      <input type="number" />
+      <!-- good for tablet and phones -->
+
+      <input type="password" />
+
+      <input type="date" />
+      <input type="email" />
+    </form>
+  </body>
+</html>
+
+----css----
+
+form {
+  width: 50%;
+  padding: 2rem;
+}
+
+
+------------------------------------
+What if we want to type lots of lines ?
+<textarea cols="30" rows="10"></textarea>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input type="text" />
+      <input type="number" />
+      <!-- good for tablet and phones -->
+
+      <input type="password" />
+
+      <input type="date" />
+      <input type="email" />
+      <textarea cols="30" rows="10"></textarea> ✅
+    </form>
+  </body>
+</html>
+
+
+----css----
+to stop resizing texstarea
+
+
+form {
+  width: 50%;
+  padding: 2rem;
+}
+
+textarea {
+  resize: none; ✅
+}
+
+
+
+---------------------------------
+value property in inputs
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input type="text" />
+
+      <input type="number" />
+      <!-- ✅Input type="number": Shows numeric keypad on mobile/tablet -->
+
+      <input type="password" />
+      <!-- ✅Input type="password": Hides user input for security -->
+
+      <input type="date" />
+      <!-- ✅Input type="date": Displays a date picker -->
+
+      <input type="email" value="ebgdev@proton.me" />
+      <!-- ✅'value' attribute: Sets a default, pre-filled value -->
+
+      <input type="email" placeholder="Email" />
+      <!-- ✅'placeholder' attribute: Shows a hint that disappears when typing -->
+
+      <input type="email" readonly value="google.support@gmail.com" />
+      <!-- ✅'readonly': User can copy the value, but cannot edit it.
+         The value WILL be submitted with the form. -->
+
+      <input type="email" disabled value="google.support@gmail.com" />
+      <!-- ✅'disabled': Field is visible but not editable or focusable.
+         The value will NOT be submitted with the form. -->
+
+      <textarea></textarea>
+      <!-- ✅Textarea: For multi-line text input -->
+    </form>
+  </body>
+</html>
+
+----css----
+form {
+  width: 50%;
+  padding: 2rem;
+}
+
+textarea {
+  resize: none;
+}
+
+
+
+
+------------------------------------
+‼️ maxlength , autofocus , write into textarea insted of value
+because there is no value property for textarea
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <!-- maxlength for validation: cannot enter more than 15 chars -->
+      <!-- autofocus: when the page loads this filed gets auto focus (selected) -->
+      <input type="email" maxlength="15" autofocus /> ✅
+      <textarea>Comments ...</textarea> ✅
+      <!-- Textarea: For multi-line text input -->
+    </form>
+  </body>
+</html>
+
+
+
+
+--------------------🎯-Data-Lists-🎯--------------------
+
+Data Lists:
+
+If we want to provide a list of suggestions when the user
+types something into this text field
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input list="countries" type="email" autocomplete="off" /> 2️⃣✅
+      <datalist id="countries"> 1️⃣✅
+        <option value="1">Turkiye</option> 3️⃣
+        <option data-value="2">Cadana</option>
+        <option data-value="3">Germany</option>
+        <option data-value="4">India</option>
+      </datalist>
+    </form>
+  </body>
+</html>
+
+‼️3️⃣ if we dont want to show the value that going to sent to server
+we can use data-value and then grap that with js
+
+
+--------------------🎯-Drop-Down-Lists-🎯--------------------
+id is for connect to other elements
+name is like key in dicts
+and value is the actual thing that will sent to server as a value for pair.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <select name="" id="">
+        <option>Select a Course...</option>
+        <option value="1">HTML</option>
+        <option value="2">CSS</option>
+        <option value="3">Python</option>
+        <option value="4">JavaScript</option>
+        <option value="5">Postgresql</option>
+      </select>
+    </form>
+  </body>
+</html>
+
+
+-----------------------
+‼️ We also can use a selected boolean property
+to select a default value
+
+<option value="1" selected>HTML</option> ✅
+
+
+-----------------------
+‼️ We can also let the user to select 
+multiple (boolean so no need to assign)
+options.
+
+    <form>
+      <select name="" id="" multiple> ✅
+        <option>Select a Course...</option>
+        <option value="1" selected>HTML</option>
+        <option value="2">CSS</option>
+        <option value="3">Python</option>
+        <option value="4">JavaScript</option>
+        <option value="5">Postgresql</option>
+      </select>
+    </form>
+
+-----------------------
+✅ optgroup : We also can categories/group the drop-down-list
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <select name="" id="">
+        <option>Select a Course...</option>
+        <optgroup label="Front-end Courses"> ✅
+          <option value="1">HTML</option>
+          <option value="2">CSS</option>
+          <option value="4">JavaScript</option>
+        </optgroup>
+        <optgroup label="Back-end Courses"> ✅
+          <option value="3">Python</option>
+          <option value="5">Django</option>
+          <option value="5">Postgresql</option>
+        </optgroup>
+      </select>
+    </form>
+  </body>
+</html>
+
+
+
+--------------------🎯-Check-Boxes-🎯--------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input type="checkbox" id="front-end" />
+      <label for="front-end">Front End</label>
+    </form>
+  </body>
+</html>
+
+-------------------
+❌ But miligram puts the label at the bottom of the checkbox
+we can see in inspect mode that miligram applies the display --> block
+
+✅ Here is how to fix it:
+
+https://milligram.io/#forms
+
+<form>
+  <input type="checkbox" id="front-end" />
+  <label class="label-inline" for="front-end">Front End</label> ✅
+</form>
+
+
+--------------------
+To stack them vertically we should use a wrapper
+• checked 
+• disabled
+
+‼️ input:checkout --> <input type="checkbox" name="" id="">
+
+    <form>
+      <div> ✅
+        <input type="checkbox" id="front-end" />
+        <label class="label-inline" for="front-end">Front End</label>
+      </div>
+      <div> ✅
+        <input type="checkbox" id="back-end" checked ✅ disabled />
+        <label class="label-inline" for="back-end">Backend End</label>
+      </div>
+    </form>
+
+
+--------------------🎯-Radio-Buttons-🎯--------------------
+How to make user to select only one item of the checkboxes ?
+
+input:radio
+label.lable-inline
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body> ••••••••••••••••••••••••
+    <form>
+      <div>
+        <input type="radio" name="membership" id="free" checked /> ✅
+        <label for="free" class="label-inline">Free</label>
+      </div>
+      <div>
+        <input type="radio" name="membership" id="gold" /> ✅
+        <label for="gold" class="label-inline">Gold</label>
+      </div>
+    </form>
+  </body> ••••••••••••••••••••••••
+</html>
+
+
+--------------------🎯-Sliders-🎯--------------------
+
+slider with default value of 80:
+‼️ Note: to monitor the current value while changes heppining
+we should use js.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input type="range" min="0" min="100" value="80" />
+    </form>
+  </body>
+</html>
+
+--------------------🎯-File-Inputs-🎯--------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input type="file" multiple accept=".jpg ,.png" id="images" />
+      <input type="file" multiple accept="image/*" />
+      <input type="file" multiple accept="video/*" />
+      <input type="file" multiple accept="audio/*" />
+    </form>
+  </body>
+</html>
+
+
+
+--------------------🎯-Grouping-Related-Fields-🎯--------------------
+
+1️⃣✅<section><h2>
+2️⃣✅<fieldset><legend>
+‼️ Both can be used.
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <section> 1️⃣✅
+        <h2>Billing Address</h2>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+      </section>
+      <fieldset> 2️⃣✅
+        <legend>Payment</legend>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+      </fieldset>
+  </body>
+</html>
+
+
+--------------------🎯-Hidden-Fields-🎯--------------------
+
+Hidden fields are useful only for non-sensitive data that needs
+to persist across form submissions without displaying it to the user.
+
+‼️ this data is accessible from chrome > view page source
+
+<form>
+  <input type="hidden" name="course-id" value="1234" />
+</form>
+
+
+--------------------🎯-Data-Validation-🎯--------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form>
+      <input type="text" required minlength="3" maxlength="10" />
+      <input type="number" min="0" max="10" />
+      <input type="email" name="" id="" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
+
+
+--------------------🎯-Submitting-Forms-🎯--------------------
+
+https://formspree.io/
+we can use this instead of our back-end technology.
+
+1- Create account
+2- Verify account
+3- Create a form : ContactForm
+4- Copy the given url to form action
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </head>
+  <body>
+    <form action="https://formspree.io/f/mdkzbnzl" method="POST"> ✅
+      <input type="text" placeholder="Name" name="name" id="" />
+      <input type="email" placeholder="Email" name="email" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
