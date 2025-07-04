@@ -1,18 +1,18 @@
 # def hello():
 #     return("hellooooooooooo")
 
-# great = hello
-# print(great)
+# greet = hello
+# print(greet)
 
 # # <function hello at 0x102aa1440>
 
-# great = hello()
-# print(great)
+# greet = hello()
+# print(greet)
 
 # # hellooooooooooo
 
 # del hello
-# print(great)
+# print(greet)
 
 # # hellooooooooooo
 
@@ -27,8 +27,8 @@
 # print(a)
 
 # # what we done here is we call the function hello 
-# # with an argument of great which also is a function
-# # and the the function great will call.
+# # with an argument of greet which also is a function
+# # and the the function greet will call.
 
 # -----------------------------
 # # Higher Order Function --> HOC
