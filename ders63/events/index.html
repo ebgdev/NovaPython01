@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+      }
+      body,
+      div {
+        display: flex;
+        justify-content: center; /*Aligns child elements horizontally */
+        align-items: center; /*Aligns child elements vertically */
+      }
+      .grandparent {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+      .parent {
+        width: 130px;
+        height: 130px;
+        background-color: blue;
+      }
+      .child {
+        width: 60px;
+        height: 60px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grandparent">
+      <div class="parent">
+        <div class="child"></div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
