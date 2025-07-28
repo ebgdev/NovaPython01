@@ -450,7 +450,7 @@ const video = {
     // because the value of this changes when a new function is called.
     const self = this;
     this.tags.forEach(function (tag) {
-      console.log(this.title, tag);
+      console.log(self.title, tag);
     });
   },
 };
