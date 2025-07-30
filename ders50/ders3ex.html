@@ -1,5 +1,4 @@
 ----------Relational-Selectors-CSS-section-3.2------------
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,10 +17,23 @@
   </body>
 </html>
 
----css--- body { margin: 10px; } #products { font-weight: bold; }
-.product_detail { color: green; }
+---css--- 
+
+body {
+  margin: 10px;
+}
+
+#products {
+  font-weight: bold;
+}
+
+.product_detail {
+  color: green;
+}
+
 
 <!-- ---------------------------------------- -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,12 +56,47 @@
   </body>
 </html>
 
----css--- body { margin: 10px; } #products { font-weight: bold; }
-.product_detail { color: green; } /* select all the anchor elements that have
-target attribute */ a[target] { color: red; } /* we can also explicit about the
-*/ a[target='_self'] { color: blue; } a[href="https://www.geeksforgeeks.org"] {
-color: aqua; } a[href^='https'] { } a[href^="https"][href$=".com"] { }
+
+---css--- 
+
+body {
+  margin: 10px;
+}
+
+#products {
+  font-weight: bold;
+}
+
+.product_detail {
+  color: green;
+}
+
+/* select all the anchor elements that have target attribute */
+a[target] {
+  color: red;
+}
+
+/* we can also explicit about the  */
+a[target='_self'] {
+  color: blue;
+}
+
+a[href="https://www.geeksforgeeks.org"]
+{
+  color: aqua;
+}
+
+a[href^='https'] {
+
+}
+
+a[href^="https"][href$=".com"] {
+  
+}
+
+
 ----------Relational-Selectors-CSS-section-3--------------------
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,14 +129,38 @@ color: aqua; } a[href^='https'] { } a[href^="https"][href$=".com"] { }
   </body>
 </html>
 
-body { margin: 10px; } /* descendent selector */ /* #products p { color: orange;
-} */ /* select direct child */ /* #products > p { color: orange; } */ /*
-selecting sibling */ /* this will apply to the p element that first comes
-immediately after the product */ /* #products + p { color: orange; } */
-#products ~ p { color: orange; }
+
+body {
+  margin: 10px;
+}
+
+/* descendent selector */
+
+/* #products p {
+  color: orange;
+} */
+
+/* select direct child */
+/* #products > p {
+  color: orange;
+} */
+
+/* selecting sibling */
+/* this will apply to the p element that first comes immediately after the product */
+/* #products + p {
+  color: orange;
+} */
+
+#products ~ p {
+  color: orange;
+}
+
+
 ----------Pseudo-Class-Selectors-CSS-section-4-------------------
-################################### pseudo classes are not real classes that we
-defined, their classes that browsers applied by default.
+
+###################################
+pseudo classes are not real classes that we defined, their classes that browsers
+applied by default.
 
 <!--  -->
 <!DOCTYPE html>
@@ -108,9 +179,23 @@ defined, their classes that browsers applied by default.
   </body>
 </html>
 
----css--- body { margin: 10px; } .first { font-size: 140%; font-style: italic;
-color: blueviolet; } ################################### but these are
-unnecessary. let me give an example:
+
+---css---
+
+body {
+  margin: 10px;
+}
+
+.first {
+  font-size: 140%;
+  font-style: italic;
+  color: blueviolet;
+}
+
+
+###################################
+but these are unnecessary.
+let me give an example:
 
 <!--  -->
 <!DOCTYPE html>
@@ -129,10 +214,23 @@ unnecessary. let me give an example:
   </body>
 </html>
 
----css--- body { margin: 10px; } article :first-child { font-size: 140%;
-font-style: italic; color: blueviolet; } ################################### we
-call this pseudo class selector. so if i change the first child to heading the
-heading will become first-child
+
+---css---
+
+body {
+  margin: 10px;
+}
+
+article :first-child {
+  font-size: 140%;
+  font-style: italic;
+  color: blueviolet;
+}
+
+###################################
+we call this pseudo class selector.
+so if i change the first child to heading
+the heading will become first-child
 
 <!--  -->
 <!DOCTYPE html>
@@ -152,10 +250,24 @@ heading will become first-child
   </body>
 </html>
 
----css--- body { margin: 10px; } article:first-child { | article:first-of-type {
-font-size: 140%; | font-size: 140%; font-style: italic; | font-style: italic;
-color: blueviolet; | color: blueviolet; } | } #### we also have last-child and
-last-of-type ##########################
+---css---
+
+body {
+  margin: 10px;
+}
+
+article:first-child {           |   article:first-of-type {
+  font-size: 140%;              |     font-size: 140%;
+  font-style: italic;           |     font-style: italic;
+  color: blueviolet;            |     color: blueviolet;
+}                               |   }
+
+
+####
+we also have last-child and last-of-type
+
+
+##########################
 
 <!--  -->
 <!DOCTYPE html>
@@ -180,10 +292,19 @@ last-of-type ##########################
   </body>
 </html>
 
----css--- body { | body { | body { margin: 10px; | margin: 10px; | margin: 10px;
-} | } | } ul li:nth-child(even) { | ul li:nth-child(odd) { | ul li:nth-child(3n)
-{ color: deeppink; | color: deeppink; | color: deeppink; } | } | }
+
+---css---
+
+body {                           |   body {                           |   body {
+  margin: 10px;                  |     margin: 10px;                  |     margin: 10px;
+}                                |   }                                |   }
+
+ul li:nth-child(even) {          |   ul li:nth-child(odd) {           |   ul li:nth-child(3n) {
+  color: deeppink;               |     color: deeppink;               |     color: deeppink;
+}                                |   }                                |   }
+
 ######################################
+
 
 <!--  -->
 <!DOCTYPE html>
@@ -200,12 +321,37 @@ last-of-type ##########################
   </body>
 </html>
 
----css--- body { margin: 10px; } a:link { color: green; } a:visited { color:
-blueviolet; } a:hover { color: red; text-decoration: underline;
-background-color: yellow; } a:focus { outline: 3px solid orange; }
-----------Pseudo-element-Selectors-CSS-section-5------------------- Let's say we
-want the first letter of our paragraph to be capitalized and styled to appear
-slightly larger.
+
+---css---
+
+body {
+  margin: 10px;
+}
+
+a:link {
+  color: green;
+}
+
+a:visited {
+  color: blueviolet;
+}
+
+a:hover {
+  color: red;
+  text-decoration: underline;
+  background-color: yellow;
+}
+
+
+a:focus {
+  outline: 3px solid orange;
+}
+
+
+----------Pseudo-element-Selectors-CSS-section-5-------------------
+
+Let's say we want the first letter of our paragraph to be 
+capitalized and styled to appear slightly larger.
 
 <!--  -->
 <!DOCTYPE html>
@@ -226,8 +372,23 @@ slightly larger.
   </body>
 </html>
 
----css--- body { margin: 10px; } .first-letter { font-size: 140%; font-weight:
-bold; } ######## but this is unnecessary
+
+
+
+---css---
+
+body {
+  margin: 10px;
+}
+
+.first-letter {
+  font-size: 140%;
+  font-weight: bold;
+}
+
+
+########
+but this is unnecessary
 
 <!--  -->
 <!DOCTYPE html>
@@ -248,10 +409,35 @@ bold; } ######## but this is unnecessary
   </body>
 </html>
 
----css--- body { margin: 10px; } p::first-letter { font-size: 140%; font-weight:
-bold; } Question : what is the difference between pseudo-element and
-pseudo-classes ? elements: to style part of an element ex: first letter class:
-to style elements in a particular state ex: a in hover mode
+---css---
+
+
+body {
+  margin: 10px;
+}
+
+p::first-letter {
+  font-size: 140%;
+  font-weight: bold;
+}
+
+
+
+
+
+Question : 
+what is the difference between pseudo-element and pseudo-classes ? 
+
+elements:
+to style part of an element
+ex: first letter
+
+class:
+to style elements in a particular state
+ex: a in hover mode
+
+
+
 
 <!--  -->
 <!DOCTYPE html>
@@ -272,11 +458,34 @@ to style elements in a particular state ex: a in hover mode
   </body>
 </html>
 
----css--- body { margin: 10px; } p::first-letter { font-size: 140%; font-weight:
-bold; } p::first-line { font-weight: bold; } the entire first line is bold ‼️
-Notice: if we select a text in our browser by default it the background becomes
-blue we also can change that (this will only works for paragraphs). p::selection
-{ background-color: coral; }
+---css---
+
+body {
+  margin: 10px;
+}
+
+p::first-letter {
+  font-size: 140%;
+  font-weight: bold;
+}
+
+p::first-line {
+  font-weight: bold;
+}
+
+the entire first line is bold
+
+‼️ Notice: if we select a text in our browser
+by default it the background becomes blue
+we also can change that (this will only works for paragraphs).
+
+
+p::selection {
+  background-color: coral;
+}
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -297,9 +506,28 @@ blue we also can change that (this will only works for paragraphs). p::selection
   </body>
 </html>
 
----css--- body { margin: 10px; } p::first-letter { font-size: 140%; font-weight:
-bold; } p::first-line { font-weight: bold; } ::selection { background-color:
-coral; } --------------
+---css---
+
+body {
+  margin: 10px;
+}
+
+p::first-letter {
+  font-size: 140%;
+  font-weight: bold;
+}
+
+p::first-line {
+  font-weight: bold;
+}
+
+::selection {
+  background-color: coral;
+}
+
+
+
+--------------
 
 <!--  -->
 <!DOCTYPE html>
@@ -328,15 +556,54 @@ coral; } --------------
   </body>
 </html>
 
----css--- body { margin: 10px; } p::first-letter { font-size: 140%; font-weight:
-bold; } p::first-line { font-weight: bold; } ::selection { background-color:
-coral; } /* convert the element from inline element to block level element */
-p::before { content: '...'; display: block; } p::after { content: '...';
-display: block; }
-----------Selector-Specificity-CSS-section-6------------------- CSS seçici
-özgüllüğü, bir stilin bir HTML öğesine uygulanıp uygulanmayacağını belirleyen
-puanlama sistemidir. 1- ID selector #products 2- Class & attribute selectors
-•products 3- Element selector section
+
+---css---
+
+body {
+  margin: 10px;
+}
+
+p::first-letter {
+  font-size: 140%;
+  font-weight: bold;
+}
+
+p::first-line {
+  font-weight: bold;
+}
+
+::selection {
+  background-color: coral;
+}
+
+/* convert the element from inline element to block level element */
+p::before {
+  content: '...';
+  display: block;
+}
+
+p::after {
+  content: '...';
+  display: block;
+}
+
+
+----------Selector-Specificity-CSS-section-6-------------------
+
+
+CSS seçici özgüllüğü, bir stilin bir HTML öğesine uygulanıp 
+uygulanmayacağını belirleyen puanlama sistemidir.
+
+
+1- ID selector 
+    #products
+
+2- Class & attribute selectors
+    •products
+
+3- Element selector 
+    section
+
 
 <!--  -->
 <!DOCTYPE html>
@@ -355,9 +622,27 @@ puanlama sistemidir. 1- ID selector #products 2- Class & attribute selectors
   </body>
 </html>
 
----css--- h1 { color: dodgerblue; } .highlight { color: deeppink; } Question:
-Peki sizce hangisi uygulanir ? (we can also see that in inspect method) ✅
-.highlight { color: deeppink; }
+
+---css---
+
+
+h1 {
+  color: dodgerblue;
+}
+
+.highlight {
+  color: deeppink;
+}
+
+
+Question: Peki sizce hangisi uygulanir ?
+(we can also see that in inspect method)
+✅
+.highlight {
+  color: deeppink;
+}
+
+
 
 <!--  -->
 <!DOCTYPE html>
@@ -376,68 +661,251 @@ Peki sizce hangisi uygulanir ? (we can also see that in inspect method) ✅
   </body>
 </html>
 
----css--- h1 { color: dodgerblue; } .highlight { color: deeppink; } #products {
-color: green; } ✅ ans: #products { color: green; } ------------------------ in
-vscode when we hover over the css selector Specificity: (1,2,3) 1 --> ID 2 -->
-Class 3 --> Element selector h1 { color: dodgerblue; } .highlight { color:
-deeppink; } #products { color: green; } #products { color: brown; } ✅ ans:
-#products { color: brown; } ------------------------ what if we want to prevent
-the overwritten ? ✅ ans: --> !important h1 { color: dodgerblue !important; }
-.highlight { color: deeppink; } #products { color: green; } #products { color:
-brown; } ------------------------ h1 { color: dodgerblue; } .highlight { color:
-deeppink; } #products { color: green; } #products { color: brown; }
-.highlight#products { color: orange; } ‼️ .highlight#products - (vscode)
+
+---css---
+
+h1 {
+  color: dodgerblue;
+}
+
+.highlight {
+  color: deeppink;
+}
+
+#products {
+  color: green;
+}
+
+
+✅ ans:  
+
+#products {
+  color: green;
+}
+
+
+------------------------
+in vscode when we hover over the css 
+selector Specificity: (1,2,3)
+
+1 --> ID
+2 --> Class
+3 --> Element selector
+
+
+
+h1 {
+  color: dodgerblue;
+}
+
+.highlight {
+  color: deeppink;
+}
+
+#products {
+  color: green;
+}
+
+#products {
+  color: brown;
+}
+
+✅ ans:  
+
+#products {
+  color: brown;
+}
+
+
+------------------------
+
+what if we want to prevent the overwritten ? 
+✅ ans: --> !important
+
+h1 {
+  color: dodgerblue !important;
+}
+
+.highlight {
+  color: deeppink;
+}
+
+#products {
+  color: green;
+}
+
+#products {
+  color: brown;
+}
+
+
+------------------------
+
+
+h1 {
+  color: dodgerblue;
+}
+
+.highlight {
+  color: deeppink;
+}
+
+#products {
+  color: green;
+}
+
+#products {
+  color: brown;
+}
+
+.highlight#products {
+  color: orange;
+}
+
+
+
+‼️ .highlight#products
+- (vscode)
 <element class="highlight" id="products">
-  Selector Specificity: (1, 1, 0)
-  ------------------Inheritance-CSS-section-7-------------------
+Selector Specificity: (1, 1, 0) 
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-      <link rel="stylesheet" href="css/styles.css" />
-    </head>
-    <body>
-      <p>
-        Lorem ipsum <strong>dolor</strong> sit amet consectetur adipisicing.
-      </p>
-    </body>
-  </html>
 
-  p { color: dodgerblue; } this is called Inheritance, the color applied to both
-  p and strong. ------------------- what if we dont want the Inheritance ? p {
-  color: dodgerblue; } strong { color: initial; } ------------------ what if
-  want to force to Inheritance ? p { color: dodgerblue; border: 1px solid black;
-  } strong { color: initial; border: inherit; }
-  ------------------Colors-CSS-section-8------------------- COLORS : • Named
-  colors • RGB • HSL • Hexadecimal
+------------------Inheritance-CSS-section-7-------------------
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-      <link rel="stylesheet" href="css/styles.css" />
-    </head>
-    <body>
-      <div class="box"></div>
-    </body>
-  </html>
 
-  ----- .box { width: 200px; height: 200px; background-color: rgba(51, 148, 196,
-  0.5); } ----- ‼️ in hex we lost the transparency mode .box { width: 200px;
-  height: 200px; background-color: #3394c4; } -----
-  ------------------Gradient-CSS-section-10------------------- ‼️ by default the
-  transition is from top to bottom. ---- .box { width: 200px; height: 200px;
-  background: linear-gradient(blue, red); } ---- change the direction from left
-  to right .box { width: 200px; height: 200px; background: linear-gradient(to
-  right, blue, red); } ---- .box { width: 200px; height: 200px; background:
-  linear-gradient(to bottom right, blue, red); } ---- .box { width: 200px;
-  height: 200px; background: linear-gradient(45deg, blue, red, yellow); }
-  ------------------Border-CSS-section-11------------------- .box { width:
-  200px; height: 200px; background: linear-gradient(45deg, blue, red, yellow);
-  border: 10px dashed royalblue; border-top: 20px solid royalblue; }
-</element>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <p>Lorem ipsum <strong>dolor</strong> sit amet consectetur adipisicing.</p>
+  </body>
+</html>
+
+p {
+  color: dodgerblue;
+}
+
+this is called Inheritance, the color applied to both p and strong.
+
+-------------------
+what if we dont want the Inheritance ?
+
+p {
+  color: dodgerblue;
+}
+
+strong {
+  color: initial;
+}
+
+
+------------------
+what if want to force to Inheritance ?
+
+p {
+  color: dodgerblue;
+  border: 1px solid black;
+}
+
+strong {
+  color: initial;
+  border: inherit;
+}
+
+
+
+------------------Colors-CSS-section-8-------------------
+
+COLORS : 
+
+• Named colors
+• RGB
+• HSL
+• Hexadecimal
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
+
+
+
+-----
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(51, 148, 196, 0.5);
+}
+-----
+‼️ in hex we lost the transparency mode
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: #3394c4;
+}
+-----
+
+
+------------------Gradient-CSS-section-10-------------------
+
+‼️ by default the transition is from top to bottom.
+
+----
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(blue, red);
+}
+
+---- change the direction from left to right
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to right, blue, red);
+}
+
+----
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to bottom right, blue, red);
+}
+
+----
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, blue, red, yellow);
+}
+
+
+------------------Border-CSS-section-11-------------------
+
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, blue, red, yellow);
+  border: 10px dashed royalblue;
+  border-top: 20px solid royalblue;
+}
+
+
