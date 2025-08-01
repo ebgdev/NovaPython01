@@ -1,0 +1,10 @@
+What is the capital of France?|Paris
+Which language is primarily used for data analysis?|Python
+What is 5 multiplied by 6?|30
+Who painted the Mona Lisa?|Leonardo da Vinci
+What is the chemical symbol for water?|H2O
+In which continent is Brazil located?|South America
+What keyword is used to define a function in Python?|def
+What data structure uses key-value pairs?|dictionary
+Which planet is known as the Red Planet?|Mars
+What is the result of 2 ** 3 in Python?|8
