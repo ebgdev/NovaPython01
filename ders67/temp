@@ -1,0 +1,71 @@
+const durationInput = document.querySelector('#durationInput');
+const timerDisplay = document.getElementById('timerDisplay');
+const playBtn = document.getElementById('playBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+let originalDuration = 0;
+let timeLeft = 0;
+let interval = null;
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+function updateDisplay() {
+  timerDisplay.classList.remove('fade');
+  void timerDisplay.offsetWidth; // trigger reflow for animation
+  timerDisplay.classList.add('fade-out');
+
+  setTimeout(() => {
+    timerDisplay.textContent = formatTime(timeLeft);
+    timerDisplay.classList.remove('fade-out');
+    timerDisplay.classList.add('fade');
+  }, 200);
+}
+
+function startCountdown() {
+  if (timeLeft <= 0) return;
+
+  interval = setInterval(() => {
+    if (timeLeft > 0) {
+      timeLeft--;
+      updateDisplay();
+    } else {
+      clearInterval(interval);
+      interval = null;
+      playBtn.disabled = false;
+      pauseBtn.disabled = true;
+    }
+  }, 1000);
+}
+
+playBtn.addEventListener('click', () => {
+  // Only start the timer if one isn’t already running
+  if (!interval) {
+    // If there's no time set yet: Take the input value from the field (as a number)
+
+    if (timeLeft <= 0) {
+      const inputSeconds = parseInt(durationInput.value, 10);
+      if (
+        isNaN(inputSeconds) ||
+        inputSeconds <= 0 ||
+        inputSeconds < durationInput.min
+      ) {
+        alert('Please enter a valid number of seconds.');
+        return;
+      }
+
+      originalDuration = inputSeconds;
+      timeLeft = inputSeconds;
+    }
+    startCountdown();
+    playBtn.disabled = true;
+    pauseBtn.disabled = false;
+    resetBtn.disabled = false;
+    durationInput.disabled = true;
+  }
+});
+
