@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Countdown Timer</h1>
+      </header>
+      <section>
+        <input
+          type="number"
+          id="durationInput"
+          placeholder="Enter Seconds"
+          min="100"
+          required
+        />
+      </section>
+      <section id="timerDisplay" class="fade">00:00</section>
+      <section class="buttons">
+        <button id="playBtn" type="submit">Play</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="resetBtn">Reset</button>
+      </section>
+    </main>
+    <script src="CountDownTimer.js"></script>
+  </body>
+</html>

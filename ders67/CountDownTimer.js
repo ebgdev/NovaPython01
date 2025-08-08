@@ -69,3 +69,45 @@ playBtn.addEventListener('click', () => {
   }
 });
 
+pauseBtn.addEventListener('click', () => {
+  clearInterval(interval);
+  interval = null;
+  playBtn.disabled = false;
+  pauseBtn.disabled = true;
+});
+
+resetBtn.addEventListener('click', () => {
+  clearInterval(interval);
+  interval = null;
+  timeLeft = originalDuration;
+  updateDisplay();
+  playBtn.disabled = false;
+  pauseBtn.disabled = true;
+  resetBtn.disabled = true;
+  durationInput.disabled = false;
+});
+
+updateDisplay(); // Initialize with 00:00
+
+// aciklamalar:
+
+// ✅ setInterval and clearInterval ✅
+// setInterval(function, intervalZamanıMs);
+// setInterval() belirli aralıklarla (milisaniye cinsinden) tekrar eden bir işlemi başlatır.
+// Milisaniye cinsinden süre (örnek: 1000 = 1 saniye)
+// setInterval sürekli çalışır — durmaz. Durdurmak için clearInterval() kullanılır
+
+// ----------------------------
+
+// ✅ padStart() ✅
+// The padStart() method is a string method that adds characters
+// to the beginning (start) of a string until it reaches a desired length.
+
+// ----------------------------
+
+// ✅ classList neden bu isimde? ✅
+// classList, bir HTML öğesinin üzerindeki tüm CSS class'larının bir listesini temsil eder.
+
+// Yani:
+// classList, öğeye ait birden fazla class varsa hepsini içerir.
+// Bu nedenle adı da "class listesi" yani classList olarak belirlenmiştir.
