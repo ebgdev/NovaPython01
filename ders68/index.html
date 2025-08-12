@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Todo List</h1>
+      </header>
+
+      <main>
+        <section class="todo-input">
+          <input type="text" id="taskInput" placeholder="Enter a new task..." />
+          <input type="datetime-local" id="taskDateTime" />
+          <button id="addTaskBtn">Add</button>
+        </section>
+
+        <section>
+          <ul id="taskList"></ul>
+        </section>
+      </main>
+
+      <footer>
+        <p>Nova Akademi Ogrencileri 2025</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
