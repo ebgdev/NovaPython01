@@ -866,6 +866,73 @@ body {
 }
 
 -------------------
+HTML’de position özelliği, bir elementin sayfa üzerinde nasıl konumlandırılacağını belirler.
+Temel seçenekler şunlardır:
+
+1. static (varsayılan)
+Özellikleri: Her HTML elemanı varsayılan olarak static pozisyondadır.
+
+Davranış: Normal belge akışı içinde yer alır. top, left, right, bottom değerleri etkilemez.
+
+Ne zaman kullanılır: Aslında çoğu zaman doğrudan yazmazsın, çünkü varsayılan konumlandırma budur.
+
+--------
+
+2. relative
+Özellikleri: Eleman normal akıştaki yerinde kalır, ama top, left, right, bottom ile kendi orijinal konumuna göre kaydırılabilir.
+
+Önemli: Yerinden oynasa bile sayfadaki “alanı” korunur.
+
+Kullanım senaryosu: Bir elementi hafifçe yerinden oynatmak veya absolute konumlu çocukları için referans noktası yapmak.
+
+div {
+  position: relative;
+  top: 10px; /* 10px aşağı kayar */
+  left: 5px; /* 5px sağa kayar */
+}
+
+--------
+
+3. absolute
+Özellikleri: Normal akıştan çıkar, top, left, right, bottom ile ilk konumlandırılmış (relative, absolute, fixed, sticky) ata elemanına göre yerleşir.
+
+Önemli: Eğer yukarıda hiç konumlandırılmış ata yoksa, sayfanın <html> köşesine göre konumlanır.
+
+Kullanım senaryosu: Kutuları belirli bir alana tam olarak yerleştirmek, açılır menüler, tooltip'ler.
+
+--------
+
+4. fixed
+Özellikleri: Normal akıştan çıkar, tarayıcı penceresine göre sabitlenir.
+
+Önemli: Scroll yapılsa bile aynı yerde kalır.
+
+Kullanım senaryosu: Sabit navigasyon menüsü, “geri yukarı” butonu.
+
+--------
+
+5. sticky
+Özellikleri: relative gibi başlar, ama scroll sırasında belirlenen noktaya gelince fixed gibi yapışır.
+
+Kullanım senaryosu: Başlıkların, tabloların veya menülerin sayfa içinde belli bir noktada sabitlenmesi.
+
+Örnek:
+
+header {
+  position: sticky;
+  top: 0; /* üstten 0px olunca yapışır */
+}
+
+| Position | Normal akışta alan korur? | Referans noktası                    |
+| -------- | ------------------------- | ----------------------------------- |
+| static   | ✔                         | Belge akışı                         |
+| relative | ✔                         | Kendi orijinal yeri                 |
+| absolute | ✘                         | En yakın konumlandırılmış ata       |
+| fixed    | ✘                         | Tarayıcı penceresi                  |
+| sticky   | Bazen                     | Kendi orijinal yeri → sonra pencere |
+
+
+
 Let's say that we want to change the positions.
 default --> position: static;
 
