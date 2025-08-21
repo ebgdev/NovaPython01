@@ -1,0 +1,69 @@
+--------------- 1. __pycache__/ ---------------
+
+Stores compiled Python bytecode (.pyc files).
+Automatically created by Python to make imports faster.
+You can safely ignore it (or even delete it – it will be rebuilt).
+
+--------------- 2. __init__.py ---------------
+
+Marks the folder as a Python package.
+Without it, Python won’t recognize that directory as importable.
+Often empty in Django projects.
+
+
+--------------- 3. asgi.py ---------------
+
+ASGI = Asynchronous Server Gateway Interface.
+Entry point for async web servers (e.g., Uvicorn, Daphne).
+Similar to wsgi.py but for async frameworks.
+Rarely modified directly; mainly used for deployment.
+
+
+--------------- 4. settings.py ---------------
+
+The heart of your Django project’s configuration.
+Contains:
+Database setup (sqlite3 by default).
+Installed apps.
+Middleware.
+Templates and static file settings.
+Secret key, debug mode, allowed hosts.
+You’ll edit this file a lot.
+
+--------------- 5. urls.py ---------------
+
+Defines the URL routes for your project.
+Maps URLs (like /about/, /blog/) to views (Python functions/classes).
+Usually imports path() and include() from django.urls.
+
+--------------- 6. db.sqlite3 ---------------
+
+The default database Django sets up (SQLite).
+Stores all your data (users, models, sessions, etc.).
+Lightweight and good for development.
+In production, you’d typically switch to PostgreSQL or MySQL.
+
+--------------- 7. manage.py ---------------
+
+Command-line utility to interact with your project.
+Common uses:
+
+python manage.py runserver     # start dev server
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py shell
+
+You’ll use this file all the time.
+
+--------------- 8. Pipfile & Pipfile.lock (because you’re using Pipenv) ---------------
+
+Pipfile
+
+Lists the Python packages your project depends on (instead of requirements.txt).
+
+Example: Django, djangorestframework, etc.
+
+Pipfile.lock
+Exact versions of installed dependencies (for reproducibility).
+Ensures that anyone else installing your project gets the same package versions.
