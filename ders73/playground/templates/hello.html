@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
+        voluptates ipsam nulla fugiat fuga cupiditate explicabo, odio odit
+        consequatur assumenda eum ipsum itaque autem quis, sed maiores, nemo
+        quod vitae.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore placeat
+        harum sapiente. Odit eaque quasi perferendis minima saepe illum
+        consequuntur eos, reprehenderit est blanditiis veniam nam distinctio
+        assumenda incidunt eum ipsum veritatis. Est saepe reiciendis odio. At
+        eaque distinctio ex, asperiores deserunt soluta nostrum animi, doloribus
+        maiores odit officiis tempore?
+      </p>
+      {% if name %}
+      <p class="show-name">hello {{name}}</p>
+      {% else %}
+      <p class="show-name">hello world!</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

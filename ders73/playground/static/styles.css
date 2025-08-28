@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+}
+
+.container {
+  margin: 1rem;
+  border: 3px solid lightgray;
+  background: deeppink;
+}

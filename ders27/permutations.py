@@ -4,6 +4,7 @@ from itertools import permutations
 def generate_permutations(arr):
     counter = 0
     perm_list = list(permutations(arr))  # Generate all possible permutations
+    print(perm_list)
 
     for perm in perm_list:
         counter += 1
