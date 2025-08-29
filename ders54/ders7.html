@@ -551,6 +551,57 @@ Scale-Factor: 2x
 | **2K Display**             | 2560×1440             | 2560×1440              | 1       |
 
 
+
+-------------------------------------------------------
+Resolution Switching:
+
+phones: Complete Screen
+tablets: Half of the Screen
+desktop: Third of a Screen
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <img
+      src="images/meal.jpg"
+      alt="a bowl of salmon"
+      class="meal"
+      srcset="
+        images/meal.jpg     400w,
+        images/meal@2x.jpg  800w,
+        images/meal@3x.jpg 1200w
+      "
+      sizes="
+      (max-width:500px) 100vw,
+      (max-width:700px) 50vw,
+      (max-width:500px) 100vw,
+      33vw 
+      "
+    />
+  </body>
+</html>
+
+
+
+-----css-----
+
+.meal {
+  max-width: 100%; /* Don’t force 100vw */ ✅ zorunlu
+  height: auto; /* Maintain aspect ratio */ 👌🏻 opsiyonel
+  display: block; /* Prevent extra whitespace */ 👌🏻 opsiyonel
+}
+
+🔗 https://www.responsivebreakpoints.com/
+
+
 --------------------🎯-Using-Modern-Image-Formats-🎯--------------------
 
 🔗 https://cloudconvert.com/
