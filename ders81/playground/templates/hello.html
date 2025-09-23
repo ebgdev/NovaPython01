@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <ul>
+    {% for row in products %}
+      <li>
+        ID: {{ row.0 }} <br>
+        Name: {{ row.1 }} {{ row.2 }} <br>
+        Total Orders: {{ row.3 }}
+      </li>
+    {% empty %}
+      <li>No results found.</li>
+    {% endfor %}
+  </ul>
+
+
+
+  <!-- {% if result %}
+    <p>result: {{result}}</p>
+  {% endif %}
+
+  {% if product %}
+  <p> {{ product }} {{product.title}} {{product.inventory}} ${{ product.unit_price }}</p>
+  {% endif %}
+
+  <ul>
+  {% for product in products %}
+    <li>{{product}} - {{ product.id }} -- {{ product.customer.first_name }} -- {{ product.customer.last_name }}</li>
+    
+  {% endfor %}
+  </ul> -->
+</body>
+</html>
+
+
+
+
