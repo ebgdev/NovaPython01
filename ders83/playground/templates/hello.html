@@ -1,0 +1,15 @@
+<html>
+  <body>
+    {% if product %}
+    <p>{{product}}</p>
+    {% endif %}
+    <ul>
+      {% for product in products %}
+      <li>
+        {{product}} -- {{product.title}} -- {{product.customer.first_name}} --
+        {{product.customer.last_name}}
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
