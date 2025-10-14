@@ -1,0 +1,16 @@
+Serializing Relationships
+
+1- Primary Key
+2- String
+3- Nested Objects
+4- Hyperlinks
+
+
+Deserializing Objects
+
+
+product
+
+"title":"hesap makines",
+"slug": "hesap-makines",
+"unit_price"
