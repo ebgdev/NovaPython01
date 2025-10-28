@@ -1,0 +1,83 @@
+{% load static %}
+<!-- Header -->
+<header
+  class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top header"
+  id="header"
+>
+  <div class="container">
+    <div class="header_toggle">
+      <i class="bx bx-menu text-white" id="header-toggle"></i>
+    </div>
+
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="{% static 'img/logo.png' %}" class="logo" alt="Logo" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav">
+        <li 
+          {% if '/' == request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+        >
+          <a class="nav-link" href="{% url 'index' %}">Home</a>
+        </li>
+        <li 
+            {% if 'about' in request.path %}
+                class="nav-item active mr-3"
+            {% else %}
+                class="nav-item mr-3"
+            {% endif %}
+          >
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+        <!-- <li class="nav-item mr-3">
+              <a class="nav-link" href="index.html">لیست گزینه ها</a>
+            </li> -->
+      </ul>
+      <div class="mr-auto">
+        <form action="">
+          <div class="input-group input-group-sm">
+            <button
+              type="submit"
+              class="input-group-text"
+              id="basic-addon1"
+              style="border-radius: 0 3px 3px 0 !important"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search..."
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </form>
+      </div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item mr-3">
+          <a class="nav-link" href="register.html"
+            ><i class="fas fa-user-plus"></i> Register
+          </a>
+        </li>
+        <li class="nav-item mr-3">
+          <a class="nav-link" href="login.html"
+            ><i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+<!-- End Header -->

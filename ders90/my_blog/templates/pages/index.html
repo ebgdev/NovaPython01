@@ -1,0 +1,123 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="main-container mt-5">
+  <!-- Listings -->
+  <section id="listings" class="py-3" style="margin-bottom: 3rem">
+    <div class="container">
+      <h3 class="text-center mb-3">Latest Posts</h3>
+      <div class="row">
+        <!-- Listing 1 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <div style="position: relative">
+              <img
+                class="card-img-top"
+                src="{% static 'img/pictures/pic-1.jpg' %}"
+                alt=""
+              />
+              <div class="text-image-config p-1">
+                <span class="badge text-white" style="background-color: #cb1c8d"
+                  >268 <i class="fas fa-comment"></i
+                ></span>
+                <span
+                  class="badge text-white mr-2"
+                  style="background-color: #e0144c"
+                  >268 <i class="fas fa-heart"></i
+                ></span>
+              </div>
+            </div>
+            <!-- <div class="card-body text-truncate" style="display: -webkit-box !important; -webkit-line-clamp: 4; -webkit-box-orient: vertical; white-space: normal"> -->
+            <div class="card-body" style="font-size: 13px; padding-bottom: 0">
+              <div class="listing-heading text-left">
+                <h4 class="text-primary">Description Title</h4>
+                <p><i class="fas fa-pen" style="color: #e0144c"></i> Author</p>
+              </div>
+              <hr />
+              <div class="multiline-ellipsis text-left">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                iure tempore facere ut nam laudantium maxime, perspiciatis sit
+                quam voluptas harum atque aliquid voluptatem esse? Ea distinctio
+                molestias aliquam sit.
+              </div>
+            </div>
+            <hr />
+            <div class="px-3 pb-3 pt-0" style="padding-top: 0">
+              <a href="post-detail.html" class="btn btn-primary btn-block"
+                >Read More...</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <div style="position: relative">
+              <img
+                class="card-img-top"
+                src="{% static 'img/pictures/pic-1.jpg' %}"
+                alt=""
+              />
+              <div class="text-image-config p-1">
+                <span class="badge text-white" style="background-color: #cb1c8d"
+                  >268 <i class="fas fa-comment"></i
+                ></span>
+                <span
+                  class="badge text-white mr-2"
+                  style="background-color: #e0144c"
+                  >268 <i class="fas fa-heart"></i
+                ></span>
+              </div>
+            </div>
+            <!-- <div class="card-body text-truncate" style="display: -webkit-box !important; -webkit-line-clamp: 4; -webkit-box-orient: vertical; white-space: normal"> -->
+            <div class="card-body" style="font-size: 13px; padding-bottom: 0">
+              <div class="listing-heading text-left">
+                <h4 class="text-primary">Description Title</h4>
+                <p><i class="fas fa-pen" style="color: #e0144c"></i> Author</p>
+              </div>
+              <hr />
+              <div class="multiline-ellipsis text-left">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                iure tempore facere ut nam laudantium maxime, perspiciatis sit
+                quam voluptas harum atque aliquid voluptatem esse? Ea distinctio
+                molestias aliquam sit.
+              </div>
+            </div>
+            <hr />
+            <div class="px-3 pb-3 pt-0" style="padding-top: 0">
+              <a href="post-detail.html" class="btn btn-primary btn-block"
+                >Read More...</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="pagination">
+            <li class="page-item">
+              <a href="#" class="page-link">&laquo;</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link">&laquo;</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link">1</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">&raquo;</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link">&raquo;</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock content %}
