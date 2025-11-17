@@ -7,7 +7,7 @@
 
 # -------------float()-------------
 # num = 4
-# print(float(num))              # cikti veya output --> 3
+# print(float(num))              # cikti veya output --> 4.0
 
 # -------------str()-------------
 
