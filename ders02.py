@@ -4,8 +4,9 @@
 
 # fizik = int(input("fizik sivavinin puanini giriniz: "))
 # matematik = int(input("matematik sinavinin puanini giriniz: "))
+# kimya = int(input("kimya sinavinin puanini giriniz: "))
 
-# ortalama = ((mat_yuzdesi * matematik)+(fizik_yuzdesi*fizik))/5
+# ortalama = ((mat_yuzdesi * matematik)+(fizik_yuzdesi*fizik)+(kimya_yuzdesi*kimya))/6
 # print(f"bu ogrencinin not ortalamasi: {ortalama}")
 
 # print("you passed the exam") if ortalama > 60 else print("you failed")
@@ -16,7 +17,7 @@
 # import random 
 # gercek_deger = random.randint(1,10)
 # kosul = True
-# tahmin = int(input("0..100 arasi bir deger giriniz\n"))
+# tahmin = int(input("1...10 arasi bir deger giriniz\n"))
 # while kosul:
 #     if tahmin == gercek_deger:
 #         print("TEBRIKLER,DOGRU tahminde bulundunuz\n")
@@ -25,7 +26,7 @@
 #         print("gercek deger daha KUCUK bir daha deneyiniz\n")
 #     else:
 #         print("gercek deger daha BUYUK bir daha deneyiniz\n")
-#     tahmin = int(input("0 ile 100 arasi tahmini bir tam sayi degeri giriniz --> "))
+#     tahmin = int(input("1 ile 10 arasi tahmini bir tam sayi degeri giriniz --> "))
 
 #----------------loop---------------------------------loop---------------------------------loop-----------------
 # iki cesit donguleri(loop) donebiliriz
