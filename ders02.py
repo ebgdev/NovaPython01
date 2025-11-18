@@ -6,7 +6,7 @@
 # matematik = int(input("matematik sinavinin puanini giriniz: "))
 # kimya = int(input("kimya sinavinin puanini giriniz: "))
 
-# ortalama = ((mat_yuzdesi * matematik)+(fizik_yuzdesi*fizik)+(kimya_yuzdesi*kimya))/6
+# ortalama = ((mat_yuzdesi * matematik)+(fizik_yuzdesi*fizik)+(kimya_yuzdesi*kimya))/(kimya_yuzdesi+mat_yuzdesi+fizik_yuzdesi)
 # print(f"bu ogrencinin not ortalamasi: {ortalama}")
 
 # print("you passed the exam") if ortalama > 60 else print("you failed")
