@@ -1,0 +1,43 @@
+------------------------place-content------------------------
+
+place-content, CSS Grid ve bazı hizalama sistemlerinde kullanılan kısayol (shorthand) bir özelliktir.
+Aynı anda hem:
+
+align-content
+
+justify-content
+
+özelliklerini ayarlamak için kullanılır.
+
+
+------------------------place-items------------------------
+
+
+place-items, CSS Grid ve Flexbox için kısayol (shorthand) bir özelliktir.
+Aynı anda hem align-items hem de justify-items değerini ayarlamak için kullanılır.
+
+✅ place-items nedir?
+
+place-items: <align-items> <justify-items>;
+
+Yani:
+
+place-items: center;
+
+
+şuna eşittir:
+
+align-items: center;
+justify-items: center;
+
+
+Birinci değer align-items, ikinci değer justify-items olarak alınır.
+Tek değer verilirse ikisine de uygulanır.
+
+🧩 Nerede çalışır?
+
+CSS Grid → ✔️ Hem align-items hem justify-items desteklendiği için tam çalışır.
+
+Flexbox → ⚠️ justify-items flexbox’ta desteklenmediği için genelde sadece align-items etkilenir.
+
+------------------------------------------------------------

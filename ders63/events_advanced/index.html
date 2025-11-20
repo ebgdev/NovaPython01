@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --size-lg: 200px;
+        --size-md: 150px;
+        --size-sm: 100px;
+
+        --color-1: blue;
+        --color-2: red;
+        --color-3: purple;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+      }
+      .grandparent,
+      .parent,
+      .child {
+        display: grid;
+        place-items: center;
+      }
+
+      .grandparent {
+        width: var(--size-lg);
+        height: var(--size-lg);
+        background-color: var(--color-1);
+      }
+      .parent {
+        width: var(--size-md);
+        height: var(--size-md);
+        background-color: var(--color-2);
+      }
+      .child {
+        width: var(--size-sm);
+        height: var(--size-sm);
+        background-color: var(--color-3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grandparent">
+      <div class="parent">
+        <div class="child"></div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
